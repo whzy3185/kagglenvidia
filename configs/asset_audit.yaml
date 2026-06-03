@@ -1,0 +1,26 @@
+audit_fields:
+  - name
+  - author
+  - url
+  - type
+  - claimed_score
+  - source_code_available
+  - adapter_available
+  - dataset_available
+  - license_status
+  - required_manual_steps
+  - reproducibility_level
+  - blocking_issue
+  - allowed_use
+
+classification:
+  trainable_baseline:
+    meaning: "有代码/数据/配置，可以训练或复现"
+  conversion_only:
+    meaning: "只有转换/打包工具，必须有原始 adapter 才有意义"
+  candidate_adapter:
+    meaning: "有可下载 adapter，可进入验证与打包"
+  idea_only:
+    meaning: "只有标题/分数/摘要，不能直接复现"
+  blocked:
+    meaning: "许可证、资产或权限不清楚，暂不使用"

@@ -1,0 +1,82 @@
+baselines:
+  tong_full_repro:
+    type: trainable_baseline
+    expected_score_range: "0.84-0.85"
+    role: "first_trainable_baseline"
+    required_assets:
+      - source_code
+      - synthetic_trace_data
+      - training_config
+    blocking_risk: "may not reach 0.86 directly"
+    use_for:
+      - baseline_reproduction
+      - data_style_reference
+      - trace_format_reference
+
+  asalhi_ready_submit_conversion:
+    type: conversion_baseline
+    expected_score_range: "0.86_if_original_adapter_available"
+    role: "first_asset_audit_target"
+    required_assets:
+      - original_tinker_adapter
+      - conversion_script
+      - ready_submit_format
+    blocking_risk: "adapter asset may be unavailable"
+    use_for:
+      - adapter_conversion
+      - submission_format_reference
+
+  safar_086_claim:
+    type: score_claim_reference
+    expected_score_range: "0.86_claimed"
+    reproducibility: low
+    required_assets:
+      - unknown
+    use_for:
+      - idea_pool_only
+
+  fusion_rank32:
+    type: dependent_improvement
+    expected_score_range: "depends_on_input_adapters"
+    required_assets:
+      - two_or_more_valid_adapters
+    use_for:
+      - second_phase_after_valid_adapters_exist
+
+  equation_numeric_trace:
+    type: specialist_baseline
+    expected_score_range: "around_0.85"
+    required_assets:
+      - trace_data_or_generator
+      - training_config
+    use_for:
+      - specialist_candidate
+      - proxy_eval_design
+
+  symbolic_focused_train:
+    type: specialist_baseline
+    expected_score_range: "around_0.85"
+    required_assets:
+      - symbolic_trace_data
+      - training_config
+    use_for:
+      - specialist_candidate
+      - proxy_eval_design
+
+  unsloth_085:
+    type: training_stack_variant
+    expected_score_range: "around_0.85"
+    required_assets:
+      - training_notebook
+      - data_reference
+    use_for:
+      - memory_efficient_training_reference
+
+  muon_085:
+    type: optimizer_variant
+    expected_score_range: "around_0.85"
+    required_assets:
+      - training_notebook
+      - optimizer_config
+    use_for:
+      - backlog_only_until_baseline_exists

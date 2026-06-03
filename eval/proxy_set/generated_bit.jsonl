@@ -1,0 +1,5 @@
+{"id":"bit_0001","category":"bit_manipulation","prompt":"Compute binary 1010 AND 1100. Return decimal in \\boxed{answer}.","expected_answer":"8","verifier_type":"python_eval","metadata":{"source":"programmatic_seed","op":"and"}}
+{"id":"bit_0002","category":"bit_manipulation","prompt":"Compute binary 1010 OR 0101. Return decimal in \\boxed{answer}.","expected_answer":"15","verifier_type":"python_eval","metadata":{"source":"programmatic_seed","op":"or"}}
+{"id":"bit_0003","category":"bit_manipulation","prompt":"Compute binary 1111 XOR 0101. Return decimal in \\boxed{answer}.","expected_answer":"10","verifier_type":"python_eval","metadata":{"source":"programmatic_seed","op":"xor"}}
+{"id":"bit_0004","category":"bit_manipulation","prompt":"Left shift binary 0011 by 2 bits. Return decimal in \\boxed{answer}.","expected_answer":"12","verifier_type":"python_eval","metadata":{"source":"programmatic_seed","op":"shift"}}
+{"id":"bit_0005","category":"bit_manipulation","prompt":"Right shift binary 1000 by 1 bit. Return decimal in \\boxed{answer}.","expected_answer":"4","verifier_type":"python_eval","metadata":{"source":"programmatic_seed","op":"shift"}}

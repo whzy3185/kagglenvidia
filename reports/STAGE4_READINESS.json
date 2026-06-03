@@ -1,0 +1,19 @@
+{
+  "stage": 4,
+  "status": "blocked",
+  "can_start_stage4": false,
+  "validated_adapters": 1,
+  "proxy_eval_complete": false,
+  "score_gate_allowed": true,
+  "license_ok": true,
+  "blocked_reasons": [
+    "proxy_eval_not_complete"
+  ],
+  "no_fusion_created": true,
+  "no_daily_runner_created": true,
+  "next_action": {
+    "status": "blocked",
+    "action": "run the staged proxy eval kernel on Kaggle GPU, then ingest proxy_predictions.jsonl locally",
+    "reason": "Stage 4 requires completed proxy eval before fusion or daily runner work."
+  }
+}

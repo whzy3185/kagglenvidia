@@ -1,0 +1,7 @@
+{
+  "enable_proxy_inference": true,
+  "proxy_set_dir": "",
+  "adapter_dir": "",
+  "base_model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-v2",
+  "notes": "Kernel auto-detects proxy JSONL, adapter files, and a mounted base-model directory under /kaggle/input when available."
+}

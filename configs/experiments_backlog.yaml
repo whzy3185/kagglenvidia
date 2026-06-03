@@ -1,0 +1,53 @@
+backlog:
+  numeric_rate_first_trace:
+    priority: high
+    stage: 3
+    target_categories: [equation_numeric, unit_conversion]
+    data_source: programmatic_generator
+    trace_style: rate_first_short_trace
+    verifier: numeric_exact_or_tolerance
+
+  cipher_mapping_trace:
+    priority: medium
+    stage: 3
+    target_categories: [cipher]
+    data_source: rule_generator
+    trace_style: explicit_mapping_then_decode
+    verifier: decoded_answer_check
+
+  bit_operation_trace:
+    priority: medium
+    stage: 3
+    target_categories: [bit_manipulation]
+    data_source: executable_python_generator
+    trace_style: binary_steps_compact
+    verifier: python_eval
+
+  compressed_tong_trace:
+    priority: high
+    stage: 4
+    target_categories: [mixed]
+    data_source: tong_style_long_trace
+    transformation: remove_redundant_explanation
+    verifier: final_answer_preserved
+
+  lora_fusion_rank32:
+    priority: high
+    stage: 4
+    requires:
+      - two_or_more_valid_adapters
+      - proxy_eval
+    method:
+      - weighted_average
+      - svd_rank_compression
+      - alpha_rescale
+
+  muon_variant:
+    priority: low
+    stage: 4
+    condition: "only_after_trainable_baseline_exists"
+
+  rslora_variant:
+    priority: low
+    stage: 4
+    condition: "only_if_framework_supports_it"

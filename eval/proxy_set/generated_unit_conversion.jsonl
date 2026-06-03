@@ -1,0 +1,5 @@
+{"id":"unit_0001","category":"unit_conversion","prompt":"Convert 2.5 kilometers to meters. Return only \\boxed{answer}.","expected_answer":"2500","verifier_type":"exact","metadata":{"source":"programmatic_seed","unit":"length"}}
+{"id":"unit_0002","category":"unit_conversion","prompt":"Convert 3 hours to minutes. Return only \\boxed{answer}.","expected_answer":"180","verifier_type":"exact","metadata":{"source":"programmatic_seed","unit":"time"}}
+{"id":"unit_0003","category":"unit_conversion","prompt":"Convert 750 centimeters to meters. Return only \\boxed{answer}.","expected_answer":"7.5","verifier_type":"numeric_tolerance","metadata":{"source":"programmatic_seed","unit":"length"}}
+{"id":"unit_0004","category":"unit_conversion","prompt":"Convert 4.2 kilograms to grams. Return only \\boxed{answer}.","expected_answer":"4200","verifier_type":"exact","metadata":{"source":"programmatic_seed","unit":"mass"}}
+{"id":"unit_0005","category":"unit_conversion","prompt":"Convert 90 seconds to minutes. Return only \\boxed{answer}.","expected_answer":"1.5","verifier_type":"numeric_tolerance","metadata":{"source":"programmatic_seed","unit":"time"}}

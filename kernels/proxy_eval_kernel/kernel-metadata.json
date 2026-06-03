@@ -1,0 +1,20 @@
+{
+  "id": "muelsyse111/nemotron-0-86-proxy-eval",
+  "title": "Nemotron 0.86+ Proxy Eval",
+  "code_file": "eval_candidate.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [
+    "muelsyse111/nemotron-086plus-proxy-set"
+  ],
+  "model_sources": [
+    "huikang/nemotron-adapter/Transformers/default/27",
+    "metric/nemotron-3-nano-30b-a3b-bf16/transformers/default/1"
+  ],
+  "competition_sources": [
+    "nvidia-nemotron-model-reasoning-challenge"
+  ]
+}

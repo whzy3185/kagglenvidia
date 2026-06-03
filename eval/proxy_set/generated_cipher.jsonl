@@ -1,0 +1,5 @@
+{"id":"cipher_0001","category":"cipher","prompt":"Decode Caesar shift +1: dbu. Return only \\boxed{answer}.","expected_answer":"cat","verifier_type":"exact","metadata":{"source":"programmatic_seed","cipher":"caesar_plus_1"}}
+{"id":"cipher_0002","category":"cipher","prompt":"Decode Caesar shift +1: eph. Return only \\boxed{answer}.","expected_answer":"dog","verifier_type":"exact","metadata":{"source":"programmatic_seed","cipher":"caesar_plus_1"}}
+{"id":"cipher_0003","category":"cipher","prompt":"Decode Caesar shift +2: jgnnq. Return only \\boxed{answer}.","expected_answer":"hello","verifier_type":"exact","metadata":{"source":"programmatic_seed","cipher":"caesar_plus_2"}}
+{"id":"cipher_0004","category":"cipher","prompt":"Decode Atbash: zkkov. Return only \\boxed{answer}.","expected_answer":"apple","verifier_type":"exact","metadata":{"source":"programmatic_seed","cipher":"atbash"}}
+{"id":"cipher_0005","category":"cipher","prompt":"Decode Atbash: yivzw. Return only \\boxed{answer}.","expected_answer":"bread","verifier_type":"exact","metadata":{"source":"programmatic_seed","cipher":"atbash"}}

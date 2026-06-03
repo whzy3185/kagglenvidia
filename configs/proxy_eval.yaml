@@ -1,0 +1,20 @@
+categories:
+  - equation_numeric
+  - unit_conversion
+  - symbolic
+  - cipher
+  - bit_manipulation
+
+metrics:
+  - boxed_extract_rate
+  - exact_match_or_verifier_match
+  - trace_validity
+  - numeric_step_consistency
+  - token_length
+  - category_breakdown
+
+submit_gate:
+  require_not_worse_than_baseline: true
+  require_output_format_regression_false: true
+  require_at_least_one_category_improves: true
+  allow_direct_known_086_adapter_without_proxy_eval: true

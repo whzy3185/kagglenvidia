@@ -1,0 +1,13 @@
+stage: 2
+route: tong_full_repro
+selected_type: candidate_adapter
+source_url: https://www.kaggle.com/models/huikang/nemotron-adapter
+model_version_ref: huikang/nemotron-adapter/Transformers/default/27
+adapter_dir: artifacts/stage2/tong_full_repro/adapter
+submission_dir: artifacts/stage2/tong_full_repro/submission
+expected_files:
+  - adapter_config.json
+  - adapter_model.safetensors
+license_status: unknown
+official_format_confirmed: false
+score_claim_status: public_report_claim_not_locally_verified

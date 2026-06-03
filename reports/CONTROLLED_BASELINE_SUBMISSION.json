@@ -1,0 +1,57 @@
+{
+  "competition": "nvidia-nemotron-model-reasoning-challenge",
+  "submission_zip_path": "E:\\Jitter\\nemotron_086plus_repro\\artifacts\\stage2\\tong_full_repro\\submission\\submission.zip",
+  "submission_zip_exists": true,
+  "submission_zip_sha256": "db56ce42bcf8aac2ac197521c6596a534a2b49c0dd84bb17914df89841c761a8",
+  "zip_structure_status": "structural_valid",
+  "zip_files": [
+    "adapter_config.json",
+    "adapter_model.safetensors"
+  ],
+  "adapter_structural_valid": true,
+  "rank_lte_32": true,
+  "license_status": "Apache 2.0",
+  "official_format_confirmed": false,
+  "submission_attempted": true,
+  "manual_submit_process_active": true,
+  "active_submit_processes": [
+    {
+      "process_id": 59868,
+      "parent_process_id": 62840,
+      "name": "powershell.exe",
+      "creation_date": "/Date(1780498803426)/",
+      "command_line": "powershell -NoProfile -Command \"Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like '*kaggle*competitions submit*nvidia-nemotron-model-reasoning-challenge*' } | Select-Object ProcessId,ParentProcessId,Name,CreationDate,CommandLine | ConvertTo-Json -Compress\""
+    }
+  ],
+  "submission_status": "upload_in_progress",
+  "latest_submission": {
+    "submission_id": "53329563",
+    "file_name": "submission.zip",
+    "date": "2026-06-03 13:37:44.970000",
+    "description": "20260603_slot1_tong_adapter_repack_db56ce42_stage2_retry",
+    "status": "SubmissionStatus.ERROR",
+    "public_score": null,
+    "private_score": null,
+    "raw": {
+      "ref": "53329563",
+      "fileName": "submission.zip",
+      "date": "2026-06-03 13:37:44.970000",
+      "description": "20260603_slot1_tong_adapter_repack_db56ce42_stage2_retry",
+      "status": "SubmissionStatus.ERROR",
+      "publicScore": "",
+      "privateScore": ""
+    }
+  },
+  "public_score": null,
+  "success_086_reproduced": false,
+  "proxy_eval_waived": true,
+  "waiver_reason": "Kaggle Notebook proxy inference failed due to Mamba/CUDA kernel compatibility; official competition evaluator is used instead.",
+  "proxy_eval_complete": false,
+  "today_submission_count": 1,
+  "today_remaining_quota": 4,
+  "next_action": {
+    "status": "wait",
+    "action": "wait for the active Kaggle CLI upload to finish, then run python scripts/04_query_submissions.py and this report script again",
+    "reason": "The competition submission upload is still in progress."
+  }
+}

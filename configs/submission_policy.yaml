@@ -1,0 +1,24 @@
+hard_limit_per_day: 5
+
+principle:
+  - "A daily maximum of 5 submissions is a hard limit, not a target to fill blindly."
+  - "Routes below 0.86 are useful controls, not repeated submission targets."
+  - "Submit only when a candidate has structural validation, provenance, proxy eval, or strong public-baseline evidence."
+
+default_target_submissions: 2
+
+use_all_5_only_if:
+  - at_least_5_candidates_pass_adapter_validation
+  - each_candidate_has_distinct_mechanism
+  - each_candidate_has_proxy_eval_or_baseline_evidence
+  - no_candidate_is_known_degraded
+  - no_duplicate_config_hash
+
+never_submit_for:
+  - merely_using_quota
+  - same_config_hash
+  - failed_load_test
+  - rank_gt_32
+  - zip_structure_invalid
+  - missing_provenance
+  - known_score_below_target_without_new_delta

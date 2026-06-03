@@ -1,0 +1,40 @@
+stage: 3
+route: tong_full_repro
+status: ready_for_kaggle_gpu_predictions
+no_training_local: true
+no_submission: true
+no_local_base_model_loading: true
+
+candidate_adapter:
+  source_url: https://www.kaggle.com/models/huikang/nemotron-adapter
+  model_version_ref: huikang/nemotron-adapter/Transformers/default/27
+  adapter_dir: artifacts/stage2/tong_full_repro/adapter
+  submission_zip_path: artifacts/stage2/tong_full_repro/submission/submission.zip
+  structural_valid: true
+  rank_lte_32: true
+  safetensors_opened: true
+  official_format_confirmed: false
+  official_score_verified_locally: false
+
+license_review:
+  status: Apache 2.0
+  license_name: Apache 2.0
+  source: artifacts/stage3/tong_model_instance_metadata/model-instance-metadata.json
+  submission_requires_final_manual_compliance_review: true
+
+proxy_set:
+  dir: eval/proxy_set
+  zip_path: artifacts/stage3/proxy_set.zip
+  sample_count: 25
+
+kaggle_gpu_env:
+  ENABLE_PROXY_INFERENCE: "1"
+  PROXY_SET_DIR: "/kaggle/input/<proxy-set-input-dir>"
+  ADAPTER_DIR: "/kaggle/input/<adapter-input-dir-containing-adapter-files>"
+  BASE_MODEL: "nvidia/NVIDIA-Nemotron-3-Nano-30B-v2"
+
+expected_outputs:
+  - proxy_predictions.jsonl
+  - proxy_eval_kernel_report.json
+
+post_gpu_local_command: "python scripts/16_stage3_ingest_predictions.py --predictions artifacts/stage3/proxy_predictions.jsonl"

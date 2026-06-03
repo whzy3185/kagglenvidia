@@ -1,0 +1,14 @@
+.env
+kaggle.json
+secrets/
+artifacts/
+external/*/weights/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.zip
+logs/*
+!logs/.gitkeep
+__pycache__/
+*.pyc

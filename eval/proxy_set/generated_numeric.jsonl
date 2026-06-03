@@ -1,0 +1,5 @@
+{"id":"numeric_0001","category":"equation_numeric","prompt":"Solve 2*x + 3 = 11. Return only \\boxed{answer}.","expected_answer":"4","verifier_type":"exact","metadata":{"source":"programmatic_seed","difficulty":"easy"}}
+{"id":"numeric_0002","category":"equation_numeric","prompt":"Solve 5*y - 7 = 18. Return only \\boxed{answer}.","expected_answer":"5","verifier_type":"exact","metadata":{"source":"programmatic_seed","difficulty":"easy"}}
+{"id":"numeric_0003","category":"equation_numeric","prompt":"If 3*a + 4 = 25, find a. Return only \\boxed{answer}.","expected_answer":"7","verifier_type":"exact","metadata":{"source":"programmatic_seed","difficulty":"easy"}}
+{"id":"numeric_0004","category":"equation_numeric","prompt":"Solve z/4 + 6 = 13. Return only \\boxed{answer}.","expected_answer":"28","verifier_type":"exact","metadata":{"source":"programmatic_seed","difficulty":"easy"}}
+{"id":"numeric_0005","category":"equation_numeric","prompt":"Find n when 9*n - 12 = 33. Return only \\boxed{answer}.","expected_answer":"5","verifier_type":"exact","metadata":{"source":"programmatic_seed","difficulty":"easy"}}

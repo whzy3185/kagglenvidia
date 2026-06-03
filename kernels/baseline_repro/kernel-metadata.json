@@ -1,0 +1,15 @@
+{
+  "id": "username/nemotron-086plus-baseline-repro",
+  "title": "Nemotron 0.86+ Baseline Repro",
+  "code_file": "train_or_repro.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "model_sources": [],
+  "competition_sources": [
+    "nvidia-nemotron-model-reasoning-challenge"
+  ]
+}
