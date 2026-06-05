@@ -1,0 +1,18 @@
+{
+  "id": "muelsyse111/nemotron-repack-dedquoc-svd-fusion",
+  "title": "nemotron repack dedquoc svd fusion",
+  "code_file": "nemotron_repack_dedquoc_svd_fusion.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "false",
+  "enable_internet": "false",
+  "dataset_sources": [],
+  "competition_sources": [
+    "nvidia-nemotron-model-reasoning-challenge"
+  ],
+  "kernel_sources": [
+    "dedquoc/nvidia-nmrc-low-rank-svd-lora-adapter-fusion"
+  ],
+  "model_sources": []
+}

@@ -11,7 +11,7 @@ from nemotron086.score_db import upsert_submissions  # noqa: E402
 
 
 def main() -> int:
-    result = query_submission_history(PROJECT_ROOT)
+    result = query_submission_history(PROJECT_ROOT, force=True)
     parsed = result["parsed"]
     db_path = PROJECT_ROOT / "logs" / "score.db"
     db_rows = upsert_submissions(db_path, parsed["rows"])

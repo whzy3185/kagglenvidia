@@ -157,8 +157,8 @@ def _first_error_line(raw_text: str) -> str:
     return "unknown_kaggle_cli_error"
 
 
-def query_submission_history(project_root: Path, competition: str = DEFAULT_COMPETITION) -> dict[str, Any]:
-    raw = query_submissions_raw(project_root, competition, force=False)
+def query_submission_history(project_root: Path, competition: str = DEFAULT_COMPETITION, force: bool = False) -> dict[str, Any]:
+    raw = query_submissions_raw(project_root, competition, force=force)
     parsed = parse_submissions(raw["raw_text"])
     parsed_path = project_root / "logs" / f"submissions_parsed_{today_stamp()}.json"
     write_json(parsed_path, parsed)

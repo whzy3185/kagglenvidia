@@ -28,7 +28,11 @@ def main() -> int:
         kernel_dir = PROJECT_ROOT / kernel_dir
 
     metadata_path = kernel_dir / "kernel-metadata.json"
-    notebook_path = kernel_dir / "nemotron_repack_huikang_v27.ipynb"
+    metadata: dict[str, Any] = {}
+    if metadata_path.exists():
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+    code_file = metadata.get("code_file") if isinstance(metadata.get("code_file"), str) else "nemotron_repack_huikang_v27.ipynb"
+    notebook_path = kernel_dir / code_file
     missing = [str(path.relative_to(PROJECT_ROOT)) for path in [metadata_path, notebook_path] if not path.exists()]
     payload: dict[str, Any] = {
         "timestamp": datetime.now().isoformat(timespec="seconds"),
@@ -45,7 +49,6 @@ def main() -> int:
         print(f"missing required files: {missing}")
         return 4
 
-    metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
     kernel_id = metadata.get("id")
     if not isinstance(kernel_id, str) or "/" not in kernel_id:
         payload["failure_reason"] = "invalid_kernel_id"

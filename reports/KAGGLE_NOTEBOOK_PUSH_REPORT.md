@@ -1,9 +1,48 @@
 # Kaggle Notebook Push Report
 
-- status: not_run
-- kernel_id: `muelsyse111/nemotron-repack-huikang-v27`
-- kernel_dir: `kaggle_kernels/nemotron_repack_huikang_v27`
-- push_command: `kaggle kernels push -p "kaggle_kernels/nemotron_repack_huikang_v27"`
-- status_check_command: `kaggle kernels status muelsyse111/nemotron-repack-huikang-v27`
-- files_check_command: `kaggle kernels files muelsyse111/nemotron-repack-huikang-v27`
-- note: `Run scripts/21_push_kaggle_notebook.py only when you are ready to push the notebook. This does not submit to the competition.`
+- timestamp: 2026-06-05T14:52:06
+- success: True
+- kernel id: `muelsyse111/nemotron-repack-dedquoc-svd-fusion`
+- kernel dir: `E:\Jitter\nemotron_086plus_repro\kaggle_kernels\nemotron_repack_dedquoc_svd_fusion`
+- push command: `kaggle kernels push -p E:\Jitter\nemotron_086plus_repro\kaggle_kernels\nemotron_repack_dedquoc_svd_fusion`
+- status check command: `kaggle kernels status muelsyse111/nemotron-repack-dedquoc-svd-fusion`
+- files check command: `kaggle kernels files muelsyse111/nemotron-repack-dedquoc-svd-fusion`
+- missing files: `[]`
+- failure reason: `None`
+
+## Push Result
+
+- returncode: 0
+
+```text
+Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/muelsyse111/nemotron-repack-dedquoc-svd-fusion
+
+
+```
+
+## Status Result
+
+- returncode: 1
+
+```text
+
+500 Server Error: Internal Server Error for url: https://api.kaggle.com/v1/kernels.KernelsApiService/GetKernelSessionStatus
+
+```
+
+## Files Result
+
+- returncode: 0
+
+```text
+
+
+```
+
+## Manual Submit
+
+After the notebook run succeeds and `submission.zip` appears in Output:
+
+```text
+Kaggle Notebook -> Output -> submission.zip -> Submit to Competition
+```
