@@ -1,6 +1,6 @@
 # Scorecard
 
-- raw_submission_rows_saved: `logs/submissions_raw_20260605.txt`
+- raw_submission_rows_saved: `logs/submissions_raw_20260606.txt`
 - query_ok: True
 - submission_history_query_status: success
 - submission_history_query_success: True
@@ -31,8 +31,8 @@
 - parse_status: success
 - today_submission_count_parse_status: success
 - today_submission_count_timezone_assumption: local_system
-- today_submission_count: 5
-- today_remaining_quota: 0
+- today_submission_count: 0
+- today_remaining_quota: 5
 
 | submission_id | date | description | status | public_score |
 | --- | --- | --- | --- | --- |

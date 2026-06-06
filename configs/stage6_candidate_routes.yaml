@@ -1,0 +1,110 @@
+rank_baseline:
+  checked_at: "2026-06-06T15:59:55"
+  current_displayed_score: 0.86
+  current_public_rank: 393
+  leaderboard_snapshot: logs/leaderboard_20260606/nvidia-nemotron-model-reasoning-challenge.zip
+  score_band:
+    score: 0.86
+    first_rank: 19
+    last_rank: 1398
+    team_count: 1380
+
+selection_policy:
+  primary_metric: public_rank_delta
+  improvement_rule: "new_rank < 393"
+  no_workflow_rebuild: true
+  submit_boundary: manual_only_after_gate
+
+selected_candidate:
+  slot: slot1
+  name: hammad_agi_for_medal_087
+  route: hammad_block_topk_floor4_huikang_v20
+  author: hammadfarooq470
+  source_type: notebook_output
+  candidate_type: kaggle_side_public_kernel_output_candidate
+  source_kernel: hammadfarooq470/agi-for-medal-0-87
+  source_url: https://www.kaggle.com/code/hammadfarooq470/agi-for-medal-0-87
+  claimed_score: 0.87
+  claimed_rank: unknown
+  rank_evidence: notebook_title_and_public_output
+  mechanism: block_topk floor4 SVD compression over huikang v20 with forced fused rank 32
+  kernel_slug: nemotron-repack-hammad-087
+  kernel_id: muelsyse111/nemotron-repack-hammad-087
+  kernel_dir: kaggle_kernels/nemotron_repack_hammad_087
+  output_available: true
+  adapter_rank_lte_32: true
+  zip_structure_known: true
+  submit_priority: P0
+  candidate_hash_prefix: 945fe257b622
+  submission_zip_sha256: 945fe257b6222b471aff3d62f5c33edf1e64b0e8570691c9d9fd4ace6c5d75fa
+  next_action: manual_submit_after_final_user_confirmation
+
+candidates:
+  - name: hammad_agi_for_medal_087
+    author: hammadfarooq470
+    source_type: notebook_output
+    source_url_or_kernel: hammadfarooq470/agi-for-medal-0-87
+    claimed_score: 0.87
+    claimed_rank: unknown
+    rank_evidence: notebook_title_and_public_output
+    our_verified_score: null
+    our_verified_rank: null
+    mechanism: block_topk floor4 SVD compression over huikang v20 with forced rank 32
+    same_as_current_best: false
+    duplicate_hash: unknown
+    output_available: true
+    adapter_rank_lte_32: true
+    zip_structure_known: true
+    submit_priority: P0
+    next_action: push local repack notebook and confirm output
+  - name: kuangyicheng_nemotron_087_training
+    author: kuangyicheng
+    source_type: notebook_output
+    source_url_or_kernel: kuangyicheng/nemotron-087-training
+    claimed_score: "0.87_to_0.88"
+    claimed_rank: unknown
+    rank_evidence: notebook_title_and_public_output
+    our_verified_score: null
+    our_verified_rank: null
+    mechanism: huikang v27 warmstart plus synthetic data finetune for 240 steps at lr 2e-4
+    same_as_current_best: false
+    duplicate_hash: unknown
+    output_available: true
+    adapter_rank_lte_32: true
+    zip_structure_known: true
+    submit_priority: P1
+    next_action: keep as slot2 candidate after one hammad result
+  - name: dedquoc_svd_fusion_repack
+    author: dedquoc
+    source_type: notebook_output
+    source_url_or_kernel: dedquoc/nvidia-nmrc-low-rank-svd-lora-adapter-fusion
+    claimed_score: null
+    claimed_rank: unknown
+    rank_evidence: mechanism_only
+    our_verified_score: null
+    our_verified_rank: null
+    mechanism: QR trick SVD fusion from huikang v20 with forced rank 32
+    same_as_current_best: false
+    duplicate_hash: unknown
+    output_available: true
+    adapter_rank_lte_32: true
+    zip_structure_known: true
+    submit_priority: P2
+    next_action: keep as fallback if 0.87 routes fail
+  - name: cocoaai_huikang_087_svd_submit
+    author: cocoaai
+    source_type: notebook_output
+    source_url_or_kernel: cocoaai/nvidia-nemotron-huikang-0-87-svd-submit
+    claimed_score: 0.87
+    claimed_rank: unknown
+    rank_evidence: derivative_repack_title
+    our_verified_score: null
+    our_verified_rank: null
+    mechanism: derivative repack of public submission zip from hammad family
+    same_as_current_best: false
+    duplicate_hash: likely_same_family_as_hammad
+    output_available: true
+    adapter_rank_lte_32: true
+    zip_structure_known: true
+    submit_priority: P3
+    next_action: only use if hammad output path fails structurally

@@ -1,0 +1,18 @@
+{
+  "id": "muelsyse111/nemotron-repack-hammad-087",
+  "title": "nemotron repack hammad 087",
+  "code_file": "nemotron_repack_hammad_087.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "false",
+  "enable_internet": "false",
+  "dataset_sources": [],
+  "competition_sources": [
+    "nvidia-nemotron-model-reasoning-challenge"
+  ],
+  "kernel_sources": [
+    "hammadfarooq470/agi-for-medal-0-87"
+  ],
+  "model_sources": []
+}

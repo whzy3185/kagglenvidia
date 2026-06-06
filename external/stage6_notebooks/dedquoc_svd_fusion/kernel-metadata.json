@@ -1,0 +1,25 @@
+{
+  "id": "dedquoc/nvidia-nmrc-low-rank-svd-lora-adapter-fusion",
+  "id_no": 121505789,
+  "title": "NVIDIA-NMRC-Low-Rank SVD LoRA Adapter Fusion",
+  "code_file": "nvidia-nmrc-low-rank-svd-lora-adapter-fusion.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [
+    "gpu"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "nvidia-nemotron-model-reasoning-challenge"
+  ],
+  "model_sources": [
+    "huikang/nemotron-adapter/Transformers/default/20"
+  ],
+  "docker_image": "gcr.io/kaggle-private-byod/python@sha256:57e612b484cf3df5026ee4dcc3cb176974b22b2bc0937fb1e16132a8be4cb13c",
+  "machine_shape": "NvidiaTeslaT4"
+}

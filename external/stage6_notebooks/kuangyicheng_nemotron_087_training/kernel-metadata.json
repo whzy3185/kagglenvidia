@@ -1,0 +1,30 @@
+{
+  "id": "kuangyicheng/nemotron-087-training",
+  "id_no": 120943990,
+  "title": "nemotron-087-training",
+  "code_file": "nemotron-087-training.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "gpu"
+  ],
+  "dataset_sources": [
+    "mayukh18/nemotron-packages"
+  ],
+  "kernel_sources": [
+    "huikang/nvidia-nemotron-all-linear"
+  ],
+  "competition_sources": [
+    "nvidia-nemotron-model-reasoning-challenge"
+  ],
+  "model_sources": [
+    "metric/nemotron-3-nano-30b-a3b-bf16/Transformers/default/1",
+    "huikang/nemotron-adapter/Transformers/default/27"
+  ],
+  "docker_image": "gcr.io/kaggle-private-byod/python@sha256:57e612b484cf3df5026ee4dcc3cb176974b22b2bc0937fb1e16132a8be4cb13c",
+  "machine_shape": "NvidiaRtxPro6000"
+}

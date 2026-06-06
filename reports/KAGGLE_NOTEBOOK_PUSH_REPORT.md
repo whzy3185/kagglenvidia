@@ -1,12 +1,12 @@
 # Kaggle Notebook Push Report
 
-- timestamp: 2026-06-05T14:52:06
+- timestamp: 2026-06-06T16:13:31
 - success: True
-- kernel id: `muelsyse111/nemotron-repack-dedquoc-svd-fusion`
-- kernel dir: `E:\Jitter\nemotron_086plus_repro\kaggle_kernels\nemotron_repack_dedquoc_svd_fusion`
-- push command: `kaggle kernels push -p E:\Jitter\nemotron_086plus_repro\kaggle_kernels\nemotron_repack_dedquoc_svd_fusion`
-- status check command: `kaggle kernels status muelsyse111/nemotron-repack-dedquoc-svd-fusion`
-- files check command: `kaggle kernels files muelsyse111/nemotron-repack-dedquoc-svd-fusion`
+- kernel id: `muelsyse111/nemotron-repack-hammad-087`
+- kernel dir: `E:\Jitter\nemotron_086plus_repro\kaggle_kernels\nemotron_repack_hammad_087`
+- push command: `kaggle kernels push -p E:\Jitter\nemotron_086plus_repro\kaggle_kernels\nemotron_repack_hammad_087`
+- status check command: `kaggle kernels status muelsyse111/nemotron-repack-hammad-087`
+- files check command: `kaggle kernels files muelsyse111/nemotron-repack-hammad-087`
 - missing files: `[]`
 - failure reason: `None`
 
@@ -15,7 +15,7 @@
 - returncode: 0
 
 ```text
-Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/muelsyse111/nemotron-repack-dedquoc-svd-fusion
+Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/muelsyse111/nemotron-repack-hammad-087
 
 
 ```

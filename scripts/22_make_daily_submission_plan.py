@@ -26,6 +26,7 @@ STAGE2_MANIFEST_PATH = PROJECT_ROOT / "artifacts" / "stage2" / "tong_full_repro"
 PACK_MANIFEST_PATH = PROJECT_ROOT / "artifacts" / "stage2" / "tong_full_repro" / "submission" / "manifest.json"
 SCORE_DB_PATH = PROJECT_ROOT / "logs" / "score.db"
 REPORT_PATH = PROJECT_ROOT / "reports" / "DAILY_SUBMISSION_PLAN.md"
+STAGE6_CANDIDATE_PATH = PROJECT_ROOT / "configs" / "stage6_candidate_routes.yaml"
 
 KERNEL_ID = "muelsyse111/nemotron-repack-huikang-v27"
 KERNEL_DIR = "kaggle_kernels\\nemotron_repack_huikang_v27"
@@ -52,13 +53,14 @@ def main() -> int:
     scores = fetch_scores(SCORE_DB_PATH)
     stage2_manifest = read_json_if_exists(STAGE2_MANIFEST_PATH)
     pack_manifest = read_json_if_exists(PACK_MANIFEST_PATH)
+    stage6_candidates = load_yaml_dict(STAGE6_CANDIDATE_PATH)
     push_report = parse_push_report(PUSH_REPORT_PATH)
     if push_report.get("pushed"):
         push_report = merge_kernel_live_status(push_report)
     checklist_exists = CHECKLIST_PATH.exists()
     manual_fix_reason = read_manual_fix_reason(MANUAL_FIX_REASON_PATH)
 
-    candidate = build_current_candidate(stage2_manifest, pack_manifest, push_report)
+    candidate = build_current_candidate(stage2_manifest, pack_manifest, push_report, stage6_candidates)
     best_score = current_best_public_score(scores)
     slot1_result = find_slot1_result(history_payload.get("rows", []) + scores, candidate)
     slots = build_slots(policy, history_payload, candidate, slot1_result, manual_fix_reason)
@@ -107,6 +109,21 @@ def load_policy(path: Path) -> dict[str, Any]:
         "use_all_5_only_if": [],
         "never_submit_for": [],
     }
+
+
+def load_yaml_dict(path: Path) -> dict[str, Any]:
+    if not path.exists():
+        return {}
+    text = path.read_text(encoding="utf-8")
+    try:
+        import yaml  # type: ignore
+
+        data = yaml.safe_load(text) or {}
+        if isinstance(data, dict):
+            return data
+    except Exception:
+        pass
+    return {}
 
 
 def refresh_history(refresh: bool) -> dict[str, Any]:
@@ -264,7 +281,10 @@ def first_lines(text: str, limit: int) -> str:
     return "\n".join(text.splitlines()[:limit])
 
 
-def build_current_candidate(stage2: dict[str, Any], pack: dict[str, Any], push: dict[str, Any]) -> dict[str, Any]:
+def build_current_candidate(stage2: dict[str, Any], pack: dict[str, Any], push: dict[str, Any], stage6_candidates: dict[str, Any]) -> dict[str, Any]:
+    selected_stage6 = stage6_candidates.get("selected_candidate")
+    if isinstance(selected_stage6, dict) and selected_stage6:
+        return build_stage6_candidate(selected_stage6, pick_push_report_for_candidate(push, selected_stage6))
     kernel_id = str(push.get("kernel_id") or "")
     if "nemotron-repack-kien-output" in kernel_id:
         return build_kien_candidate(push)
@@ -289,6 +309,52 @@ def build_current_candidate(stage2: dict[str, Any], pack: dict[str, Any], push: 
             default_kernel_id=DEDQUOC_KERNEL_ID,
         )
     return build_huikang_candidate(stage2, pack, push)
+
+
+def pick_push_report_for_candidate(push: dict[str, Any], candidate: dict[str, Any]) -> dict[str, Any]:
+    desired_kernel_id = str(candidate.get("kernel_id") or "").strip().lower()
+    current_kernel_id = str(push.get("kernel_id") or "").strip().lower()
+    if desired_kernel_id and desired_kernel_id == current_kernel_id:
+        return push
+    return {
+        "exists": False,
+        "kernel_id": candidate.get("kernel_id"),
+        "pushed": False,
+        "output_submission_zip_confirmed": False,
+        "status": "not_pushed_for_selected_candidate",
+        "raw_summary": "",
+    }
+
+
+def build_stage6_candidate(selected: dict[str, Any], push: dict[str, Any]) -> dict[str, Any]:
+    candidate = build_public_kernel_candidate(
+        push,
+        name=str(selected.get("name") or "stage6_selected_candidate"),
+        route=str(selected.get("route") or "stage6_selected_route"),
+        source_kernel=str(selected.get("source_kernel") or selected.get("model_source") or ""),
+        source_url=str(selected.get("source_url") or ""),
+        kernel_dir=str(selected.get("kernel_dir") or ""),
+        default_kernel_id=str(selected.get("kernel_id") or ""),
+    )
+    selected_hash = str(selected.get("candidate_hash_prefix") or "").strip() or None
+    if selected_hash:
+        candidate["candidate_hash_prefix"] = selected_hash
+        candidate["recommended_manual_message"] = f"slot1_{candidate['name']}_{selected_hash}"
+    candidate["slot"] = str(selected.get("slot") or "slot1")
+    candidate["candidate_type"] = str(selected.get("candidate_type") or candidate["candidate_type"])
+    candidate["mechanism"] = str(selected.get("mechanism") or candidate["mechanism"])
+    candidate["structural_valid"] = bool(selected.get("zip_structure_known"))
+    candidate["rank_lte_32"] = bool(selected.get("adapter_rank_lte_32"))
+    candidate["output_submission_zip_confirmed"] = (
+        bool(selected.get("output_available"))
+        and push.get("output_submission_zip_confirmed") is True
+    )
+    candidate["claimed_score"] = selected.get("claimed_score")
+    candidate["claimed_rank"] = selected.get("claimed_rank")
+    candidate["rank_evidence"] = selected.get("rank_evidence")
+    candidate["submit_priority"] = selected.get("submit_priority")
+    candidate["route_switch_candidate"] = True
+    return candidate
 
 
 def build_kien_candidate(push: dict[str, Any]) -> dict[str, Any]:
