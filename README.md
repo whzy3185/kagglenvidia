@@ -1,72 +1,32 @@
-# Nemotron 0.86+ Kaggle 冲分工程交接说明
+# Nemotron Kaggle 冲分工程交接说明
 
-本仓库用于 Kaggle 比赛 `nvidia-nemotron-model-reasoning-challenge` 的分阶段复现、打包、提交规划和复盘。  
-目标不是搭一个大而全的自动化平台，而是用可审计流程稳定复现公开高分路线，并继续寻找 `0.87+` 的可执行增量。
+本仓库用于 Kaggle 比赛 `nvidia-nemotron-model-reasoning-challenge` 的公开路线复现、adapter 打包、远端 notebook output 提交准备、提交计划和复盘记录。
 
-本 README 面向两类接手者：
-
-- 新的 Codex / Agent：先读这里，再读报告，不要凭上下文猜。
-- 人类操作者：按命令刷新状态，按报告决定下一步，不要盲目提交。
-
-编码说明：本文件使用 UTF-8；如果 PowerShell 直接 `Get-Content` 出现乱码，请用编辑器或 `Get-Content README.md -Encoding UTF8` 查看。
+当前原则很简单：不再大改 workflow，不再追标题里的 `0.86/0.87` 标签，只以 public rank 是否前移作为有效提升依据。
 
 ## 当前状态
 
-截至 `2026-06-05`：
+更新时间：`2026-06-06`
 
-- Kaggle CLI：可用，认证正常。
-- 规则接受：已在 Kaggle 网页端完成。
-- 当前队伍：`muelsyse111`
-- 当前最好 public score：`0.86`
-- 当前 public rank：`399`
-- `0.86` 区间：rank `19` 到 `1376`，共有 `1358` 队。
-- 今天有效提交次数：`5`
-- 今天剩余额度：`0`
-- 当前动作：今天停止提交，下一步审计 `0.87+` 或 `0.89` 路线。
+- 队伍：`muelsyse111`
+- 当前最佳显示分数：`0.86`
+- 最新 public rank 基线：`393`
+- 今日真实比赛提交次数：`0`
+- 今日剩余额度：`5`
+- 当前可执行候选：`hammad_agi_for_medal_087`
+- 当前禁止事项：不自动提交、不复投 Huikang v27、不复投 Kien/Akihiko 低分路线、不提交同 hash 重复包
 
 最新事实源：
 
-- `reports/SCORECARD.md`
-- `reports/POST_086_REVIEW_20260605.md`
-- `reports/LEADERBOARD_STATUS_20260605.md`
-- `reports/DAILY_SUBMISSION_PLAN.md`
+```text
+reports/SCORECARD.md
+reports/DAILY_SUBMISSION_PLAN.md
+reports/STAGE6_NOTEBOOK_SELECTION_AUDIT.md
+reports/STAGE6_SUBMIT_GATE_hammad_agi_for_medal_087.md
+reports/NEXT_STAGE_DECISION_TASK_CHAIN.md
+```
 
-如果这些报告过期，先运行刷新命令，不要沿用旧结论。
-
-## 当前最好的两次提交
-
-当前最高 public score 是 `0.86`，有多条提交并列。按“分数最高 + 最适合作为后续 0.87+ 改进起点”的标准，当前最重要的两次是：
-
-| 优先级 | submission_id | 路线 | public score | 为什么重要 |
-| ---: | --- | --- | --- | --- |
-| 1 | `53384098` | Mohamed replay-data finetune：`mohamedamr992/nemotron-replay-data-0-86` v4 | `0.86` | 公开 GPU 训练路线，使用 Nemotron base，加 `mohamedamr992/replay-math` 数据；可观察超参为 LoRA `r=32`、`alpha=32`、`dropout=0.0`、`max_seq_len=8192`、`steps=1000`、`batch=32`、`micro_batch=4`、`lr=3.5e-4`、MoE expert tie enabled。 |
-| 2 | `53384096` | Taha custom repo finetune：`tahaalam2009/end-to-end-finetuning-for-lb-0-86-custom-repo` v6 | `0.86` | 公开 GPU 训练路线，使用 Nemotron base 和 custom repo；可观察超参为 LoRA `r=32`、`alpha=32`、`dropout=0.0`、`max_seq_len=8192`、`steps=1000`、`batch=32`、`micro_batch=4`、`lr=2e-4`、MoE expert tie enabled。 |
-
-另外两条也是并列最高 `0.86`，但更偏“可提交包复现/打包路线”，后续改进信息量略少：
-
-| submission_id | 路线 | public score | 备注 |
-| --- | --- | --- | --- |
-| `53383735` | Rauffauzan fusion/rank compression：`rauffauzanrambe/lora-adapter-fusion-and-rank-compression-pipeline` | `0.86` | Huikang v20 相关 LoRA fusion + SVD rank compression 到 `32`。 |
-| `53384030` | Mirza packaging route：`mirzayasirabdullah07/best-nvidia-nemotron-notebook-0-86` v16 | `0.86` | 使用 `assiabenazzouz/adappter-v32-epoch-5`，主要是 adapter packaging/提交包生成路线。 |
-
-接手者不要把这两条“最佳”理解为比其他 `0.86` 分数更高；它们是同分并列，只是后续可继续调参和复现的信息量更高。
-
-## 最高优先级规则
-
-任何接手者必须遵守：
-
-- 不泄漏 Kaggle token，不提交 `kaggle.json`。
-- 不使用多账号，不绕过每日提交额度。
-- 不自动接受比赛规则，不模拟网页登录。
-- 不伪造 public score，不把 notebook 标题当作真实分数。
-- 不把 structural-valid 当作 official-valid。
-- 不提交 rank `>32` 的 LoRA adapter。
-- 不下载或提交大模型权重到仓库。
-- 本地 RTX 4060 只做脚本、结构验证、打包和轻量检查，不跑 Nemotron 30B 主训练。
-- 没有明确新机制时，不重复提交同一个 hash 或同一失败路线。
-- 今天额度为 `0` 时，任何提交动作都必须停止。
-
-## 接手后先做什么
+## 接手第一步
 
 在项目根目录执行：
 
@@ -77,140 +37,79 @@ python scripts\04_query_submissions.py
 python scripts\22_make_daily_submission_plan.py
 ```
 
-然后阅读：
+然后先读：
 
 ```text
 reports/DAILY_SUBMISSION_PLAN.md
+reports/STAGE6_SUBMIT_GATE_hammad_agi_for_medal_087.md
 reports/SCORECARD.md
-reports/POST_086_REVIEW_20260605.md
-reports/LEADERBOARD_STATUS_20260605.md
 ```
 
-如果 `DAILY_SUBMISSION_PLAN.md` 写着 `do not submit today`，就不要提交。
+只有 `DAILY_SUBMISSION_PLAN.md` 明确允许时，才考虑真实提交。
 
-## 项目阶段
+## 当前最重要候选
 
-### Stage 1：资产审计 + 最小闭环
+当前 slot1 是 `hammad_agi_for_medal_087`。
 
-状态：已完成。
+```yaml
+candidate:
+  source_kernel: hammadfarooq470/agi-for-medal-0-87
+  local_repack_kernel: muelsyse111/nemotron-repack-hammad-087
+  mechanism: "Huikang v20 adapter 上做 block_topk floor4 SVD 压缩，强制 fused rank 32"
+  output_zip_confirmed: true
+  rank_lte_32: true
+  zip_root_files:
+    - adapter_config.json
+    - adapter_model.safetensors
+  submission_zip_sha256: 945fe257b6222b471aff3d62f5c33edf1e64b0e8570691c9d9fd4ace6c5d75fa
+```
 
-已实现：
-
-- Kaggle CLI 检查。
-- 公开 baseline 资产审计。
-- adapter 结构验证器。
-- `submission.zip` 打包器。
-- 提交历史解析。
-- dry-run 报告。
-
-关键脚本：
+Kaggle output 已确认：
 
 ```powershell
-python scripts\00_check_kaggle_cli.py
-python scripts\01_asset_audit.py
-python scripts\02_validate_adapter.py --adapter-dir <adapter目录>
-python scripts\03_pack_submission.py --adapter-dir <adapter目录>
-python scripts\04_query_submissions.py
-python scripts\05_stage1_dry_run.py
+kaggle kernels files muelsyse111/nemotron-repack-hammad-087
 ```
 
-### Stage 2：公开 adapter / baseline 路线复现
-
-状态：已完成多条路线审计与打包验证。
-
-重点结论：
-
-- Huikang v27 adapter 结构有效，但官方评测失败，不再盲交。
-- Kaggle-side repack notebook 能在 Kaggle 云端生成 `submission.zip`。
-- 远端 kernel output 提交流程有效，避免本地上传 1GB 到 3.5GB 的 zip。
-
-关键报告：
+应看到：
 
 ```text
-reports/HUIKANG_V27_ROUTE_DECISION.md
-reports/SUBMISSION_ERROR_TRIAGE.md
-reports/KIEN_ROUTE_SWITCH_DECISION.md
-reports/RAUFFAUZAN_FUSION_OUTPUT_CHECK.md
+submission.zip
 ```
 
-### Stage 3：proxy eval
+推荐提交消息：
 
-状态：部分建设完成，但不是当前主路径。
-
-原因：
-
-- Kaggle Notebook 中跑 Nemotron 30B proxy 推理时遇到 Mamba/CUDA kernel 兼容问题。
-- 这不代表官方评测不能跑。
-- 当前真实分数来自官方 Kaggle evaluator，不来自本地 proxy。
-
-处理原则：
-
-- 不伪造 `proxy_predictions.jsonl`。
-- 不把 proxy eval 写成 complete。
-- 后续如果继续 Stage 3，应先解决 GPU/CUDA/Mamba 兼容或换更轻量代理验证。
-
-### Stage 4：fusion / specialist / daily runner
-
-状态：只做了可控提交计划和公开 fusion 路线复现，没有做自动提交 runner。
-
-已实现：
-
-- daily submission plan：只生成计划，不自动提交。
-- Rauffauzan fusion/rank compression 路线已提交并得到 `0.86`。
-- Dedquoc SVD fusion notebook 已准备为下一窗口候选，但今天不能提交。
-
-关键脚本：
-
-```powershell
-python scripts\22_make_daily_submission_plan.py
-python scripts\25_make_kaggle_repack_public_kernel_output.py --help
+```text
+slot1_hammad_agi_for_medal_087_945fe257b622
 ```
 
-### Stage 5：Kaggle-side notebook workflow
+## 当前最佳两次历史提交
 
-状态：已可用。
+当前最高显示分数仍是 `0.86`，有多条并列。按后续调参价值排序，最重要的两条是：
 
-用途：
+| 优先级 | submission_id | 路线 | public score | 关键机制 |
+| ---: | --- | --- | --- | --- |
+| 1 | `53384098` | Mohamed replay-data finetune | `0.86` | Nemotron base + replay math，LoRA `r=32`，`steps=1000`，`lr=3.5e-4` |
+| 2 | `53384096` | Taha custom repo finetune | `0.86` | Nemotron base + custom repo，LoRA `r=32`，`steps=1000`，`lr=2e-4` |
 
-- 本地只生成小 notebook 项目。
-- Kaggle 云端挂载公开 adapter 或公开 notebook output。
-- Kaggle 云端生成 `submission.zip`。
-- 用户或 CLI 使用 Kaggle output 提交，避免本地大文件上传。
+另外两条并列 `0.86` 可作为参考，但不应无改动复投：
 
-关键脚本：
+| submission_id | 路线 | public score | 备注 |
+| --- | --- | --- | --- |
+| `53383735` | Rauffauzan fusion/rank compression | `0.86` | Huikang v20 相关 LoRA fusion + SVD rank compression |
+| `53384030` | Mirza packaging route | `0.86` | 主要是公开 adapter packaging 路线 |
 
-```powershell
-python scripts\21_push_kaggle_notebook.py --kernel-dir "<kaggle_kernels下的目录>"
-python scripts\23_make_kaggle_repack_notebook_v2.py --help
-python scripts\24_make_kaggle_repack_kien_output.py --help
-python scripts\25_make_kaggle_repack_public_kernel_output.py --help
-```
+## 阶段情况
 
-## 已提交路线复盘
+| 阶段 | 状态 | 说明 |
+| --- | --- | --- |
+| Stage 1 | 完成 | Kaggle CLI、资产审计、adapter validator、submission packer、dry-run 都已建立 |
+| Stage 2 | 完成 | 公开 adapter 和 notebook output 路线已能审计、repack、远端提交准备 |
+| Stage 3 | 部分完成 | proxy eval 框架存在，但 Nemotron 30B + Mamba/CUDA proxy 推理不稳定；不要把 proxy 当完成项 |
+| Stage 4 | 部分完成 | daily plan 只生成计划，不自动提交；fusion 方向已有 Rauffauzan/Dedquoc/Hammad 审计 |
+| Stage 5 | 完成 | Kaggle-side notebook workflow 可用，避免本地上传 3GB 级 `submission.zip` |
+| Stage 6 | 进行中 | rank-first 候选选择已切到 Hammad，等待人工提交和官方结果 |
 
-真实提交结果以 `reports/POST_086_REVIEW_20260605.md` 为准。概要如下：
-
-| 序号 | submission_id | 路线 | 模型或 adapter | 可观察调参 / 机制 | public score |
-| ---: | --- | --- | --- | --- | --- |
-| 1 | 53329563 | Tong/Huikang repack | Huikang v27 风格 adapter | raw repack，结构检查通过但官方失败 | ERROR |
-| 2 | 53350464 | Huikang v27 notebook v1 | `huikang/nemotron-adapter` v27 | Kaggle-side raw flat zip | ERROR |
-| 3 | 53351317 | Huikang v27 repeat | 同上 | 重复 raw package | ERROR |
-| 4 | 53352307 | Huikang v27 normalized | 同上 | 显式 target modules、补 base model path、去零 tensor | ERROR |
-| 5 | 53355919 | Kien public output | `kienngx/nvidia-nemotron-training-copy-run-instantly` | public training output repack，LoRA r32，lr1e-4 | 0.63 |
-| 6 | 53364584 | Akihiko small adapter | `akihikokatsumata/nemotron-lora-exp1-lr1e4-r32` | CC0 小 adapter，r32，lr1e-4 | 0.50 |
-| 7 | 53383735 | Rauffauzan fusion | Huikang v20 -> fusion/SVD | LoRA fusion + SVD rank compression 到 32 | 0.86 |
-| 8 | 53384030 | Mirza packaging | `assiabenazzouz/adappter-v32-epoch-5` | packaging route，rank <= 32 | 0.86 |
-| 9 | 53384059 | Debatreya/Kien tinker | Kien `triton/tinker-adapter/1` | 直接 zip 已有 adapter 路线 | 0.85 |
-| 10 | 53384096 | Taha custom repo | Nemotron base + custom repo | RTX Pro 6000，LoRA r32，seq8192，steps1000，lr2e-4 | 0.86 |
-| 11 | 53384098 | Mohamed replay-data | Nemotron base + replay math | RTX Pro 6000，LoRA r32，seq8192，steps1000，lr3.5e-4 | 0.86 |
-
-注意：
-
-- 本仓库没有本地训练这些 0.86 模型。
-- 对 #7 到 #11，提交的是公开 Kaggle Notebook output 或公开 adapter 的打包结果。
-- 训练超参只记录公开源码或元数据中能确认的内容，未知项不要编造。
-
-## 当前可用命令
+## 常用命令
 
 刷新提交历史：
 
@@ -218,104 +117,53 @@ python scripts\25_make_kaggle_repack_public_kernel_output.py --help
 python scripts\04_query_submissions.py
 ```
 
-生成今日提交计划：
+生成每日提交计划：
 
 ```powershell
 python scripts\22_make_daily_submission_plan.py
 ```
 
-查看 Kaggle 提交历史：
+检查 Hammad notebook output：
 
 ```powershell
-kaggle competitions submissions nvidia-nemotron-model-reasoning-challenge -v
+kaggle kernels files muelsyse111/nemotron-repack-hammad-087
+kaggle kernels logs muelsyse111/nemotron-repack-hammad-087
 ```
 
-下载 leaderboard 快照：
+远端 output 提交命令模板：
 
 ```powershell
-kaggle competitions leaderboard nvidia-nemotron-model-reasoning-challenge -d -p logs\leaderboard_YYYYMMDD
+kaggle competitions submit nvidia-nemotron-model-reasoning-challenge -k muelsyse111/nemotron-repack-hammad-087 -f submission.zip -v <version> -m "slot1_hammad_agi_for_medal_087_945fe257b622"
 ```
 
-推送 Kaggle notebook：
+注意：只有用户明确要求真实提交，并且 `DAILY_SUBMISSION_PLAN.md` 允许时，才执行提交命令。
 
-```powershell
-python scripts\21_push_kaggle_notebook.py --kernel-dir "kaggle_kernels\<目录名>"
-```
+## 安全边界
 
-检查 notebook 状态和输出：
+- 不提交 `kaggle.json`、token、secrets。
+- 不提交 `.safetensors`、`.bin`、`.pt`、`.pth`、`submission.zip`。
+- 不使用多账号，不绕过 Kaggle 每日额度。
+- 不伪造 public score，不把 notebook 标题当真实分数。
+- 不把 structural-valid 说成 official-valid。
+- 不提交 rank `>32` 的 LoRA adapter。
+- 不本地加载或训练 Nemotron 30B。
+- 不为了用满 5 次额度而提交。
+- slot2 到 slot5 在 slot1 没有 `COMPLETE + publicScore` 前保持 blocked。
 
-```powershell
-kaggle kernels status <user>/<kernel-slug>
-kaggle kernels files <user>/<kernel-slug>
-kaggle kernels logs <user>/<kernel-slug>
-```
-
-远端 notebook output 提交命令形态：
-
-```powershell
-kaggle competitions submit nvidia-nemotron-model-reasoning-challenge -k <kernel_id> -f submission.zip -v <version> -m "<message>"
-```
-
-只有在 `DAILY_SUBMISSION_PLAN.md` 允许时才考虑真实提交。
-
-## 目录说明
-
-```text
-configs/          比赛、提交策略、baseline、proxy eval 配置
-scripts/          阶段脚本；真实提交脚本必须受 gate 控制
-src/nemotron086/  共享 Python 模块
-kaggle_kernels/   Kaggle-side repack notebook 项目，不含 output zip
-reports/          主要事实源和复盘文档
-logs/             Kaggle CLI 输出、score.db、leaderboard 快照
-artifacts/        本地生成物；不应提交大文件
-external/         外部缓存；不应提交权重或大包
-secrets/          本地密钥目录；不提交
-```
-
-`.gitignore` 应继续保护：
-
-```text
-.env
-kaggle.json
-secrets/
-artifacts/
-external/*/weights/
-*.safetensors
-*.bin
-*.pt
-*.pth
-logs/*.db
-logs/*.jsonl
-__pycache__/
-```
-
-## 下一步建议
-
-当前已经复现 `0.86`，但没有突破 `0.87`。下一步只推荐一个方向：
+## 下一步
 
 ```yaml
 NEXT_ACTION:
-  status: audit_next_tier
-  action: "审计并验证一个公开 0.87+ 或 0.89 路线，再进入下一次提交窗口"
-  reason: "当前 0.86 已进入大平台区，继续重复 0.86 包没有实际收益。"
+  status: manual_submit_slot1_ready
+  action: "submit Hammad slot1 from Kaggle Notebook Output after explicit user confirmation"
+  reason: "Hammad output zip is confirmed, rank is 32, and the route is distinct from the prior 0.86 submissions."
 ```
 
-执行前先确认：
+提交后必须刷新：
 
 ```powershell
 python scripts\04_query_submissions.py
 python scripts\22_make_daily_submission_plan.py
 ```
 
-如果当天剩余额度为 `0`，只允许做审计、脚本、notebook 准备和报告，不允许提交。
-
-## 给新 Agent 的最短指令
-
-如果你是新 agent，只做下面这些：
-
-1. 运行 `git status -sb`，确认工作区状态。
-2. 运行 `python scripts\04_query_submissions.py`。
-3. 运行 `python scripts\22_make_daily_submission_plan.py`。
-4. 读 `reports/POST_086_REVIEW_20260605.md` 和 `reports/DAILY_SUBMISSION_PLAN.md`。
-5. 不要提交，除非日计划明确允许且用户明确要求。
-6. 下一步优先找 `0.87+` 真实路线，不要重复 Huikang v27 或低分 adapter。
+结果判断只看 public rank 是否小于 `393`。显示分数仍是 `0.86` 但 rank 前移，也算有效提升。
