@@ -1,0 +1,316 @@
+sources:
+  - name: keithtyser_nemotron_086_adapters_20260605
+    url: https://www.kaggle.com/models/keithtyser/nemotron-086-adapters-20260605
+    source_platform: kaggle
+    source_type: adapter
+    method_keywords:
+      - rank32_adapter_anchors
+      - multi_adapter_fusion
+      - ties_or_dare_merge
+      - svd_rank32_projection
+    relation_to_current_best: "potential multi-anchor 0.86-class source; not yet verified by our submissions"
+    usable_assets:
+      - "Kaggle model list reports six READY version-1 instances around 3.55GB each"
+      - "Needs exact variation/file inspection before use"
+    required_compute: "Kaggle notebook CPU/GPU for adapter file inspection and merge; no local 30B load"
+    can_run_on_kaggle_resource: true
+    license_status: "kaggle_model_public_visibility_seen; explicit license not verified"
+    risk: "variation names/files not resolved by current CLI; score claim not independently verified"
+    priority: P0
+    next_experiment: "build a Kaggle-side adapter anchor inventory notebook, then one TIES/DARE or weighted SVD rank32 merge"
+
+  - name: mohamed_nemotron_replay_data_086
+    url: https://www.kaggle.com/code/mohamedamr992/nemotron-replay-data-0-86
+    source_platform: kaggle
+    source_type: training_pipeline
+    method_keywords:
+      - replay_data
+      - sft
+      - learning_rate_variant
+      - single_variable_training
+    relation_to_current_best: "one of our current 0.86 submissions came from Mohamed replay-data remote output"
+    usable_assets:
+      - "Kaggle output contains README.md and replay_math_tokenized.jsonl"
+      - "Original output submission already scored 0.86 for our team"
+    required_compute: "Kaggle GPU training notebook if we change LR or steps"
+    can_run_on_kaggle_resource: true
+    license_status: "competition notebook/public output; explicit reuse license not verified"
+    risk: "public output alone is already used; only a real training variable change is useful"
+    priority: P1
+    next_experiment: "train a single LR variant, starting with lr=3e-4 or 2.5e-4, keep other knobs fixed"
+
+  - name: taha_end_to_end_finetuning_lb086_custom_repo
+    url: https://www.kaggle.com/code/tahaalam2009/end-to-end-finetuning-for-lb-0-86-custom-repo
+    source_platform: kaggle
+    source_type: training_pipeline
+    method_keywords:
+      - custom_repo
+      - replay_mix
+      - hard_case_ratio
+      - sample_order
+    relation_to_current_best: "one of our current 0.86 submissions came from Taha custom-repo remote output"
+    usable_assets:
+      - "Kaggle output contains README.md and submission.zip"
+      - "Public output submission already scored 0.86 for our team"
+    required_compute: "Kaggle GPU training notebook for one data-mix variable"
+    can_run_on_kaggle_resource: true
+    license_status: "competition notebook/public output; explicit reuse license not verified"
+    risk: "without a real data/training change it is just another used 0.86 package"
+    priority: P1
+    next_experiment: "one-variable replay/hard-case ratio or sample-order variant"
+
+  - name: tonghuikang_nemotron_repo
+    url: https://github.com/tonghuikang/nemotron
+    source_platform: github
+    source_type: training_pipeline
+    method_keywords:
+      - progress_prize
+      - train_sft
+      - loss_masking
+      - corpus_builder
+      - lr_schedule
+    relation_to_current_best: "canonical public training/code reference; raw adapter path failed earlier, but repo is useful for controlled variants"
+    usable_assets:
+      - train_sft.py
+      - corpus.py
+      - augmentation.py
+      - loss_config.py
+      - lr_schedule.py
+    required_compute: "Kaggle GPU or external GPU; local RTX 4060 only for packaging/scripts"
+    can_run_on_kaggle_resource: true
+    license_status: "public GitHub repo; license not obvious from current page scrape"
+    risk: "higher implementation cost than repack; must avoid loading 30B locally"
+    priority: P2
+    next_experiment: "port one loss-mask or LR variant into a Kaggle training notebook"
+
+  - name: rauffauzan_lora_adapter_fusion_rank_compression
+    url: https://www.kaggle.com/code/rauffauzanrambe/lora-adapter-fusion-and-rank-compression-pipeline
+    source_platform: kaggle
+    source_type: fusion_code
+    method_keywords:
+      - lora_fusion
+      - rank_compression
+      - svd
+      - rank32
+    relation_to_current_best: "our prior Rauffauzan-derived output scored 0.86; useful as code/mechanism, not as repeated output"
+    usable_assets:
+      - "Kaggle notebook source and public output"
+    required_compute: "Kaggle notebook for merge/compress; no base inference required"
+    can_run_on_kaggle_resource: true
+    license_status: "competition notebook/public code; explicit license not verified"
+    risk: "already near plateau; must change input anchors or merge weights"
+    priority: P1
+    next_experiment: "replace source adapters with verified 0.86 anchors and sweep one merge weight"
+
+  - name: huggingface_peft_model_merging
+    url: https://huggingface.co/docs/peft/developer_guides/model_merging
+    source_platform: huggingface
+    source_type: fusion_code
+    method_keywords:
+      - add_weighted_adapter
+      - linear
+      - svd
+      - ties
+      - dare
+    relation_to_current_best: "directly supports LoRA adapter merge methods suitable for rank-push variants"
+    usable_assets:
+      - "PEFT API and documented merge combination types"
+    required_compute: "Kaggle notebook with PEFT; may need base model only for API path, so prefer tensor-level merge if possible"
+    can_run_on_kaggle_resource: true
+    license_status: "Apache-2.0 for PEFT repo"
+    risk: "standard PEFT merge examples load base model; competition-safe implementation should merge adapter tensors or run on Kaggle only"
+    priority: P1
+    next_experiment: "implement tensor-safe weighted/TIES/DARE LoRA merge for candidate adapters"
+
+  - name: arcee_mergekit
+    url: https://github.com/arcee-ai/mergekit
+    source_platform: github
+    source_type: fusion_code
+    method_keywords:
+      - model_merge
+      - task_arithmetic
+      - ties
+      - dare
+      - lora_extraction
+    relation_to_current_best: "method reference for merge algorithms; less direct because competition submits LoRA adapters, not full merged models"
+    usable_assets:
+      - "merge method implementations and configs"
+    required_compute: "CPU/GPU depending on implementation; full-model merge not acceptable locally"
+    can_run_on_kaggle_resource: "reference_only_until_adapter_tensor_port"
+    license_status: LGPL-3.0
+    risk: "full-model tooling may violate no-local-30B boundary if used naively"
+    priority: P3
+    next_experiment: "port only algorithm ideas to adapter tensor merge; do not merge full base model locally"
+
+  - name: nvidia_openmathreasoning
+    url: https://huggingface.co/datasets/nvidia/OpenMathReasoning
+    source_platform: huggingface
+    source_type: data_processing
+    method_keywords:
+      - math_reasoning
+      - cot
+      - tir
+      - genselect
+      - answer_extraction
+    relation_to_current_best: "large high-quality reasoning data source for training variants, not direct adapter"
+    usable_assets:
+      - "5.68M rows across CoT/TIR/GenSelect/additional_problems"
+      - "cc-by-4.0"
+    required_compute: "Kaggle GPU for small filtered SFT subset; avoid full dataset"
+    can_run_on_kaggle_resource: true
+    license_status: cc-by-4.0
+    risk: "too large for blind training; needs small filtered subset and decontamination caution"
+    priority: P2
+    next_experiment: "sample a small hard numeric/symbolic subset, normalize boxed answers, train one adapter variant"
+
+  - name: openr1_math_220k
+    url: https://huggingface.co/datasets/open-r1/OpenR1-Math-220k
+    source_platform: huggingface
+    source_type: data_processing
+    method_keywords:
+      - verified_reasoning_traces
+      - math_verify
+      - rejection_sampling
+      - answer_boxing
+    relation_to_current_best: "candidate data source for answer-format-stable training"
+    usable_assets:
+      - "default split 93.7k rows, all 225k rows, Apache-2.0"
+    required_compute: "Kaggle GPU for filtered SFT subset"
+    can_run_on_kaggle_resource: true
+    license_status: Apache-2.0
+    risk: "large sequences; must cap length and filter category"
+    priority: P2
+    next_experiment: "train a small answer-format and hard-math subset as one data variable"
+
+  - name: ai_mo_numinamath_cot
+    url: https://huggingface.co/datasets/AI-MO/NuminaMath-CoT
+    source_platform: huggingface
+    source_type: data_processing
+    method_keywords:
+      - math_cot
+      - olympiad
+      - synthetic_math
+      - answer_formatting
+    relation_to_current_best: "general math CoT data source for curriculum/data-mix variants"
+    usable_assets:
+      - "about 859k rows, Apache-2.0"
+    required_compute: "Kaggle GPU for filtered subset only"
+    can_run_on_kaggle_resource: true
+    license_status: Apache-2.0
+    risk: "generic math may not match Nemotron hidden distribution"
+    priority: P2
+    next_experiment: "small curriculum subset mixed into Mohamed/Taha route"
+
+  - name: ties_merging_paper_and_code
+    url: https://arxiv.org/abs/2306.01708
+    source_platform: paper
+    source_type: paper_method
+    method_keywords:
+      - ties
+      - trim
+      - elect_sign
+      - merge
+      - interference_reduction
+    relation_to_current_best: "method for reducing adapter merge interference"
+    usable_assets:
+      - "paper and linked GitHub code"
+    required_compute: "adapter tensor merge only"
+    can_run_on_kaggle_resource: true
+    license_status: "paper/code license must be checked before copying code"
+    risk: "needs careful tensor mapping for LoRA A/B matrices"
+    priority: P3
+    next_experiment: "apply sign-consensus merge to several rank32 anchors"
+
+  - name: dare_super_mario
+    url: https://arxiv.org/abs/2311.03099
+    source_platform: paper
+    source_type: paper_method
+    method_keywords:
+      - dare
+      - drop_and_rescale
+      - delta_parameter_merge
+      - interference_reduction
+    relation_to_current_best: "method for sparse delta merge before averaging/TIES"
+    usable_assets:
+      - "paper method; PEFT docs also expose DARE merge type"
+    required_compute: "adapter tensor merge only"
+    can_run_on_kaggle_resource: true
+    license_status: "paper/code license not verified"
+    risk: "random drop rate may create unstable official scores without proxy"
+    priority: P3
+    next_experiment: "try DARE density 0.2 or 0.5 over verified 0.86 anchors"
+
+  - name: task_arithmetic
+    url: https://arxiv.org/abs/2212.04089
+    source_platform: paper
+    source_type: paper_method
+    method_keywords:
+      - task_vector
+      - delta_addition
+      - model_editing
+    relation_to_current_best: "adapter deltas can be treated as task vectors when source base is shared"
+    usable_assets:
+      - "paper method"
+    required_compute: "adapter tensor arithmetic"
+    can_run_on_kaggle_resource: true
+    license_status: "paper method reference"
+    risk: "requires homologous adapters and same target modules"
+    priority: P3
+    next_experiment: "adapter delta weighted addition with one scalar variable"
+
+  - name: lorahub
+    url: https://github.com/sail-sg/lorahub
+    source_platform: github
+    source_type: paper_method
+    method_keywords:
+      - dynamic_lora_composition
+      - cross_task_generalization
+      - black_box_weight_search
+    relation_to_current_best: "could optimize adapter mixture weights, but needs a proxy objective"
+    usable_assets:
+      - "research code"
+    required_compute: "needs validation loop; official leaderboard must not be used as oracle"
+    can_run_on_kaggle_resource: true
+    license_status: "public GitHub; exact license should be checked"
+    risk: "without proxy eval, weight search can become leaderboard probing"
+    priority: P3
+    next_experiment: "use only after a small proxy metric exists; not for immediate submission"
+
+  - name: qlora_and_trl_sfttrainer
+    url: https://arxiv.org/abs/2305.14314
+    source_platform: paper
+    source_type: training_pipeline
+    method_keywords:
+      - qlora
+      - nf4
+      - paged_optimizer
+      - sfttrainer
+    relation_to_current_best: "training infrastructure reference for Kaggle GPU adapter variants"
+    usable_assets:
+      - "QLoRA paper"
+      - "TRL SFTTrainer docs"
+      - "PEFT integration"
+    required_compute: "Kaggle GPU; no local 30B"
+    can_run_on_kaggle_resource: "needs_gpu_validation"
+    license_status: "method reference; implementation licenses vary"
+    risk: "Nemotron/Mamba CUDA stack may fail on some Kaggle GPUs"
+    priority: P2
+    next_experiment: "validate a tiny training smoke run on Kaggle before full variant"
+
+  - name: dora
+    url: https://arxiv.org/abs/2402.09353
+    source_platform: paper
+    source_type: paper_method
+    method_keywords:
+      - dora
+      - weight_decomposed_lora
+      - training_stability
+    relation_to_current_best: "possible training improvement, but submission evaluator may not accept non-standard DoRA config"
+    usable_assets:
+      - "paper and NVlabs GitHub"
+    required_compute: "Kaggle GPU training"
+    can_run_on_kaggle_resource: "possible_but_format_risky"
+    license_status: "paper/code license not fully checked"
+    risk: "competition may expect plain LoRA adapter_config/adapter_model only"
+    priority: BLOCKED
+    next_experiment: "do not submit DoRA until official adapter format support is proven"

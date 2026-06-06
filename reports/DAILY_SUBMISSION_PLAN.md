@@ -1,10 +1,10 @@
 # Daily Submission Plan
 
-- timestamp: 2026-06-06T16:26:37
-- today_submission_count: 0
-- today_remaining_quota: 5
-- quota_effective_today_submission_count: 0
-- quota_effective_today_remaining: 5
+- timestamp: 2026-06-06T19:01:31
+- today_submission_count: 3
+- today_remaining_quota: 2
+- quota_effective_today_submission_count: 3
+- quota_effective_today_remaining: 2
 - submission_history_query_status: success
 - today_submission_count_parse_status: success
 - current_best_public_score: `{"public_score": 0.86, "submission_id": "53384098", "status": "SubmissionStatus.COMPLETE", "description": "20260605_slot6_mohamed_replay_data_086_v4_remote_output", "submitted_at": "2026-06-05 07:00:55.467000"}`
@@ -30,22 +30,47 @@ Current practical implication: `hammad_agi_for_medal_087` is the only candidate 
 
 | slot | name | type | model_source | structural_valid | rank_lte_32 | notebook_pushed | output_zip_confirmed | hash_prefix |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| slot1 | hammad_agi_for_medal_087 | kaggle_side_public_kernel_output_candidate | hammadfarooq470/agi-for-medal-0-87 | true | true | true | true | 945fe257b622 |
+| slot1 | hammad_agi_for_medal_087 | kaggle_side_public_kernel_output_candidate | hammadfarooq470/agi-for-medal-0-87 | true | true | false | false | 945fe257b622 |
 
 ## Slot Plan
 
 | slot | candidate | allowed | reason | manual_action |
 | --- | --- | --- | --- | --- |
-| slot1 | hammad_agi_for_medal_087 | true | manual_submit_allowed_for_slot1_only | Kaggle Notebook -> Output -> submission.zip -> Submit to Competition |
-| slot2 | null | false | blocked_until_slot1_complete_with_public_score | none |
-| slot3 | null | false | blocked_until_slot1_complete_with_public_score | none |
-| slot4 | null | false | blocked_until_slot1_complete_with_public_score | none |
-| slot5 | null | false | blocked_until_slot1_complete_with_public_score | none |
+| slot1 | hammad_agi_for_medal_087 | false | same_hash_candidate_already_completed_with_public_score | none |
+| slot2 | null | false | no_distinct_non_duplicate_candidate_available | none |
+| slot3 | null | false | no_distinct_non_duplicate_candidate_available | none |
+| slot4 | null | false | no_distinct_non_duplicate_candidate_available | none |
+| slot5 | null | false | no_distinct_non_duplicate_candidate_available | none |
 
 ## Slot1 Result Match
 
 ```json
-[]
+[
+  {
+    "submission_id": "53416566",
+    "file_name": "submission.zip",
+    "description": "slot1_hammad_agi_for_medal_087_945fe257b622",
+    "status": "SubmissionStatus.COMPLETE",
+    "public_score": 0.85,
+    "complete_with_public_score": true,
+    "same_hash": true,
+    "likely_manual_web_submit": false,
+    "pending": false,
+    "error": false
+  },
+  {
+    "submission_id": "53416566",
+    "file_name": null,
+    "description": "slot1_hammad_agi_for_medal_087_945fe257b622",
+    "status": "SubmissionStatus.COMPLETE",
+    "public_score": 0.85,
+    "complete_with_public_score": true,
+    "same_hash": true,
+    "likely_manual_web_submit": false,
+    "pending": false,
+    "error": false
+  }
+]
 ```
 
 ## Manual Fix Marker
@@ -84,9 +109,9 @@ kaggle kernels files muelsyse111/nemotron-repack-hammad-087
 
 ```yaml
 NEXT_ACTION:
-  status: manual_submit_slot1
-  action: 'manual submit hammad_agi_for_medal_087 from Kaggle Notebook Output'
-  reason: 'Slot1 is the only current candidate and notebook output is confirmed.'
+  status: blocked
+  action: 'do not submit today'
+  reason: 'same_hash_candidate_already_completed_with_public_score'
 ```
 
 ## Safety

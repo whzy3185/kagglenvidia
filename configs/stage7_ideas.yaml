@@ -1,0 +1,96 @@
+ideas:
+  - idea_id: anchor_ties_svd_rank32
+    name: "TIES/DARE/SVD merge over 0.86 adapter anchors"
+    source: "keithtyser/nemotron-086-adapters-20260605 + PEFT model merging methods"
+    method: "merge several rank-32 LoRA adapters with weighted/TIES/DARE logic, then keep or project to rank 32"
+    target_component: fusion
+    main_change: "change adapter merge architecture instead of repacking a public output"
+    expected_rank_effect: high
+    implementation_cost: medium
+    risk: medium
+    experiment_candidate: keithtyser_anchor_ties_svd_rank32
+    notes: "Best immediate direction if exact model variation files can be resolved on Kaggle. Needs no local base-model load."
+
+  - idea_id: mohamed_lr_single_variable
+    name: "Mohamed replay-data LR variant"
+    source: "mohamedamr992/nemotron-replay-data-0-86"
+    method: "rerun the known 0.86 route with exactly one learning-rate change"
+    target_component: training
+    main_change: "lr 3.5e-4 baseline family -> lr 3e-4 or 2.5e-4"
+    expected_rank_effect: medium
+    implementation_cost: medium
+    risk: medium
+    experiment_candidate: mohamed_replay_lr_3e4
+    notes: "The original output already scored 0.86; this is a real delta candidate for moving within the 0.86 plateau."
+
+  - idea_id: taha_replay_mix_single_variable
+    name: "Taha custom-repo replay mix variant"
+    source: "tahaalam2009/end-to-end-finetuning-for-lb-0-86-custom-repo"
+    method: "change one data-mix variable such as hard-case ratio or sample order"
+    target_component: data
+    main_change: "one replay/hard-case mix or ordering variable"
+    expected_rank_effect: medium
+    implementation_cost: medium
+    risk: medium
+    experiment_candidate: taha_replay_mix_variant
+    notes: "Use only if a Kaggle GPU training notebook can reproduce output; do not repack the same public zip."
+
+  - idea_id: rauffauzan_anchor_weight_sweep
+    name: "Rauffauzan fusion code with different input anchors"
+    source: "rauffauzanrambe/lora-adapter-fusion-and-rank-compression-pipeline"
+    method: "reuse fusion/rank-compression code but swap source adapters and sweep one merge weight"
+    target_component: fusion
+    main_change: "input adapters and one fusion weight"
+    expected_rank_effect: medium
+    implementation_cost: medium
+    risk: medium
+    experiment_candidate: rauffauzan_anchor_weight_065_035
+    notes: "Do not reuse the already submitted output; only use the code path with new anchors."
+
+  - idea_id: openmath_small_filtered_mix
+    name: "Small filtered OpenMath/OpenR1/Numina data mix"
+    source: "OpenMathReasoning, OpenR1-Math-220k, NuminaMath-CoT"
+    method: "filter small hard numeric/symbolic examples, normalize final answer format, mix into a known 0.86 training route"
+    target_component: data
+    main_change: "add a small verified reasoning data slice"
+    expected_rank_effect: medium
+    implementation_cost: high
+    risk: high
+    experiment_candidate: mohamed_openmath_5k_mix
+    notes: "Worth preparing after one training smoke run. Must avoid overlong traces and hidden-test contamination assumptions."
+
+  - idea_id: tong_loss_masking_variant
+    name: "Tong repo loss-mask or LR variant"
+    source: "https://github.com/tonghuikang/nemotron"
+    method: "port public training repo to Kaggle and change one variable: loss mask, LR, or schedule"
+    target_component: training
+    main_change: "loss-masking or LR single-variable change"
+    expected_rank_effect: medium
+    implementation_cost: high
+    risk: high
+    experiment_candidate: tong_loss_mask_answer_only
+    notes: "Canonical code route but heavier than Mohamed/Taha. Not first unless GPU training environment is confirmed."
+
+  - idea_id: lorahub_weight_search_with_proxy
+    name: "LoRAHub-style adapter weight search"
+    source: "https://github.com/sail-sg/lorahub"
+    method: "search mixture weights for a bank of adapters using a local/proxy objective"
+    target_component: fusion
+    main_change: "black-box mixture weights"
+    expected_rank_effect: medium
+    implementation_cost: high
+    risk: high
+    experiment_candidate: lorahub_proxy_weight_search
+    notes: "Blocked for immediate submission because using leaderboard as objective would be oracle-like; needs proxy metric."
+
+  - idea_id: dora_training_variant
+    name: "DoRA training variant"
+    source: "https://arxiv.org/abs/2402.09353"
+    method: "train weight-decomposed LoRA"
+    target_component: training
+    main_change: "replace LoRA with DoRA"
+    expected_rank_effect: medium
+    implementation_cost: medium
+    risk: high
+    experiment_candidate: dora_format_validation
+    notes: "Blocked until official evaluator compatibility with DoRA adapter_config is proven."

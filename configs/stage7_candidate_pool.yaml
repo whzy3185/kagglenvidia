@@ -1,0 +1,182 @@
+candidates:
+  - slug: keithtyser_anchor_ties_svd_rank32
+    source: "keithtyser/nemotron-086-adapters-20260605 + PEFT merge methods"
+    source_url: "https://www.kaggle.com/models/keithtyser/nemotron-086-adapters-20260605"
+    base_route: "multi_anchor_086_adapter_fusion"
+    main_change: "merge multiple 0.86-class rank32 adapter anchors with TIES/DARE or weighted SVD, producing a new adapter hash"
+    architecture_change: "adapter-level fusion/compression; no base model load; enforce rank<=32"
+    data_change: "none"
+    training_change: "none"
+    expected_rank_effect: high
+    risk: medium
+    required_resource: "Kaggle notebook for model-source mount, adapter inventory, tensor merge, zip pack"
+    output_type: "submission.zip from Kaggle-side merge notebook"
+    submit_priority: P0
+    reason_for_priority: "Highest chance to create a real behavior delta quickly because it uses several 0.86-class anchors instead of another public output repack"
+    candidate_score:
+      rank_gain_potential: 4
+      method_distinctness: 5
+      asset_availability: 4
+      implementation_speed: 3
+      kaggle_resource_fit: 4
+      risk_control: 3
+      replay_value: 4
+      total: 27
+      risk_label: "high_value_merge_exploration"
+    next_action: "prepare a Kaggle-side anchor inventory notebook; do not submit until exact files, rank, hash, and confirm card are produced"
+
+  - slug: mohamed_replay_lr_3e4
+    source: "mohamedamr992/nemotron-replay-data-0-86"
+    source_url: "https://www.kaggle.com/code/mohamedamr992/nemotron-replay-data-0-86"
+    base_route: "mohamed_replay_data_086"
+    main_change: "single learning-rate change from the public 0.86 training family"
+    architecture_change: "none"
+    data_change: "none"
+    training_change: "lr=3e-4 first; alternative lr=2.5e-4 only after result"
+    expected_rank_effect: medium
+    risk: medium
+    required_resource: "Kaggle GPU training notebook"
+    output_type: "trained rank<=32 adapter and submission.zip"
+    submit_priority: P1
+    reason_for_priority: "The original route already scored 0.86 for our team; a single LR delta can move inside the broad 0.86 rank band"
+    candidate_score:
+      rank_gain_potential: 3
+      method_distinctness: 3
+      asset_availability: 4
+      implementation_speed: 3
+      kaggle_resource_fit: 4
+      risk_control: 4
+      replay_value: 5
+      total: 26
+      risk_label: "controlled_training_variant"
+    next_action: "build a Kaggle GPU training notebook with one LR change and a short smoke phase before full run"
+
+  - slug: taha_replay_mix_variant
+    source: "tahaalam2009/end-to-end-finetuning-for-lb-0-86-custom-repo"
+    source_url: "https://www.kaggle.com/code/tahaalam2009/end-to-end-finetuning-for-lb-0-86-custom-repo"
+    base_route: "taha_custom_repo_086"
+    main_change: "single replay/hard-case mix or sample-order variable"
+    architecture_change: "none"
+    data_change: "change one ratio or order variable; keep training settings fixed"
+    training_change: "none unless needed to reproduce"
+    expected_rank_effect: medium
+    risk: medium
+    required_resource: "Kaggle GPU training notebook"
+    output_type: "trained rank<=32 adapter and submission.zip"
+    submit_priority: P1
+    reason_for_priority: "The source already produced a 0.86 score for our team; data-mix single-variable change is distinct from LR-only sweep"
+    candidate_score:
+      rank_gain_potential: 3
+      method_distinctness: 4
+      asset_availability: 3
+      implementation_speed: 3
+      kaggle_resource_fit: 4
+      risk_control: 3
+      replay_value: 5
+      total: 25
+      risk_label: "controlled_data_variant"
+    next_action: "inspect source notebook inputs, then prepare one replay-mix notebook variant"
+
+  - slug: rauffauzan_anchor_weight_065_035
+    source: "rauffauzanrambe/lora-adapter-fusion-and-rank-compression-pipeline"
+    source_url: "https://www.kaggle.com/code/rauffauzanrambe/lora-adapter-fusion-and-rank-compression-pipeline"
+    base_route: "rauffauzan_fusion_code_with_new_anchors"
+    main_change: "reuse fusion/SVD code but switch anchors and set one weight variable, e.g. 0.65/0.35"
+    architecture_change: "weighted adapter fusion plus rank32 recompression"
+    data_change: "none"
+    training_change: "none"
+    expected_rank_effect: medium
+    risk: medium
+    required_resource: "Kaggle notebook CPU/GPU for adapter merge and pack"
+    output_type: "merged rank<=32 adapter submission.zip"
+    submit_priority: P2
+    reason_for_priority: "Mechanism is viable and prior family reached 0.86, but old output should not be reused"
+    candidate_score:
+      rank_gain_potential: 3
+      method_distinctness: 4
+      asset_availability: 3
+      implementation_speed: 4
+      kaggle_resource_fit: 4
+      risk_control: 3
+      replay_value: 3
+      total: 24
+      risk_label: "fusion_weight_exploration"
+    next_action: "combine with verified 0.86 anchors; generate submit confirm card only after new SHA is confirmed"
+
+  - slug: mohamed_openmath_5k_mix
+    source: "OpenMathReasoning/OpenR1/NuminaMath filtered data + Mohamed route"
+    source_url: "https://huggingface.co/datasets/nvidia/OpenMathReasoning"
+    base_route: "mohamed_replay_data_086"
+    main_change: "inject a small filtered 5k hard reasoning subset with normalized final answers"
+    architecture_change: "none"
+    data_change: "small external reasoning data slice, boxed-answer normalization, length cap"
+    training_change: "keep Mohamed training knobs fixed"
+    expected_rank_effect: medium
+    risk: high
+    required_resource: "Kaggle GPU training; data download/mount"
+    output_type: "trained rank<=32 adapter and submission.zip"
+    submit_priority: P3
+    reason_for_priority: "Potentially useful but slower and riskier than anchor fusion or LR/data-mix variants"
+    candidate_score:
+      rank_gain_potential: 4
+      method_distinctness: 4
+      asset_availability: 3
+      implementation_speed: 2
+      kaggle_resource_fit: 3
+      risk_control: 2
+      replay_value: 5
+      total: 23
+      risk_label: "high_risk_exploration"
+    next_action: "prepare after one Kaggle training smoke run succeeds"
+
+  - slug: tong_loss_mask_answer_only
+    source: "tonghuikang/nemotron"
+    source_url: "https://github.com/tonghuikang/nemotron"
+    base_route: "tong_public_training_repo"
+    main_change: "one loss-masking or LR-schedule change"
+    architecture_change: "none"
+    data_change: "none initially"
+    training_change: "answer-only loss mask or one LR schedule change"
+    expected_rank_effect: medium
+    risk: high
+    required_resource: "Kaggle GPU or external GPU training"
+    output_type: "trained rank<=32 adapter and submission.zip"
+    submit_priority: P3
+    reason_for_priority: "Canonical repo but heavy to port; not faster than Mohamed/Taha"
+    candidate_score:
+      rank_gain_potential: 3
+      method_distinctness: 4
+      asset_availability: 4
+      implementation_speed: 2
+      kaggle_resource_fit: 3
+      risk_control: 2
+      replay_value: 4
+      total: 22
+      risk_label: "heavy_training_variant"
+    next_action: "defer until Kaggle GPU training environment is proven with a smaller route"
+
+  - slug: hammad_dedquoc_kuang_public_output_repack
+    source: "prior Stage 7 public output repacks"
+    source_url: "reports/STAGE7_ROUND_REVIEW_20260606.md"
+    base_route: "public_output_repack"
+    main_change: "none"
+    architecture_change: "none"
+    data_change: "none"
+    training_change: "none"
+    expected_rank_effect: low
+    risk: high
+    required_resource: "none"
+    output_type: "already submitted or duplicate output"
+    submit_priority: BLOCKED
+    reason_for_priority: "Hammad scored 0.85, Dedquoc 0.78, Kuang 0.63, CocoaAI duplicate hash; no repeat value"
+    candidate_score:
+      rank_gain_potential: 0
+      method_distinctness: 0
+      asset_availability: 5
+      implementation_speed: 5
+      kaggle_resource_fit: 5
+      risk_control: 0
+      replay_value: 2
+      total: 17
+      risk_label: "blocked_duplicate_or_failed"
+    next_action: "do not submit"
