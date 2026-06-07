@@ -1,6 +1,6 @@
 # Stage 7 Active Runs
 
-- updated_at: 2026-06-07T16:34:42
+- updated_at: 2026-06-07T19:59:19
 - status_source: Kaggle kernel files and logs
 - competition submission executed: false
 
@@ -12,8 +12,8 @@
 | `muelsyse111/nemotron-s7-delta-space-svd-r32` | CPU | `effective_delta_qr_svd_rank32_recompression` | `output_ready` | `n/a` | `n/a` | true | `b31b987c290f` |
 | `muelsyse111/nemotron-s7-modulewise-delta-svd-r32` | CPU | `module_family_weighted_delta_qr_svd_rank32` | `output_ready` | `n/a` | `n/a` | true | `00d6bd3faafb` |
 | `muelsyse111/nemotron-s7-norm-balanced-delta-svd-r32` | CPU | `per_module_delta_norm_balanced_qr_svd_rank32` | `output_ready` | `n/a` | `n/a` | true | `aec7776ecde0` |
-| `muelsyse111/nemotron-s7-weak-protected-curriculum-v2` | RTX Pro 6000 | `weak_category_plus_protected_interleaving` | `queued_no_logs` | `n/a` | `n/a` | false | `n/a` |
-| `muelsyse111/nemotron-s7-mamba-inproj-specialist-v2` | RTX Pro 6000 | `selective_mamba_in_proj_adaptation` | `queued_no_logs` | `n/a` | `n/a` | false | `n/a` |
+| `muelsyse111/nemotron-s7-weak-protected-curriculum-v2` | RTX Pro 6000 | `weak_category_plus_protected_interleaving` | `output_ready` | `254/254` | `n/a` | true | `631a2bfb4dc5` |
+| `muelsyse111/nemotron-s7-mamba-inproj-specialist-v2` | RTX Pro 6000 | `selective_mamba_in_proj_adaptation` | `output_ready` | `254/254` | `n/a` | true | `852e80252228` |
 
 ## Interpretation
 

@@ -8,7 +8,7 @@
 - expected_rank_effect: unknown; official evaluation required
 - risk: high
 - current_best_displayed_score: 0.86
-- today_remaining_quota_at_generation: 5
+- today_remaining_quota_at_generation: 1
 - kernel_id: `muelsyse111/nemotron-s7-protected-rehearsal-v2`
 - kernel_version: `1`
 - output_file: `submission.zip`

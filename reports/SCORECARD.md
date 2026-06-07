@@ -7,7 +7,11 @@
 - authentication_status: success
 - raw_result: `ref,fileName,date,description,status,publicScore,privateScore
 
-53446707,submission.zip,2026-06-07 09:39:49.340000,20260607_slot3_nemotron-s7-modulewise-delta-svd-r32_00d6bd3f,SubmissionStatus.PENDING,,
+53449930,submission.zip,2026-06-07 12:05:13.713000,20260607_slot5_nemotron-s7-mamba-inproj-specialist-v2_852e8025,SubmissionStatus.PENDING,,
+
+53448593,submission.zip,2026-06-07 11:05:59.037000,20260607_slot4_nemotron-s7-muon-full-v5-audited_2d42d0ad,SubmissionStatus.COMPLETE,0.84,
+
+53446707,submission.zip,2026-06-07 09:39:49.340000,20260607_slot3_nemotron-s7-modulewise-delta-svd-r32_00d6bd3f,SubmissionStatus.COMPLETE,0.85,
 
 53445313,submission.zip,2026-06-07 08:38:09.147000,20260607_slot2_nemotron-s7-delta-space-svd-r32_b31b987c,SubmissionStatus.COMPLETE,0.85,
 
@@ -45,12 +49,14 @@
 - parse_status: success
 - today_submission_count_parse_status: success
 - today_submission_count_timezone_assumption: local_system
-- today_submission_count: 3
-- today_remaining_quota: 2
+- today_submission_count: 5
+- today_remaining_quota: 0
 
 | submission_id | date | description | status | public_score |
 | --- | --- | --- | --- | --- |
-| 53446707 | 2026-06-07 09:39:49.340000 | 20260607_slot3_nemotron-s7-modulewise-delta-svd-r32_00d6bd3f | SubmissionStatus.PENDING | null |
+| 53449930 | 2026-06-07 12:05:13.713000 | 20260607_slot5_nemotron-s7-mamba-inproj-specialist-v2_852e8025 | SubmissionStatus.PENDING | null |
+| 53448593 | 2026-06-07 11:05:59.037000 | 20260607_slot4_nemotron-s7-muon-full-v5-audited_2d42d0ad | SubmissionStatus.COMPLETE | 0.84 |
+| 53446707 | 2026-06-07 09:39:49.340000 | 20260607_slot3_nemotron-s7-modulewise-delta-svd-r32_00d6bd3f | SubmissionStatus.COMPLETE | 0.85 |
 | 53445313 | 2026-06-07 08:38:09.147000 | 20260607_slot2_nemotron-s7-delta-space-svd-r32_b31b987c | SubmissionStatus.COMPLETE | 0.85 |
 | 53443584 | 2026-06-07 07:16:45.037000 | 20260607_slot1_nemotron-s7-protected-rehearsal_641c57f3 | SubmissionStatus.COMPLETE | 0.85 |
 | 53424138 | 2026-06-06 13:10:08.210000 | 20260606_slot4_stage7_keithtyser_taskarith_3b1d2fc3 | SubmissionStatus.COMPLETE | 0.85 |

@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import ast
+import csv
+import io
 import json
 import os
 import re
@@ -20,16 +22,16 @@ READY_ORDER = [
     ("slot2", "nemotron-s7-delta-space-svd-r32"),
     ("slot3", "nemotron-s7-modulewise-delta-svd-r32"),
     ("slot4", "nemotron-s7-muon-full-v5-audited"),
-    ("slot5", "nemotron-s7-norm-balanced-delta-svd-r32"),
-    ("reserve1", "nemotron-s7-seed-stability-replay"),
-    ("reserve2", "nemotron-s7-ties-sign-merge"),
-    ("reserve3", "nemotron-s7-dare-merge"),
-    ("reserve4", "nemotron-s7-layerwise-soup"),
+    ("slot5", "nemotron-s7-mamba-inproj-specialist-v2"),
+    ("reserve1", "nemotron-s7-weak-protected-curriculum-v2"),
+    ("reserve2", "nemotron-s7-norm-balanced-delta-svd-r32"),
+    ("reserve3", "nemotron-s7-seed-stability-replay"),
+    ("reserve4", "nemotron-s7-ties-sign-merge"),
+    ("reserve5", "nemotron-s7-dare-merge"),
+    ("reserve6", "nemotron-s7-layerwise-soup"),
 ]
 
 PENDING_ORDER = [
-    ("nemotron-s7-weak-protected-curriculum", "muelsyse111/nemotron-s7-weak-protected-curriculum-v2", "run_accepted_output_pending"),
-    ("nemotron-s7-mamba-inproj-specialist", "muelsyse111/nemotron-s7-mamba-inproj-specialist-v2", "run_accepted_output_pending"),
     ("nemotron-s7-category-roundrobin", "muelsyse111/nemotron-s7-category-round-robin", "created_gpu_blocked"),
     ("nemotron-s7-answer-tail-objective", "muelsyse111/nemotron-s7-answer-tail-objective", "created_gpu_blocked"),
     ("nemotron-s7-length-stratified", "muelsyse111/nemotron-s7-length-stratified-curriculum", "created_gpu_blocked"),
@@ -56,6 +58,27 @@ EXTRA_CANDIDATES = {
             "https://www.kaggle.com/code/pkuszboi/0-85-lb-training-with-muon",
             "704491",
             "https://github.com/KellerJordan/Muon",
+        ],
+    },
+    "nemotron-s7-weak-protected-curriculum-v2": {
+        "slug": "nemotron-s7-weak-protected-curriculum-v2",
+        "kernel_id": "muelsyse111/nemotron-s7-weak-protected-curriculum-v2",
+        "route_type": "full_training",
+        "mechanism": "weak_category_plus_protected_interleaving",
+        "sources": [
+            "703240",
+            "698293",
+            "continual rehearsal",
+        ],
+    },
+    "nemotron-s7-mamba-inproj-specialist-v2": {
+        "slug": "nemotron-s7-mamba-inproj-specialist-v2",
+        "kernel_id": "muelsyse111/nemotron-s7-mamba-inproj-specialist-v2",
+        "route_type": "full_training",
+        "mechanism": "selective_mamba_in_proj_adaptation",
+        "sources": [
+            "687961",
+            "selective parameter-efficient adaptation",
         ],
     },
     "nemotron-s7-delta-space-svd-r32": {
@@ -99,6 +122,7 @@ EXTRA_CANDIDATES = {
 
 def main() -> int:
     payload = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+    quota = query_today_quota()
     candidates = {item["slug"]: item for item in payload.get("candidates", [])}
     candidates.update(EXTRA_CANDIDATES)
     ready = []
@@ -109,11 +133,11 @@ def main() -> int:
         evidence.update({"slot": slot, "candidate": candidate})
         ready.append(evidence)
 
-    render_report(payload, candidates, ready)
+    render_report(payload, candidates, ready, quota)
     clear_today_confirmation_cards()
     for item in ready:
         if item["ready"]:
-            write_confirmation_card(item)
+            write_confirmation_card(item, quota)
 
     print(f"report={REPORT_PATH.relative_to(PROJECT_ROOT)}")
     print(f"output_ready={sum(1 for item in ready if item['ready'])}")
@@ -172,6 +196,30 @@ def inspect_output(kernel_id: str) -> dict[str, Any]:
     }
 
 
+def query_today_quota() -> dict[str, int | str]:
+    result = run(["kaggle", "competitions", "submissions", COMPETITION, "-v"])
+    today = datetime.now().date()
+    count = 0
+    if result.returncode == 0:
+        reader = csv.DictReader(io.StringIO(result.stdout))
+        for row in reader:
+            status = (row.get("status") or "").lower()
+            if "error" in status:
+                continue
+            date_text = row.get("date") or ""
+            try:
+                submitted_at = datetime.fromisoformat(date_text).date()
+            except ValueError:
+                continue
+            if submitted_at == today:
+                count += 1
+    return {
+        "today_submission_count": count,
+        "today_remaining_quota": max(0, 5 - count),
+        "query_status": "success" if result.returncode == 0 else "failed",
+    }
+
+
 def decode_log_data(raw: str) -> str:
     try:
         records = json.loads(raw)
@@ -216,6 +264,8 @@ def source_links(candidate: dict[str, Any]) -> str:
         "model soups": "https://arxiv.org/abs/2203.05482",
         "continual rehearsal": "https://arxiv.org/abs/1909.08383",
         "704473": "https://www.kaggle.com/competitions/nvidia-nemotron-model-reasoning-challenge/discussion/704473",
+        "698293": "https://www.kaggle.com/competitions/nvidia-nemotron-model-reasoning-challenge/discussion/698293",
+        "selective parameter-efficient adaptation": "https://arxiv.org/abs/2106.09685",
         "pkuszboi/0-85-lb-training-with-muon": "https://www.kaggle.com/code/pkuszboi/0-85-lb-training-with-muon",
         "tonghuikang/nemotron": "https://github.com/tonghuikang/nemotron",
         "tonghuikang/nemotron loss_config.py": "https://github.com/tonghuikang/nemotron",
@@ -230,14 +280,15 @@ def render_report(
     payload: dict[str, Any],
     candidates: dict[str, dict[str, Any]],
     ready: list[dict[str, Any]],
+    quota: dict[str, int | str],
 ) -> None:
     rows = [
         "# Stage 7 Reference Submission List",
         "",
         f"- updated_at: {datetime.now().isoformat(timespec='seconds')}",
         "- current_best_displayed_score: 0.86",
-        "- today_submission_count: 0",
-        "- today_remaining_quota: 5",
+        f"- today_submission_count: {quota['today_submission_count']}",
+        f"- today_remaining_quota: {quota['today_remaining_quota']}",
         "- competition_submission_executed: false",
         "- selection_metric: public rank movement after official evaluation",
         "",
@@ -249,6 +300,8 @@ def render_report(
     risks = {
         "nemotron-s7-protected-rehearsal": "medium-high: full training targets category forgetting, but public-distribution transfer is unmeasured",
         "nemotron-s7-muon-full-v5-audited": "high: full-epoch optimizer change is distinct, but the public reference scored below the current best",
+        "nemotron-s7-weak-protected-curriculum-v2": "high: related to the failed protected route, but changes sample ordering and weak/protected interleaving",
+        "nemotron-s7-mamba-inproj-specialist-v2": "high: module selection is highly distinct, but may under-adapt non-Mamba reasoning paths",
         "nemotron-s7-delta-space-svd-r32": "medium-high: mathematically coherent delta merge, but source weights remain uncalibrated",
         "nemotron-s7-modulewise-delta-svd-r32": "high: coherent delta merge, but module-family weights are heuristic",
         "nemotron-s7-norm-balanced-delta-svd-r32": "high: norm balancing limits dominant deltas, but may suppress genuinely useful specialist signal",
@@ -307,7 +360,8 @@ def render_report(
             "2. Delta-space SVD is the strongest coherent merge because it combines effective LoRA updates before legal rank-32 recompression.",
             "3. Modulewise delta-SVD tests whether module-family specialization improves the same coherent merge.",
             "4. Audited Muon v5 is optimizer-distinct and uses the full training set, but remains high risk because the public reference was below the current best.",
-            "5. Norm-balanced delta-SVD is the fifth mechanism-distinct candidate; seed stability, TIES, DARE and raw-factor soup remain reserves.",
+            "5. Mamba in-projection specialist replaces the old norm-balanced SVD slot because the first two SVD-family submissions scored only 0.85.",
+            "6. Weak-protected curriculum and norm-balanced delta-SVD remain reserves.",
             "",
             "No candidate may be submitted until its confirmation card is reviewed and the user explicitly confirms the submission.",
             "",
@@ -316,7 +370,7 @@ def render_report(
     REPORT_PATH.write_text("\n".join(rows), encoding="utf-8")
 
 
-def write_confirmation_card(item: dict[str, Any]) -> None:
+def write_confirmation_card(item: dict[str, Any], quota: dict[str, int | str]) -> None:
     candidate = item["candidate"]
     date = datetime.now().strftime("%Y%m%d")
     card_path = (
@@ -347,7 +401,7 @@ def write_confirmation_card(item: dict[str, Any]) -> None:
         f"- expected_rank_effect: unknown; official evaluation required",
         f"- risk: high",
         f"- current_best_displayed_score: 0.86",
-        f"- today_remaining_quota_at_generation: 5",
+        f"- today_remaining_quota_at_generation: {quota['today_remaining_quota']}",
         f"- kernel_id: `{item['kernel_id']}`",
         f"- kernel_version: `{item['kernel_version']}`",
         "- output_file: `submission.zip`",

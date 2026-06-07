@@ -1,6 +1,6 @@
 # Stage 7 Submission Confirmation
 
-- slot: `reserve2`
+- slot: `reserve4`
 - candidate: `nemotron-s7-ties-sign-merge`
 - source: `https://arxiv.org/abs/2306.01708, https://github.com/prateeky2806/ties-merging`
 - base_route: `keithtyser/nemotron-086-adapters-20260605`
@@ -8,7 +8,7 @@
 - expected_rank_effect: unknown; official evaluation required
 - risk: high
 - current_best_displayed_score: 0.86
-- today_remaining_quota_at_generation: 5
+- today_remaining_quota_at_generation: 1
 - kernel_id: `muelsyse111/nemotron-s7-ties-sign-merge`
 - kernel_version: `1`
 - output_file: `submission.zip`
@@ -22,7 +22,7 @@
 ## Submit Command (Not Executed)
 
 ```powershell
-kaggle competitions submit nvidia-nemotron-model-reasoning-challenge -k muelsyse111/nemotron-s7-ties-sign-merge -f submission.zip -v 1 -m "20260607_reserve2_nemotron-s7-ties-sign-merge_b03e975e"
+kaggle competitions submit nvidia-nemotron-model-reasoning-challenge -k muelsyse111/nemotron-s7-ties-sign-merge -f submission.zip -v 1 -m "20260607_reserve4_nemotron-s7-ties-sign-merge_b03e975e"
 ```
 
 **Explicit user confirmation is required before submission.**
