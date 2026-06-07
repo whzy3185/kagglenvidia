@@ -1,0 +1,125 @@
+{
+  "stage": "8_tomorrow",
+  "generated_at": "2026-06-07T21:14:39",
+  "competition_submission_executed": false,
+  "candidate_count": 5,
+  "candidates": [
+    {
+      "slug": "nemotron-s8-guarded-weak-replay-v1",
+      "title": "Nemotron S8 Guarded Weak Replay V1",
+      "route_type": "full_training",
+      "mechanism": "guarded_weak_category_replay",
+      "hypothesis": "repair weak symbolic/equation categories while explicitly protecting bit, gravity, numeral, and unit-conversion families that can regress",
+      "sources": [
+        "Kaggle discussion 703240",
+        "bankoglu/hard-families-cot",
+        "continual rehearsal"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s8-guarded-weak-replay-v1",
+      "kernel_dir": "kaggle_kernels\\nemotron_s8_guarded_weak_replay_v1",
+      "metadata_path": "kaggle_kernels\\nemotron_s8_guarded_weak_replay_v1\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s8_guarded_weak_replay_v1\\nemotron_s8_guarded_weak_replay_v1.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s8_guarded_weak_replay_v1\"",
+      "competition_submit_called": false
+    },
+    {
+      "slug": "nemotron-s8-answer-tail-512-v1",
+      "title": "Nemotron S8 Answer Tail 512 V1",
+      "route_type": "full_training",
+      "mechanism": "answer_tail_512_loss_focus",
+      "hypothesis": "preserve reasoning context while concentrating gradient on final answer and decisive tail tokens",
+      "sources": [
+        "reasoning trace compression",
+        "Tong loss_config reference",
+        "LoRA paper"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s8-answer-tail-512-v1",
+      "kernel_dir": "kaggle_kernels\\nemotron_s8_answer_tail_512_v1",
+      "metadata_path": "kaggle_kernels\\nemotron_s8_answer_tail_512_v1\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s8_answer_tail_512_v1\\nemotron_s8_answer_tail_512_v1.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s8_answer_tail_512_v1\"",
+      "competition_submit_called": false
+    },
+    {
+      "slug": "nemotron-s8-attn-mamba-no-lmhead-v1",
+      "title": "Nemotron S8 Attn Mamba No LMHead V1",
+      "route_type": "full_training",
+      "mechanism": "attention_mamba_without_lm_head",
+      "hypothesis": "avoid large lm_head/MLP memorization and put rank-32 capacity into attention plus Mamba routing-sensitive projections",
+      "sources": [
+        "LoRA paper",
+        "AdaLoRA rank allocation",
+        "Kaggle discussion 687961"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s8-attn-mamba-no-lmhead-v1",
+      "kernel_dir": "kaggle_kernels\\nemotron_s8_attn_mamba_no_lmhead_v1",
+      "metadata_path": "kaggle_kernels\\nemotron_s8_attn_mamba_no_lmhead_v1\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s8_attn_mamba_no_lmhead_v1\\nemotron_s8_attn_mamba_no_lmhead_v1.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s8_attn_mamba_no_lmhead_v1\"",
+      "competition_submit_called": false
+    },
+    {
+      "slug": "nemotron-s8-mlp-mamba-no-lmhead-v1",
+      "title": "Nemotron S8 MLP Mamba No LMHead V1",
+      "route_type": "full_training",
+      "mechanism": "mlp_mamba_without_attention_lm_head",
+      "hypothesis": "shift rank-32 capacity toward transformation modules while avoiding output-head drift",
+      "sources": [
+        "AdaLoRA rank allocation",
+        "DoRA weight decomposition",
+        "Kaggle discussion 687961"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s8-mlp-mamba-no-lmhead-v1",
+      "kernel_dir": "kaggle_kernels\\nemotron_s8_mlp_mamba_no_lmhead_v1",
+      "metadata_path": "kaggle_kernels\\nemotron_s8_mlp_mamba_no_lmhead_v1\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s8_mlp_mamba_no_lmhead_v1\\nemotron_s8_mlp_mamba_no_lmhead_v1.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s8_mlp_mamba_no_lmhead_v1\"",
+      "competition_submit_called": false
+    },
+    {
+      "slug": "nemotron-s8-rank-stable-alpha64-v1",
+      "title": "Nemotron S8 Rank Stable Alpha64 V1",
+      "route_type": "full_training",
+      "mechanism": "rank32_high_alpha_capacity_test",
+      "hypothesis": "increase LoRA update amplitude at fixed legal rank 32 after several conservative variants landed below the 0.86 family",
+      "sources": [
+        "rank-stabilized LoRA",
+        "LoRA-GA initialization",
+        "Kaggle discussion 704491"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s8-rank-stable-alpha64-v1",
+      "kernel_dir": "kaggle_kernels\\nemotron_s8_rank_stable_alpha64_v1",
+      "metadata_path": "kaggle_kernels\\nemotron_s8_rank_stable_alpha64_v1\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s8_rank_stable_alpha64_v1\\nemotron_s8_rank_stable_alpha64_v1.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s8_rank_stable_alpha64_v1\"",
+      "competition_submit_called": false
+    }
+  ],
+  "evidence": [
+    {
+      "source": "Kaggle CLI current results",
+      "url": "local reports/SCORECARD.md",
+      "lesson": "2026-06-07 SVD-family slots returned 0.85 and Muon audit returned 0.84, so tomorrow should not spend all slots on SVD/Muon variants."
+    },
+    {
+      "source": "bankoglu/hard-families-cot",
+      "url": "https://www.kaggle.com/datasets/bankoglu/hard-families-cot",
+      "lesson": "small MIT-licensed hard-family CoT dataset exposes weak-family prompts and generated traces for later corpus preprocessing."
+    },
+    {
+      "source": "Hugging Face PEFT model merging",
+      "url": "https://huggingface.co/docs/peft/developer_guides/model_merging",
+      "lesson": "adapter merging can be useful, but today's SVD results suggest merge-only candidates should be backups."
+    },
+    {
+      "source": "TIES-Merging",
+      "url": "https://arxiv.org/abs/2306.01708",
+      "lesson": "interference-aware merging remains a reserve, not the primary tomorrow path after two SVD-family failures."
+    },
+    {
+      "source": "DoRA / AdaLoRA / LoRA-GA family",
+      "url": "https://arxiv.org/abs/2402.09353",
+      "lesson": "rank and module capacity allocation are stronger next levers than another plain 0.86 repack."
+    }
+  ]
+}
