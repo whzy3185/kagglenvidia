@@ -27,6 +27,8 @@ PACK_MANIFEST_PATH = PROJECT_ROOT / "artifacts" / "stage2" / "tong_full_repro" /
 SCORE_DB_PATH = PROJECT_ROOT / "logs" / "score.db"
 REPORT_PATH = PROJECT_ROOT / "reports" / "DAILY_SUBMISSION_PLAN.md"
 STAGE6_CANDIDATE_PATH = PROJECT_ROOT / "configs" / "stage6_candidate_routes.yaml"
+STAGE7_REFERENCE_PATH = PROJECT_ROOT / "reports" / "STAGE7_REFERENCE_SUBMISSION_LIST.md"
+STAGE7_CONFIRM_GLOB = "STAGE7_SUBMIT_CONFIRM_*_slot*_*.md"
 
 KERNEL_ID = "muelsyse111/nemotron-repack-huikang-v27"
 KERNEL_DIR = "kaggle_kernels\\nemotron_repack_huikang_v27"
@@ -51,6 +53,38 @@ def main() -> int:
     policy = load_policy(POLICY_PATH)
     history_payload = refresh_history(not args.no_refresh_history)
     scores = fetch_scores(SCORE_DB_PATH)
+    stage7_cards = load_stage7_confirmation_cards()
+    if stage7_cards:
+        best_score = current_best_public_score(scores)
+        write_text(
+            REPORT_PATH,
+            render_stage7_daily_report(history_payload, best_score, stage7_cards),
+        )
+        print(f"report: {REPORT_PATH.relative_to(PROJECT_ROOT).as_posix()}")
+        print(f"today_submission_count: {history_payload.get('today_submission_count')}")
+        print(f"today_remaining_quota: {history_payload.get('today_remaining_quota')}")
+        card_results = [
+            find_stage7_card_result(history_payload.get("rows", []), card)
+            for card in stage7_cards
+        ]
+        pending_result = first_pending_result(stage7_cards, card_results)
+        if pending_result:
+            print(f"recommended_action: wait for submission {pending_result.get('submission_id')}")
+        else:
+            next_card = next(
+                (
+                    card
+                    for card, result in zip(stage7_cards, card_results)
+                    if not result
+                ),
+                None,
+            )
+            if next_card:
+                print(f"recommended_action: review {next_card['slot']} confirmation card")
+            else:
+                print("recommended_action: review all Stage 7 official results")
+        return 0 if history_payload.get("query_ok") else 2
+
     stage2_manifest = read_json_if_exists(STAGE2_MANIFEST_PATH)
     pack_manifest = read_json_if_exists(PACK_MANIFEST_PATH)
     stage6_candidates = load_yaml_dict(STAGE6_CANDIDATE_PATH)
@@ -88,6 +122,167 @@ def main() -> int:
     print(f"today_remaining_quota: {history_payload.get('today_remaining_quota')}")
     print(f"recommended_action: {recommended['action']}")
     return 0 if history_payload.get("query_ok") else 2
+
+
+def load_stage7_confirmation_cards() -> list[dict[str, Any]]:
+    if not STAGE7_REFERENCE_PATH.exists():
+        return []
+    cards = []
+    for path in sorted((PROJECT_ROOT / "reports").glob(STAGE7_CONFIRM_GLOB)):
+        text = path.read_text(encoding="utf-8", errors="replace")
+        slot = extract_markdown_value(text, "slot")
+        candidate = extract_markdown_value(text, "candidate")
+        kernel_id = extract_markdown_value(text, "kernel_id")
+        zip_sha256 = extract_markdown_value(text, "zip_sha256")
+        if not all([slot, candidate, kernel_id, zip_sha256]):
+            continue
+        cards.append(
+            {
+                "slot": slot,
+                "candidate": candidate,
+                "kernel_id": kernel_id,
+                "zip_sha256": zip_sha256,
+                "card_path": path.relative_to(PROJECT_ROOT).as_posix(),
+            }
+        )
+    return sorted(cards, key=lambda item: item["slot"])
+
+
+def render_stage7_daily_report(
+    history: dict[str, Any],
+    best_score: dict[str, Any] | None,
+    cards: list[dict[str, Any]],
+) -> str:
+    remaining = int(history.get("quota_effective_today_remaining") or 0)
+    card_results = {
+        card["slot"]: find_stage7_card_result(history.get("rows", []), card)
+        for card in cards
+    }
+    pending_slot, pending_result = first_pending_slot(cards, card_results)
+    rows = [
+        "# Daily Submission Plan",
+        "",
+        f"- timestamp: {datetime.now().isoformat(timespec='seconds')}",
+        f"- today_submission_count: {history.get('today_submission_count')}",
+        f"- today_remaining_quota: {history.get('today_remaining_quota')}",
+        f"- quota_effective_today_submission_count: {history.get('quota_effective_today_submission_count')}",
+        f"- quota_effective_today_remaining: {remaining}",
+        f"- current_best_public_score: `{json.dumps(best_score, ensure_ascii=False)}`",
+        f"- stage7_output_ready_candidates: {len(cards)}",
+        "- no_automatic_competition_submission: true",
+        "- submission_quota_consumed_by_this_script: false",
+        "",
+        "## Stage 7 Candidate Plan",
+        "",
+        "| slot | candidate | kernel | hash | state | required action |",
+        "|---|---|---|---|---|---|",
+    ]
+    for card in cards:
+        result = card_results.get(card["slot"])
+        if result:
+            status = str(result.get("status") or "unknown")
+            if "PENDING" in status.upper():
+                state = "official_evaluation_pending"
+                action = f"wait for submission `{result.get('submission_id')}`"
+            elif "COMPLETE" in status.upper():
+                state = "official_evaluation_complete"
+                action = f"review public score `{result.get('public_score')}`"
+            elif "ERROR" in status.upper():
+                state = "official_evaluation_error"
+                action = "diagnose once before considering a corrected package"
+            else:
+                state = "official_status_unknown"
+                action = "refresh submission history"
+        elif pending_slot:
+            state = f"blocked_until_{pending_slot}_result"
+            action = f"wait for {pending_slot} terminal result"
+        else:
+            state = "quota_available_awaiting_confirmation" if remaining > 0 else "quota_exhausted"
+            action = f"review `{card['card_path']}` and explicitly confirm" if remaining > 0 else "wait for quota reset"
+        rows.append(
+            f"| {card['slot']} | `{card['candidate']}` | `{card['kernel_id']}` | "
+            f"`{card['zip_sha256'][:12]}` | `{state}` | {action} |"
+        )
+    if pending_slot and pending_result:
+        next_status = "wait_for_official_result"
+        next_action = f"refresh submission {pending_result.get('submission_id')}"
+        next_reason = f"{pending_slot} is pending official evaluation; later slots are blocked to preserve sequential evidence."
+    else:
+        next_card = next(
+            (card for card in cards if not card_results.get(card["slot"])),
+            None,
+        )
+        if next_card is None:
+            next_status = "all_planned_slots_evaluated"
+            next_action = "review all Stage 7 official results"
+            next_reason = "all planned Stage 7 candidates already have official submission records."
+        else:
+            next_status = "await_user_confirmation"
+            next_action = f"review {next_card['card_path']}"
+            next_reason = f"{next_card['slot']} is the first structurally valid Stage 7 candidate without an official result."
+    rows.extend(
+        [
+            "",
+            "## Candidate State",
+            "",
+            f"- {len(cards)} primary Stage 7 slot cards are structurally ready.",
+            "- Reserve candidates and blocked training routes are tracked in `reports/STAGE7_REFERENCE_SUBMISSION_LIST.md`.",
+            "- A ready package is not an official score claim; ranking requires competition evaluation.",
+            "",
+            "## Today's Recommended Operation",
+            "",
+            "```yaml",
+            "NEXT_ACTION:",
+            f"  status: {next_status}",
+            f"  action: \"{next_action}\"",
+            f"  reason: \"{next_reason}\"",
+            "```",
+            "",
+            "## Safety",
+            "",
+            "- This script does not call `kaggle competitions submit`.",
+            "- It does not upload a package or consume quota.",
+            "- Structural validity is not an official score claim.",
+            "",
+        ]
+    )
+    return "\n".join(rows)
+
+
+def find_stage7_card_result(
+    rows: list[dict[str, Any]],
+    card: dict[str, Any],
+) -> dict[str, Any] | None:
+    hash_prefix = str(card.get("zip_sha256") or "")[:8].lower()
+    candidate = str(card.get("candidate") or "").lower()
+    for row in rows:
+        description = str(row.get("description") or "").lower()
+        if hash_prefix and hash_prefix in description:
+            return row
+        if candidate and candidate in description:
+            return row
+    return None
+
+
+def first_pending_slot(
+    cards: list[dict[str, Any]],
+    card_results: dict[str, dict[str, Any] | None],
+) -> tuple[str | None, dict[str, Any] | None]:
+    for card in cards:
+        result = card_results.get(card["slot"])
+        if result and "PENDING" in str(result.get("status") or "").upper():
+            return card["slot"], result
+    return None, None
+
+
+def first_pending_result(
+    cards: list[dict[str, Any]],
+    card_results: list[dict[str, Any] | None],
+) -> dict[str, Any] | None:
+    for _card, result in zip(cards, card_results):
+        if result and "PENDING" in str(result.get("status") or "").upper():
+            return result
+    return None
 
 
 def load_policy(path: Path) -> dict[str, Any]:

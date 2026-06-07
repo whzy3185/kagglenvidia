@@ -1,0 +1,28 @@
+{
+  "id": "muelsyse111/nemotron-stage7-multi-anchor-fusion-factory",
+  "id_no": 121917067,
+  "title": "nemotron stage7 multi anchor fusion factory",
+  "code_file": "nemotron-stage7-multi-anchor-fusion-factory.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "nvidia-nemotron-model-reasoning-challenge"
+  ],
+  "model_sources": [
+    "keithtyser/nemotron-086-adapters-20260605/Transformers/public_hk_to_kn_mamba_lam1p0/1",
+    "keithtyser/nemotron-086-adapters-20260605/Transformers/public_hk_to_kn_lm_head_lam1p0/1",
+    "keithtyser/nemotron-086-adapters-20260605/Transformers/public_kn_to_hk_lm_head_lam1p0/1",
+    "keithtyser/nemotron-086-adapters-20260605/Transformers/public_hk_to_kn_no_experts_lam1p0/1",
+    "keithtyser/nemotron-086-adapters-20260605/Transformers/huikang_default20_ready/1",
+    "keithtyser/nemotron-086-adapters-20260605/Transformers/public_kn_to_hk_lm_head_lam1p0_alpha32/1"
+  ],
+  "docker_image": "gcr.io/kaggle-images/python@sha256:e5452ce6268c2e8345cfe5141f31ca7ff47032aca46a7ea532bbb87481281d0c",
+  "machine_shape": "None"
+}

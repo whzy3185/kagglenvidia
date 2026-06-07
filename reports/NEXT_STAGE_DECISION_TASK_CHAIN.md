@@ -68,3 +68,46 @@ NEXT_ACTION:
   action: "kaggle kernels status muelsyse111/nemotron-repack-hammad-087 ; kaggle kernels files muelsyse111/nemotron-repack-hammad-087"
   reason: "Hammad 的 repack notebook 已经 push，下一步只剩确认 Kaggle Output 是否生成 submission.zip。"
 ```
+
+## Stage 7 强制研究前置 Gate
+
+从现在开始，后续训练、fusion、数据 mix、notebook 生成和 Kaggle push 都不能直接从 public score 或 notebook 标题出发。必须先完成：
+
+```powershell
+python scripts\26_stage7_research_gate.py
+```
+
+研究 gate 的依据文件：
+
+```text
+configs/stage7_master_research_targets.yaml
+reports/STAGE7_MASTER_DISCUSSION_RESEARCH.md
+reports/PUBLIC_PRIVATE_OVERFIT_SOURCE_REVIEW.md
+reports/STAGE7_RESEARCH_GATE_STATUS.md
+```
+
+必读来源包括：
+
+- 当前 Nemotron leaderboard 前排队伍与可见 Master+ / Grandmaster 账号的公开 discussions、code、datasets、models；
+- Nemotron discussion topics：`704491`、`703240`、`687961`、`698293`、`681745`、`704473`、`704595`、`702447`、`701761`；
+- 已结束或类似比赛复盘：AIMO、ARC Prize、LLM Science Exam、Don't Overfit / Don't Overfit II；
+- 官方 NVIDIA Nemotron / NeMo / metric / evaluator 文档。
+
+如果 gate 不通过，只允许继续浏览和整理来源，不允许设计新候选、不允许生成新 submission notebook、不允许提交比赛。
+
+每个新候选必须包含：
+
+```yaml
+RESEARCH_BACKED_CANDIDATE_CARD:
+  candidate:
+  source_accounts_reviewed:
+  kaggle_topics_reviewed:
+  similar_writeups_reviewed:
+  concrete_mechanism:
+  category_tradeoff_hypothesis:
+  expected_rank_effect:
+  public_private_overfit_risk:
+  why_not_title_claim_only:
+  why_not_duplicate_public_output:
+  submit_allowed: false
+```

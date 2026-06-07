@@ -1,11 +1,19 @@
 # Scorecard
 
-- raw_submission_rows_saved: `logs/submissions_raw_20260606.txt`
+- raw_submission_rows_saved: `logs/submissions_raw_20260607.txt`
 - query_ok: True
 - submission_history_query_status: success
 - submission_history_query_success: True
 - authentication_status: success
 - raw_result: `ref,fileName,date,description,status,publicScore,privateScore
+
+53446707,submission.zip,2026-06-07 09:39:49.340000,20260607_slot3_nemotron-s7-modulewise-delta-svd-r32_00d6bd3f,SubmissionStatus.PENDING,,
+
+53445313,submission.zip,2026-06-07 08:38:09.147000,20260607_slot2_nemotron-s7-delta-space-svd-r32_b31b987c,SubmissionStatus.COMPLETE,0.85,
+
+53443584,submission.zip,2026-06-07 07:16:45.037000,20260607_slot1_nemotron-s7-protected-rehearsal_641c57f3,SubmissionStatus.COMPLETE,0.85,
+
+53424138,submission.zip,2026-06-06 13:10:08.210000,20260606_slot4_stage7_keithtyser_taskarith_3b1d2fc3,SubmissionStatus.COMPLETE,0.85,
 
 53417126,submission.zip,2026-06-06 09:01:30.780000,slot3_kuang_087_training_6b3f0b1397e7,SubmissionStatus.COMPLETE,0.63,
 
@@ -42,6 +50,10 @@
 
 | submission_id | date | description | status | public_score |
 | --- | --- | --- | --- | --- |
+| 53446707 | 2026-06-07 09:39:49.340000 | 20260607_slot3_nemotron-s7-modulewise-delta-svd-r32_00d6bd3f | SubmissionStatus.PENDING | null |
+| 53445313 | 2026-06-07 08:38:09.147000 | 20260607_slot2_nemotron-s7-delta-space-svd-r32_b31b987c | SubmissionStatus.COMPLETE | 0.85 |
+| 53443584 | 2026-06-07 07:16:45.037000 | 20260607_slot1_nemotron-s7-protected-rehearsal_641c57f3 | SubmissionStatus.COMPLETE | 0.85 |
+| 53424138 | 2026-06-06 13:10:08.210000 | 20260606_slot4_stage7_keithtyser_taskarith_3b1d2fc3 | SubmissionStatus.COMPLETE | 0.85 |
 | 53417126 | 2026-06-06 09:01:30.780000 | slot3_kuang_087_training_6b3f0b1397e7 | SubmissionStatus.COMPLETE | 0.63 |
 | 53416809 | 2026-06-06 08:51:14.093000 | slot2_dedquoc_svd_fusion_ccb88b2607ae | SubmissionStatus.COMPLETE | 0.78 |
 | 53416566 | 2026-06-06 08:42:48.233000 | slot1_hammad_agi_for_medal_087_945fe257b622 | SubmissionStatus.COMPLETE | 0.85 |

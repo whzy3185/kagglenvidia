@@ -1,0 +1,18 @@
+{
+  "id": "muelsyse111/nemotron-s7-muon-v5-audit",
+  "title": "Nemotron S7 Muon V5 Audit",
+  "code_file": "nemotron_s7_muon_v5_audit.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "false",
+  "enable_internet": "false",
+  "dataset_sources": [],
+  "competition_sources": [
+    "nvidia-nemotron-model-reasoning-challenge"
+  ],
+  "kernel_sources": [
+    "muelsyse111/nemotron-s7-muon-full-training-v5"
+  ],
+  "model_sources": []
+}

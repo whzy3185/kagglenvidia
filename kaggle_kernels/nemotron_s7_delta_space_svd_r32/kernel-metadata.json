@@ -1,0 +1,20 @@
+{
+  "id": "muelsyse111/nemotron-s7-delta-space-svd-r32",
+  "title": "Nemotron S7 Delta Space SVD R32",
+  "code_file": "nemotron_s7_delta_space_svd_r32.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "false",
+  "enable_internet": "false",
+  "dataset_sources": [],
+  "competition_sources": [
+    "nvidia-nemotron-model-reasoning-challenge"
+  ],
+  "kernel_sources": [],
+  "model_sources": [
+    "keithtyser/nemotron-086-adapters-20260605/Transformers/public_hk_to_kn_lm_head_lam1p0/1",
+    "keithtyser/nemotron-086-adapters-20260605/Transformers/public_kn_to_hk_lm_head_lam1p0/1",
+    "keithtyser/nemotron-086-adapters-20260605/Transformers/public_hk_to_kn_mamba_lam1p0/1"
+  ]
+}

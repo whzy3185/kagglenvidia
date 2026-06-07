@@ -1,0 +1,210 @@
+stage: 7
+name: master_discussion_and_writeup_research_targets
+competition: nvidia-nemotron-model-reasoning-challenge
+team: muelsyse111
+updated_at: "2026-06-06"
+
+policy:
+  before_candidate_change: required
+  before_notebook_generation: required
+  before_kaggle_push: required
+  before_competition_submit: required
+  purpose: "Do not design new adapter/fusion/training changes until high-rank discussion evidence and similar-competition writeups have been reviewed."
+  forbidden_shortcuts:
+    - "do not rely only on notebook titles such as 0.87/0.89"
+    - "do not tune from public leaderboard feedback only"
+    - "do not submit a candidate whose research gate is missing"
+
+current_leaderboard_snapshot:
+  source_command: "kaggle competitions leaderboard nvidia-nemotron-model-reasoning-challenge --show --page-size 20"
+  pulled_at: "2026-06-06"
+  top_public_teams:
+    - rank: 1
+      team_name: "NullSira"
+      public_score: 0.89
+    - rank: 2
+      team_name: "Y | M | F"
+      public_score: 0.87
+    - rank: 3
+      team_name: "Researcher 7919"
+      public_score: 0.87
+    - rank: 4
+      team_name: "Alehandreus & Yurnero"
+      public_score: 0.87
+    - rank: 5
+      team_name: "Team"
+      public_score: 0.87
+    - rank: 6
+      team_name: "Kh0a"
+      public_score: 0.87
+    - rank: 7
+      team_name: "Fate"
+      public_score: 0.87
+    - rank: 8
+      team_name: "LX"
+      public_score: 0.87
+    - rank: 9
+      team_name: "JK-Piece"
+      public_score: 0.87
+    - rank: 10
+      team_name: "Lora is all you need"
+      public_score: 0.87
+    - rank: 11
+      team_name: "Surya milenial"
+      public_score: 0.87
+    - rank: 12
+      team_name: "Yoshinari Kawashima"
+      public_score: 0.87
+    - rank: 13
+      team_name: "Michal Gromadzki"
+      public_score: 0.87
+    - rank: 14
+      team_name: "GeniusYY"
+      public_score: 0.87
+    - rank: 15
+      team_name: "Tsingtao Bro"
+      public_score: 0.87
+    - rank: 16
+      team_name: "kansai-kanto-kaggler"
+      public_score: 0.87
+    - rank: 17
+      team_name: "sda sad ads"
+      public_score: 0.87
+    - rank: 18
+      team_name: "coreforged"
+      public_score: 0.87
+
+nemotron_discussion_topics:
+  high_priority:
+    - topic_id: 704491
+      title: "From Solving Overfitting to Fighting Non-Determinism"
+      reason: "training/evaluation variance, seed instability, category balancing, Muon mention"
+      required_read: true
+      extracted_actions:
+        - "record seed and run-to-run variance"
+        - "do not interpret a single 0.86/0.85 delta as definitive"
+        - "evaluate stability of adapter family, not only mean score"
+    - topic_id: 703240
+      title: "From 8% to 71% on Cryptarithm Tasks, But Score Still Stuck at 0.86"
+      reason: "cryptarithm gains can regress bit/gravity/numeral/unit categories"
+      required_read: true
+      extracted_actions:
+        - "track category tradeoff before data-mix change"
+        - "avoid single-category overtraining"
+        - "preserve saturated categories while adding weak-category data"
+    - topic_id: 687961
+      title: "Training Nemotron-3-Nano-30B-A3B-BF16 with rank 32 LoRA on length 8192 sequences"
+      reason: "memory/throughput constraints for RTX Pro 6000 and sequence length 8192"
+      required_read: true
+      extracted_actions:
+        - "keep realistic expectations for full training runtime"
+        - "record microbatch, VRAM, fused CE, and FA2/Unsloth constraints"
+    - topic_id: 698293
+      title: "97.2% Gold-Conditioned Symbolic Solver Exposing Digit Mappings and Operators"
+      reason: "symbolic/equation solver code and oracle-vs-trainable distinction"
+      required_read: true
+      extracted_actions:
+        - "use solver outputs for data generation/analysis only"
+        - "do not confuse gold-conditioned oracle with deployable inference"
+    - topic_id: 681745
+      title: "How to Get Started + Nemotron Model Reasoning Challenge Resources"
+      reason: "official resources, metric/eval, NVIDIA repos, data designer/curator/RL"
+      required_read: true
+      extracted_actions:
+        - "review official metric and current evaluation page settings"
+        - "prefer official NVIDIA repos/docs for infrastructure decisions"
+    - topic_id: 704473
+      title: "Extending Model Merging to LoRa Ensembling"
+      reason: "LoRA ensembling/fusion experiments"
+      required_read: true
+      extracted_actions:
+        - "compare any new fusion to this discussion before implementation"
+    - topic_id: 704595
+      title: "0.89 and cryptarithm puzzle hypothesis"
+      reason: "top score may require cryptarithm breakthrough"
+      required_read: true
+      extracted_actions:
+        - "separate evidence from speculation before changing data mix"
+    - topic_id: 702447
+      title: "How to break 0.86 ceiling"
+      reason: "community discussion around plateau breaking"
+      required_read: true
+      extracted_actions:
+        - "extract concrete mechanisms only"
+    - topic_id: 701761
+      title: "Score 0.87 started queuing at the top of leaderboard"
+      reason: "timing and plateau context"
+      required_read: true
+      extracted_actions:
+        - "treat rank movement as primary signal"
+
+external_accounts_to_review:
+  note: "Kaggle CLI exposes team names but not all user tiers in topic CSV. Use Kaggle profile pages or Chrome/manual browser when tier verification matters."
+  priority_accounts_or_teams:
+    - "NullSira"
+    - "Y | M | F"
+    - "Kh0a"
+    - "Surya milenial"
+    - "Yoshinari Kawashima"
+    - "Michal Gromadzki"
+    - "GeniusYY"
+    - "kansai-kanto-kaggler"
+    - "Taha Alam"
+    - "Mohamed Amr"
+    - "Tong Hui Kang"
+    - "Rauffauzan Rambe"
+  required_review_fields:
+    - "Kaggle tier if visible"
+    - "competition discussions"
+    - "public notebooks"
+    - "public datasets/models"
+    - "prior finished competition writeups"
+    - "GitHub/Hugging Face links"
+    - "reusable method"
+    - "risk and license"
+
+similar_finished_competitions:
+  required:
+    - name: "AI Mathematical Olympiad / AIMO"
+      why: "LLM reasoning, synthetic math data, public/private shake-up, verifier and solver workflows"
+      seed_links:
+        - "https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/leaderboard"
+        - "https://arxiv.org/abs/2504.16891"
+        - "https://github.com/imagination-research/aimo2/"
+      search_terms:
+        - "Kaggle AIMO winner writeup"
+        - "AI Mathematical Olympiad Progress Prize solution writeup"
+        - "AIMO Kaggle grandmaster discussion"
+    - name: "ARC Prize 2024/2025"
+      why: "reasoning puzzle generation, solver pipelines, public/private overfitting"
+      seed_links:
+        - "https://arcprize.org/competitions/2024/"
+        - "https://arxiv.org/abs/2412.04604"
+        - "https://arcprize.org/media/arc-prize-2024-technical-report.pdf"
+        - "https://da-fr.github.io/arc-prize-2024/"
+        - "https://github.com/zoenguyenramirez/arc-prize-2024"
+      search_terms:
+        - "ARC Prize Kaggle winner writeup"
+        - "ARC Prize 2024 solution repository"
+    - name: "LLM Science Exam"
+      why: "LLM competition, retrieval/data filtering/ensemble lessons"
+      seed_links:
+        - "https://www.linkedin.com/posts/kaggle_its-a-wrap-our-llm-science-exam-competition-activity-7123411997051772929-Jn5t"
+      search_terms:
+        - "Kaggle LLM Science Exam winner writeup"
+        - "Kaggle LLM Science Exam solution GitHub"
+    - name: "Don't Overfit / Don't Overfit II"
+      why: "public leaderboard overfitting and shake-up discipline"
+      search_terms:
+        - "Kaggle Don't Overfit solution writeup"
+        - "Kaggle public private leaderboard overfitting"
+
+required_outputs:
+  before_new_candidate:
+    - "reports/STAGE7_MASTER_DISCUSSION_RESEARCH.md"
+    - "reports/STAGE7_RESEARCH_GATE_STATUS.md"
+  per_candidate:
+    - "candidate source notes"
+    - "discussion evidence summary"
+    - "similar-competition transfer note"
+    - "why this change is not just public-LB tuning"

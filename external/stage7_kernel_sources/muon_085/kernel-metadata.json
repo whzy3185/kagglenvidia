@@ -1,0 +1,32 @@
+{
+  "id": "pkuszboi/0-85-lb-training-with-muon",
+  "id_no": 119542394,
+  "title": "[0.85 LB] Training with Muon",
+  "code_file": "0-85-lb-training-with-muon.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "gpu"
+  ],
+  "dataset_sources": [
+    "mayukh18/nemotron-packages",
+    "dgxchen/nemotron-cot-tong",
+    "konbu17/nemotron-sft-lora-cot-selection",
+    "dennisfong/nvidia-nemotron-offline-packages",
+    "rubyducklove/nvidia-cutlass"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [
+    "nvidia-nemotron-model-reasoning-challenge"
+  ],
+  "model_sources": [
+    "metric/nemotron-3-nano-30b-a3b-bf16/Transformers/default/1",
+    "huikang/nemotron-adapter/Transformers/default/20"
+  ],
+  "docker_image": "gcr.io/kaggle-images/python@sha256:c370a5ff133d162d17c2dca332b50f3e85c0b0ed1471ee18e98e3009eee80b08",
+  "machine_shape": "None"
+}

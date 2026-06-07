@@ -1,0 +1,216 @@
+{
+  "stage": 7,
+  "candidates": [
+    {
+      "slug": "nemotron-s7-seed-stability-replay",
+      "title": "Nemotron S7 Seed Stability Replay",
+      "route_type": "full_training",
+      "mechanism": "deterministic_seed_and_reproducible_shuffle",
+      "hypothesis": "reduce run-to-run training variance while preserving the full Mohamed replay recipe",
+      "sources": [
+        "704491",
+        "pkuszboi/0-85-lb-training-with-muon"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s7-seed-stability-replay",
+      "kernel_dir": "kaggle_kernels\\nemotron_s7_seed_stability_replay",
+      "metadata_path": "kaggle_kernels\\nemotron_s7_seed_stability_replay\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s7_seed_stability_replay\\nemotron_s7_seed_stability_replay.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s7_seed_stability_replay\"",
+      "competition_submit_called": false
+    },
+    {
+      "slug": "nemotron-s7-category-roundrobin",
+      "title": "Nemotron S7 Category Round Robin",
+      "route_type": "full_training",
+      "mechanism": "category_balanced_round_robin_curriculum",
+      "hypothesis": "avoid long same-category runs and reduce catastrophic forgetting across the nine task families",
+      "sources": [
+        "703240",
+        "tonghuikang/nemotron"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s7-category-round-robin",
+      "kernel_dir": "kaggle_kernels\\nemotron_s7_category_roundrobin",
+      "metadata_path": "kaggle_kernels\\nemotron_s7_category_roundrobin\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s7_category_roundrobin\\nemotron_s7_category_roundrobin.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s7_category_roundrobin\"",
+      "competition_submit_called": false
+    },
+    {
+      "slug": "nemotron-s7-protected-rehearsal",
+      "title": "Nemotron S7 Protected Rehearsal",
+      "route_type": "full_training",
+      "mechanism": "protected_category_loss_reweighting",
+      "hypothesis": "protect bit, gravity, numeral, and unit conversion while retaining weak-category replay",
+      "sources": [
+        "703240",
+        "continual rehearsal"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s7-protected-rehearsal",
+      "kernel_dir": "kaggle_kernels\\nemotron_s7_protected_rehearsal",
+      "metadata_path": "kaggle_kernels\\nemotron_s7_protected_rehearsal\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s7_protected_rehearsal\\nemotron_s7_protected_rehearsal.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s7_protected_rehearsal\"",
+      "competition_submit_called": false
+    },
+    {
+      "slug": "nemotron-s7-weak-protected-curriculum",
+      "title": "Nemotron S7 Weak Protected Curriculum",
+      "route_type": "full_training",
+      "mechanism": "weak_category_plus_protected_interleaving",
+      "hypothesis": "learn cryptarithm/equation weaknesses without placing weak-category gradients in an isolated block",
+      "sources": [
+        "703240",
+        "698293"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s7-weak-protected-curriculum",
+      "kernel_dir": "kaggle_kernels\\nemotron_s7_weak_protected_curriculum",
+      "metadata_path": "kaggle_kernels\\nemotron_s7_weak_protected_curriculum\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s7_weak_protected_curriculum\\nemotron_s7_weak_protected_curriculum.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s7_weak_protected_curriculum\"",
+      "competition_submit_called": false
+    },
+    {
+      "slug": "nemotron-s7-answer-tail-objective",
+      "title": "Nemotron S7 Answer Tail Objective",
+      "route_type": "full_training",
+      "mechanism": "tail_focused_loss_masking",
+      "hypothesis": "reduce verbose trace imitation and concentrate rank-32 capacity on decisive reasoning and boxed answers",
+      "sources": [
+        "tonghuikang/nemotron loss_config.py",
+        "reasoning trace compression"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s7-answer-tail-objective",
+      "kernel_dir": "kaggle_kernels\\nemotron_s7_answer_tail_objective",
+      "metadata_path": "kaggle_kernels\\nemotron_s7_answer_tail_objective\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s7_answer_tail_objective\\nemotron_s7_answer_tail_objective.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s7_answer_tail_objective\"",
+      "competition_submit_called": false
+    },
+    {
+      "slug": "nemotron-s7-length-stratified",
+      "title": "Nemotron S7 Length Stratified Curriculum",
+      "route_type": "full_training",
+      "mechanism": "alternating_long_short_sequence_curriculum",
+      "hypothesis": "avoid optimization being dominated by either short easy traces or long hard traces",
+      "sources": [
+        "687961",
+        "curriculum learning"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s7-length-stratified-curriculum",
+      "kernel_dir": "kaggle_kernels\\nemotron_s7_length_stratified",
+      "metadata_path": "kaggle_kernels\\nemotron_s7_length_stratified\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s7_length_stratified\\nemotron_s7_length_stratified.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s7_length_stratified\"",
+      "competition_submit_called": false
+    },
+    {
+      "slug": "nemotron-s7-mamba-inproj-specialist",
+      "title": "Nemotron S7 Mamba InProj Specialist",
+      "route_type": "full_training",
+      "mechanism": "selective_mamba_in_proj_adaptation",
+      "hypothesis": "constrain updates to Mamba input projections to reduce cross-task interference under rank 32",
+      "sources": [
+        "687961",
+        "selective parameter-efficient adaptation"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s7-mamba-inproj-specialist",
+      "kernel_dir": "kaggle_kernels\\nemotron_s7_mamba_inproj_specialist",
+      "metadata_path": "kaggle_kernels\\nemotron_s7_mamba_inproj_specialist\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s7_mamba_inproj_specialist\\nemotron_s7_mamba_inproj_specialist.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s7_mamba_inproj_specialist\"",
+      "competition_submit_called": false
+    },
+    {
+      "slug": "nemotron-s7-muon-full",
+      "title": "Nemotron S7 Muon Full Training",
+      "route_type": "muon_training",
+      "mechanism": "muon_optimizer_training",
+      "hypothesis": "use the public Muon implementation reported by a rank-45 competitor as a more stable optimizer path",
+      "sources": [
+        "https://www.kaggle.com/code/pkuszboi/0-85-lb-training-with-muon",
+        "704491",
+        "https://github.com/KellerJordan/Muon"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s7-muon-full-training",
+      "kernel_dir": "kaggle_kernels\\nemotron_s7_muon_full",
+      "metadata_path": "kaggle_kernels\\nemotron_s7_muon_full\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s7_muon_full\\nemotron_s7_muon_full.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s7_muon_full\"",
+      "competition_submit_called": false
+    },
+    {
+      "slug": "nemotron-s7-ties-sign-merge",
+      "title": "Nemotron S7 TIES Sign Merge",
+      "route_type": "adapter_merge",
+      "mechanism": "ties_trim_elect_sign_merge",
+      "hypothesis": "reduce destructive interference between several 0.86-class adapter anchors",
+      "sources": [
+        "https://arxiv.org/abs/2306.01708",
+        "https://github.com/prateeky2806/ties-merging"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s7-ties-sign-merge",
+      "kernel_dir": "kaggle_kernels\\nemotron_s7_ties_sign_merge",
+      "metadata_path": "kaggle_kernels\\nemotron_s7_ties_sign_merge\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s7_ties_sign_merge\\nemotron_s7_ties_sign_merge.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s7_ties_sign_merge\"",
+      "competition_submit_called": false
+    },
+    {
+      "slug": "nemotron-s7-dare-merge",
+      "title": "Nemotron S7 DARE Merge",
+      "route_type": "adapter_merge",
+      "mechanism": "dare_drop_and_rescale_merge",
+      "hypothesis": "sparsify conflicting adapter deltas before combining them",
+      "sources": [
+        "https://arxiv.org/abs/2311.03099",
+        "Hugging Face PEFT model merging"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s7-dare-merge",
+      "kernel_dir": "kaggle_kernels\\nemotron_s7_dare_merge",
+      "metadata_path": "kaggle_kernels\\nemotron_s7_dare_merge\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s7_dare_merge\\nemotron_s7_dare_merge.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s7_dare_merge\"",
+      "competition_submit_called": false
+    },
+    {
+      "slug": "nemotron-s7-layerwise-soup",
+      "title": "Nemotron S7 Layerwise Adapter Soup",
+      "route_type": "adapter_merge",
+      "mechanism": "module_aware_layerwise_weighted_soup",
+      "hypothesis": "use different anchor emphasis for attention, Mamba, expert, and output modules",
+      "sources": [
+        "model soups",
+        "704473",
+        "Hugging Face PEFT model merging"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s7-layerwise-adapter-soup",
+      "kernel_dir": "kaggle_kernels\\nemotron_s7_layerwise_soup",
+      "metadata_path": "kaggle_kernels\\nemotron_s7_layerwise_soup\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s7_layerwise_soup\\nemotron_s7_layerwise_soup.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s7_layerwise_soup\"",
+      "competition_submit_called": false
+    }
+  ],
+  "evidence": [
+    {
+      "source": "Kaggle discussion 704491",
+      "url": "https://www.kaggle.com/competitions/nvidia-nemotron-model-reasoning-challenge/discussion/704491",
+      "lesson": "training and evaluation variance are material; fixed seed, logging, and optimizer stability matter"
+    },
+    {
+      "source": "Kaggle discussion 703240",
+      "url": "https://www.kaggle.com/competitions/nvidia-nemotron-model-reasoning-challenge/discussion/703240",
+      "lesson": "cryptarithm gains can be cancelled by forgetting in bit, gravity, numeral, and unit conversion"
+    },
+    {
+      "source": "Kaggle discussion 687961",
+      "url": "https://www.kaggle.com/competitions/nvidia-nemotron-model-reasoning-challenge/discussion/687961",
+      "lesson": "rank-32, length-8192 training is feasible on Kaggle RTX Pro 6000 with fused CE and careful microbatching"
+    },
+    {
+      "source": "Kaggle discussion 698293",
+      "url": "https://www.kaggle.com/competitions/nvidia-nemotron-model-reasoning-challenge/discussion/698293",
+      "lesson": "symbolic solvers are useful as distillation/data oracles, not inference-time shortcuts"
+    }
+  ]
+}
