@@ -7,15 +7,15 @@
 - authentication_status: success
 - raw_result: `ref,fileName,date,description,status,publicScore,privateScore
 
-53467676,submission.zip,2026-06-08 05:48:54.697000,20260608_slot5_nemotron-s7-ties-sign-merge_b03e975e,SubmissionStatus.PENDING,,
+53467676,submission.zip,2026-06-08 05:48:54.697000,20260608_slot5_nemotron-s7-ties-sign-merge_b03e975e,SubmissionStatus.COMPLETE,0.84,
 
-53467675,submission.zip,2026-06-08 05:48:51.570000,20260608_slot4_nemotron-s7-seed-stability-replay_f5dde9e0,SubmissionStatus.PENDING,,
+53467675,submission.zip,2026-06-08 05:48:51.570000,20260608_slot4_nemotron-s7-seed-stability-replay_f5dde9e0,SubmissionStatus.COMPLETE,0.85,
 
-53467674,submission.zip,2026-06-08 05:48:48.117000,20260608_slot3_nemotron-s7-weak-protected-curriculum-v2_631a2bfb,SubmissionStatus.PENDING,,
+53467674,submission.zip,2026-06-08 05:48:48.117000,20260608_slot3_nemotron-s7-weak-protected-curriculum-v2_631a2bfb,SubmissionStatus.COMPLETE,0.85,
 
-53467618,submission.zip,2026-06-08 05:44:58.403000,20260608_slot2_nemotron-s8-answer-tail-512-v1_b79e16fc,SubmissionStatus.PENDING,,
+53467618,submission.zip,2026-06-08 05:44:58.403000,20260608_slot2_nemotron-s8-answer-tail-512-v1_b79e16fc,SubmissionStatus.COMPLETE,0.27,
 
-53467616,submission.zip,2026-06-08 05:44:55.010000,20260608_slot1_nemotron-s8-guarded-weak-replay-v1_6b54462e,SubmissionStatus.PENDING,,
+53467616,submission.zip,2026-06-08 05:44:55.010000,20260608_slot1_nemotron-s8-guarded-weak-replay-v1_6b54462e,SubmissionStatus.COMPLETE,0.84,
 
 53449930,submission.zip,2026-06-07 12:05:13.713000,20260607_slot5_nemotron-s7-mamba-inproj-specialist-v2_852e8025,SubmissionStatus.COMPLETE,0.81,
 
@@ -64,11 +64,11 @@
 
 | submission_id | date | description | status | public_score |
 | --- | --- | --- | --- | --- |
-| 53467676 | 2026-06-08 05:48:54.697000 | 20260608_slot5_nemotron-s7-ties-sign-merge_b03e975e | SubmissionStatus.PENDING | null |
-| 53467675 | 2026-06-08 05:48:51.570000 | 20260608_slot4_nemotron-s7-seed-stability-replay_f5dde9e0 | SubmissionStatus.PENDING | null |
-| 53467674 | 2026-06-08 05:48:48.117000 | 20260608_slot3_nemotron-s7-weak-protected-curriculum-v2_631a2bfb | SubmissionStatus.PENDING | null |
-| 53467618 | 2026-06-08 05:44:58.403000 | 20260608_slot2_nemotron-s8-answer-tail-512-v1_b79e16fc | SubmissionStatus.PENDING | null |
-| 53467616 | 2026-06-08 05:44:55.010000 | 20260608_slot1_nemotron-s8-guarded-weak-replay-v1_6b54462e | SubmissionStatus.PENDING | null |
+| 53467676 | 2026-06-08 05:48:54.697000 | 20260608_slot5_nemotron-s7-ties-sign-merge_b03e975e | SubmissionStatus.COMPLETE | 0.84 |
+| 53467675 | 2026-06-08 05:48:51.570000 | 20260608_slot4_nemotron-s7-seed-stability-replay_f5dde9e0 | SubmissionStatus.COMPLETE | 0.85 |
+| 53467674 | 2026-06-08 05:48:48.117000 | 20260608_slot3_nemotron-s7-weak-protected-curriculum-v2_631a2bfb | SubmissionStatus.COMPLETE | 0.85 |
+| 53467618 | 2026-06-08 05:44:58.403000 | 20260608_slot2_nemotron-s8-answer-tail-512-v1_b79e16fc | SubmissionStatus.COMPLETE | 0.27 |
+| 53467616 | 2026-06-08 05:44:55.010000 | 20260608_slot1_nemotron-s8-guarded-weak-replay-v1_6b54462e | SubmissionStatus.COMPLETE | 0.84 |
 | 53449930 | 2026-06-07 12:05:13.713000 | 20260607_slot5_nemotron-s7-mamba-inproj-specialist-v2_852e8025 | SubmissionStatus.COMPLETE | 0.81 |
 | 53448593 | 2026-06-07 11:05:59.037000 | 20260607_slot4_nemotron-s7-muon-full-v5-audited_2d42d0ad | SubmissionStatus.COMPLETE | 0.84 |
 | 53446707 | 2026-06-07 09:39:49.340000 | 20260607_slot3_nemotron-s7-modulewise-delta-svd-r32_00d6bd3f | SubmissionStatus.COMPLETE | 0.85 |
