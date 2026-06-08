@@ -1,0 +1,64 @@
+{
+  "stage": "8_retry",
+  "generated_at": "2026-06-08T13:47:05",
+  "competition_submission_executed": false,
+  "candidates": [
+    {
+      "slug": "nemotron-s8-attn-mamba-no-lmhead-run2",
+      "title": "Nemotron S8 Attn Mamba No LMHead V1",
+      "route_type": "full_training",
+      "mechanism": "attention_mamba_without_lm_head",
+      "hypothesis": "avoid large lm_head/MLP memorization and put rank-32 capacity into attention plus Mamba routing-sensitive projections",
+      "sources": [
+        "LoRA paper",
+        "AdaLoRA rank allocation",
+        "Kaggle discussion 687961"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s8-attn-mamba-no-lmhead-run2",
+      "kernel_dir": "kaggle_kernels\\nemotron_s8_attn_mamba_no_lmhead_run2",
+      "metadata_path": "kaggle_kernels\\nemotron_s8_attn_mamba_no_lmhead_run2\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s8_attn_mamba_no_lmhead_run2\\nemotron_s8_attn_mamba_no_lmhead_run2.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s8_attn_mamba_no_lmhead_run2\"",
+      "competition_submit_called": false,
+      "source_candidate": "nemotron-s8-attn-mamba-no-lmhead-v1"
+    },
+    {
+      "slug": "nemotron-s8-mlp-mamba-no-lmhead-run2",
+      "title": "Nemotron S8 MLP Mamba No LMHead V1",
+      "route_type": "full_training",
+      "mechanism": "mlp_mamba_without_attention_lm_head",
+      "hypothesis": "shift rank-32 capacity toward transformation modules while avoiding output-head drift",
+      "sources": [
+        "AdaLoRA rank allocation",
+        "DoRA weight decomposition",
+        "Kaggle discussion 687961"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s8-mlp-mamba-no-lmhead-run2",
+      "kernel_dir": "kaggle_kernels\\nemotron_s8_mlp_mamba_no_lmhead_run2",
+      "metadata_path": "kaggle_kernels\\nemotron_s8_mlp_mamba_no_lmhead_run2\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s8_mlp_mamba_no_lmhead_run2\\nemotron_s8_mlp_mamba_no_lmhead_run2.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s8_mlp_mamba_no_lmhead_run2\"",
+      "competition_submit_called": false,
+      "source_candidate": "nemotron-s8-mlp-mamba-no-lmhead-v1"
+    },
+    {
+      "slug": "nemotron-s8-rank-stable-alpha64-run2",
+      "title": "Nemotron S8 Rank Stable Alpha64 V1",
+      "route_type": "full_training",
+      "mechanism": "rank32_high_alpha_capacity_test",
+      "hypothesis": "increase LoRA update amplitude at fixed legal rank 32 after several conservative variants landed below the 0.86 family",
+      "sources": [
+        "rank-stabilized LoRA",
+        "LoRA-GA initialization",
+        "Kaggle discussion 704491"
+      ],
+      "kernel_id": "muelsyse111/nemotron-s8-rank-stable-alpha64-run2",
+      "kernel_dir": "kaggle_kernels\\nemotron_s8_rank_stable_alpha64_run2",
+      "metadata_path": "kaggle_kernels\\nemotron_s8_rank_stable_alpha64_run2\\kernel-metadata.json",
+      "notebook_path": "kaggle_kernels\\nemotron_s8_rank_stable_alpha64_run2\\nemotron_s8_rank_stable_alpha64_run2.ipynb",
+      "push_command": "kaggle kernels push -p \"kaggle_kernels\\nemotron_s8_rank_stable_alpha64_run2\"",
+      "competition_submit_called": false,
+      "source_candidate": "nemotron-s8-rank-stable-alpha64-v1"
+    }
+  ]
+}
