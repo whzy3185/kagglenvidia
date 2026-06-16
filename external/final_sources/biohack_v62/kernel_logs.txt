@@ -1,0 +1,361 @@
+﻿[{"stream_name":"stderr","time":4.245942969,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":4.245980509,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":4.245982889,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":4.245984079,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":4.580206583,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":4.580235513,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":4.580237433,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":4.5802386330000004,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":5.31795922,"data":"{'version': 'v62_d3_sparse_trust_finisher', 'MAX_STEPS': 14, 'LR': 9e-08, 'BLEND_ALPHA': 0.001, 'MAX_SELECTED_TENSORS': 600, 'D3_UPSAMPLE': 5, 'ENABLE_D4': False, 'D4_UPSAMPLE': 2, 'CRYPTO_ROW_TIMEOUT_SEC': 0.15, 'START_ADAPTER_PATH': 'AUTO'}\n"}
+,{"stream_name":"stdout","time":5.332236608,"data":"Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":5.332260128,"data":"/dev/loop1       20G  520K   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":5.332261848,"data":"overlay         7.9T  6.8T  1.1T  87% /\n"}
+,{"stream_name":"stdout","time":5.335363298,"data":"80K\t/kaggle/working/__notebook__.ipynb\n"}
+,{"stream_name":"stdout","time":5.357700297,"data":"Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":5.357715157,"data":"/dev/loop1       20G  524K   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":5.3577170370000005,"data":"overlay         7.9T  6.8T  1.1T  87% /\n"}
+,{"stream_name":"stdout","time":5.358944057,"data":"4.0K\t/kaggle/working/v62_outputs\n"}
+,{"stream_name":"stdout","time":5.358954537,"data":"80K\t/kaggle/working/__notebook__.ipynb\n"}
+,{"stream_name":"stdout","time":5.519021319,"data":"\n"}
+,{"stream_name":"stdout","time":5.5190434889999995,"data":"--- DISK start ---\n"}
+,{"stream_name":"stdout","time":5.519044819,"data":"Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":5.519045839,"data":"/dev/loop1       20G  520K   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":5.519046829,"data":"overlay         7.9T  6.8T  1.1T  87% /\n"}
+,{"stream_name":"stdout","time":5.519047699,"data":"80K\t/kaggle/working/__notebook__.ipynb\n"}
+,{"stream_name":"stdout","time":5.519048719,"data":"\n"}
+,{"stream_name":"stdout","time":5.5190494690000005,"data":"--- DISK after cleanup ---\n"}
+,{"stream_name":"stdout","time":5.519050379,"data":"Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":5.519051169,"data":"/dev/loop1       20G  524K   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":5.519052029,"data":"overlay         7.9T  6.8T  1.1T  87% /\n"}
+,{"stream_name":"stdout","time":5.519052829,"data":"4.0K\t/kaggle/working/v62_outputs\n"}
+,{"stream_name":"stdout","time":5.519053669,"data":"80K\t/kaggle/working/__notebook__.ipynb\n"}
+,{"stream_name":"stdout","time":5.519054509,"data":"START_ADAPTER: /kaggle/input/models/kienngx/nemotron-nano-30b-trained/triton/tinker-adapter/1\n"}
+,{"stream_name":"stdout","time":121.935983302,"data":"Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":121.936012682,"data":"/dev/loop1       20G  524K   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":121.936014332,"data":"overlay         7.9T  6.9T  1.1T  87% /\n"}
+,{"stream_name":"stdout","time":121.937388732,"data":"4.0K\t/kaggle/working/v62_outputs\n"}
+,{"stream_name":"stdout","time":121.937411222,"data":"80K\t/kaggle/working/__notebook__.ipynb\n"}
+,{"stream_name":"stdout","time":121.938535442,"data":"3.1G\t/tmp/nemotron_v62_work/FALLBACK_DO_NOT_SUBMIT_base.zip\n"}
+,{"stream_name":"stdout","time":121.943009242,"data":"Created fallback DO-NOT-SUBMIT: /tmp/nemotron_v62_work/FALLBACK_DO_NOT_SUBMIT_base.zip 3.0457049440592527\n"}
+,{"stream_name":"stdout","time":121.943018312,"data":"\n"}
+,{"stream_name":"stdout","time":121.943019232,"data":"--- DISK after fallback diagnostic ---\n"}
+,{"stream_name":"stdout","time":121.943020382,"data":"Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":121.943021172,"data":"/dev/loop1       20G  524K   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":121.943022062,"data":"overlay         7.9T  6.9T  1.1T  87% /\n"}
+,{"stream_name":"stdout","time":121.943022852,"data":"4.0K\t/kaggle/working/v62_outputs\n"}
+,{"stream_name":"stdout","time":121.943030502,"data":"80K\t/kaggle/working/__notebook__.ipynb\n"}
+,{"stream_name":"stdout","time":121.943031592,"data":"3.1G\t/tmp/nemotron_v62_work/FALLBACK_DO_NOT_SUBMIT_base.zip\n"}
+,{"stream_name":"stdout","time":122.667420222,"data":"train shape: (9500, 4)\n"}
+,{"stream_name":"stdout","time":122.667440312,"data":"family\n"}
+,{"stream_name":"stdout","time":122.667442252,"data":"bit_manipulation    1602\n"}
+,{"stream_name":"stdout","time":122.667443242,"data":"gravity             1597\n"}
+,{"stream_name":"stdout","time":122.667444092,"data":"unit_conversion     1594\n"}
+,{"stream_name":"stdout","time":122.667444962,"data":"cipher              1576\n"}
+,{"stream_name":"stdout","time":122.667445812,"data":"numeral             1576\n"}
+,{"stream_name":"stdout","time":122.667446682,"data":"equation_numeric    1555\n"}
+,{"stream_name":"stdout","time":122.667447562,"data":"Name: count, dtype: int64\n"}
+,{"stream_name":"stdout","time":122.727233442,"data":"SubCipher vocab words: 77\n"}
+,{"stream_name":"stdout","time":122.727242412,"data":"D3 stats: Counter({'verified_exact': 260}) rows: 260\n"}
+,{"stream_name":"stdout","time":122.747854822,"data":"D4 disabled by default in v61 to avoid the v60 hang. Set ENABLE_D4=True only for capped diagnostics.\n"}
+,{"stream_name":"stdout","time":122.747866952,"data":"D4 stats: Counter() rows: 0\n"}
+,{"stream_name":"stdout","time":122.811761652,"data":"train_df: (2340, 6)\n"}
+,{"stream_name":"stdout","time":122.811765622,"data":"family counts:\n"}
+,{"stream_name":"stdout","time":122.811766622,"data":"family\n"}
+,{"stream_name":"stdout","time":122.811767442,"data":"cipher              1420\n"}
+,{"stream_name":"stdout","time":122.811768302,"data":"bit_manipulation     220\n"}
+,{"stream_name":"stdout","time":122.811769092,"data":"numeral              180\n"}
+,{"stream_name":"stdout","time":122.811769892,"data":"gravity              180\n"}
+,{"stream_name":"stdout","time":122.811770652,"data":"unit_conversion      180\n"}
+,{"stream_name":"stdout","time":122.811771432,"data":"equation_numeric     160\n"}
+,{"stream_name":"stdout","time":122.811772252,"data":"Name: count, dtype: int64\n"}
+,{"stream_name":"stdout","time":122.811773022,"data":"source counts:\n"}
+,{"stream_name":"stdout","time":122.811773772,"data":"source\n"}
+,{"stream_name":"stdout","time":122.811778652,"data":"d3_substitution_solver_verified    1300\n"}
+,{"stream_name":"stdout","time":122.811779552,"data":"protective_original_answer_only    1040\n"}
+,{"stream_name":"stdout","time":122.811780392,"data":"Name: count, dtype: int64\n"}
+,{"stream_name":"stdout","time":122.811781162,"data":"sample assistant:\n"}
+,{"stream_name":"stdout","time":122.811781922,"data":"Apply the demonstrated rule carefully.\n"}
+,{"stream_name":"stdout","time":122.811782872,"data":"\u003c/think\u003e\n"}
+,{"stream_name":"stdout","time":122.811783952,"data":"\\boxed{01000111}\n"}
+,{"stream_name":"stdout","time":129.305151057,"data":"RUN: /usr/bin/python3 -m pip install --no-deps --target /tmp/nemotron_v62_work/pydeps --upgrade --ignore-installed /kaggle/input/datasets/mayukh18/nemotron-packages/packages/triton-3.6.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl\n"}
+,{"stream_name":"stdout","time":135.817997352,"data":"Processing /kaggle/input/datasets/mayukh18/nemotron-packages/packages/triton-3.6.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl\n"}
+,{"stream_name":"stdout","time":135.818037582,"data":"Installing collected packages: triton\n"}
+,{"stream_name":"stdout","time":135.818039952,"data":"Successfully installed triton-3.6.0\n"}
+,{"stream_name":"stdout","time":135.818041782,"data":"\n"}
+,{"stream_name":"stdout","time":135.818043152,"data":"RUN: /usr/bin/python3 -m pip install -q --no-index --find-links /kaggle/input/datasets/mayukh18/nemotron-packages/packages unsloth trl peft transformers datasets accelerate bitsandbytes\n"}
+,{"stream_name":"stdout","time":148.534724301,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stdout","time":148.534746831,"data":"bigframes 2.35.0 requires google-cloud-bigquery-storage\u003c3.0.0,\u003e=2.30.0, which is not installed.\n"}
+,{"stream_name":"stdout","time":148.534749241,"data":"s3fs 2026.2.0 requires fsspec==2026.2.0, but you have fsspec 2025.9.0 which is incompatible.\n"}
+,{"stream_name":"stdout","time":148.534750871,"data":"gcsfs 2025.3.0 requires fsspec==2025.3.0, but you have fsspec 2025.9.0 which is incompatible.\n"}
+,{"stream_name":"stdout","time":148.534752071,"data":"\n"}
+,{"stream_name":"stdout","time":149.31577585,"data":"RUN: /usr/bin/python3 -m pip install --no-index --no-deps /kaggle/input/datasets/mayukh18/nemotron-packages/causal_conv1d-1.6.1+cu12torch2.10cxx11abiTRUE-cp312-cp312-linux_x86_64.whl\n"}
+,{"stream_name":"stdout","time":155.611555893,"data":"Processing /kaggle/input/datasets/mayukh18/nemotron-packages/causal_conv1d-1.6.1+cu12torch2.10cxx11abiTRUE-cp312-cp312-linux_x86_64.whl\n"}
+,{"stream_name":"stdout","time":155.611574653,"data":"Installing collected packages: causal-conv1d\n"}
+,{"stream_name":"stdout","time":155.611576693,"data":"Successfully installed causal-conv1d-1.6.1\n"}
+,{"stream_name":"stdout","time":155.611577973,"data":"\n"}
+,{"stream_name":"stdout","time":155.611579403,"data":"RUN: /usr/bin/python3 -m pip install --no-index --no-deps /kaggle/input/datasets/mayukh18/nemotron-packages/mamba_ssm-2.3.1+cu12torch2.10cxx11abiTRUE-cp312-cp312-linux_x86_64.whl\n"}
+,{"stream_name":"stdout","time":164.086842556,"data":"Processing /kaggle/input/datasets/mayukh18/nemotron-packages/mamba_ssm-2.3.1+cu12torch2.10cxx11abiTRUE-cp312-cp312-linux_x86_64.whl\n"}
+,{"stream_name":"stdout","time":164.086866356,"data":"Installing collected packages: mamba-ssm\n"}
+,{"stream_name":"stdout","time":164.086868426,"data":"Successfully installed mamba-ssm-2.3.1\n"}
+,{"stream_name":"stdout","time":164.086869796,"data":"\n"}
+,{"stream_name":"stdout","time":167.320694024,"data":"🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.\n"}
+,{"stream_name":"stderr","time":172.867399958,"data":"2026-06-08 20:01:43.426491: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered\n"}
+,{"stream_name":"stderr","time":172.867560418,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":172.867565058,"data":"E0000 00:00:1780948903.608079      65 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered\n"}
+,{"stream_name":"stderr","time":172.867566798,"data":"E0000 00:00:1780948903.661433      65 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered\n"}
+,{"stream_name":"stderr","time":172.867568078,"data":"W0000 00:00:1780948904.132039      65 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.\n"}
+,{"stream_name":"stderr","time":172.867569388,"data":"W0000 00:00:1780948904.132055      65 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.\n"}
+,{"stream_name":"stderr","time":172.867570758,"data":"W0000 00:00:1780948904.132056      65 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.\n"}
+,{"stream_name":"stderr","time":172.867572058,"data":"W0000 00:00:1780948904.132056      65 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.\n"}
+,{"stream_name":"stderr","time":173.068553237,"data":"2026-06-08 20:01:43.426491: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered\n"}
+,{"stream_name":"stderr","time":173.068569277,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":173.068571257,"data":"E0000 00:00:1780948903.608079      65 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered\n"}
+,{"stream_name":"stderr","time":173.068572697,"data":"E0000 00:00:1780948903.661433      65 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered\n"}
+,{"stream_name":"stderr","time":173.068574317,"data":"W0000 00:00:1780948904.132039      65 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.\n"}
+,{"stream_name":"stderr","time":173.068575747,"data":"W0000 00:00:1780948904.132055      65 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.\n"}
+,{"stream_name":"stderr","time":173.068577047,"data":"W0000 00:00:1780948904.132056      65 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.\n"}
+,{"stream_name":"stderr","time":173.068578327,"data":"W0000 00:00:1780948904.132056      65 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.\n"}
+,{"stream_name":"stderr","time":173.068579687,"data":"\n"}
+,{"stream_name":"stderr","time":173.068581097,"data":"2026-06-08 20:01:43.426491: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered\n"}
+,{"stream_name":"stderr","time":173.068588997,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":173.068590087,"data":"E0000 00:00:1780948903.608079      65 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered\n"}
+,{"stream_name":"stderr","time":173.068590997,"data":"E0000 00:00:1780948903.661433      65 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered\n"}
+,{"stream_name":"stderr","time":173.068592507,"data":"W0000 00:00:1780948904.132039      65 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.\n"}
+,{"stream_name":"stderr","time":173.068593407,"data":"W0000 00:00:1780948904.132055      65 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.\n"}
+,{"stream_name":"stderr","time":173.068594367,"data":"W0000 00:00:1780948904.132056      65 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.\n"}
+,{"stream_name":"stderr","time":173.068595437,"data":"W0000 00:00:1780948904.132056      65 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.\n"}
+,{"stream_name":"stderr","time":193.964692739,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stderr","time":193.964715589,"data":"\n"}
+,{"stream_name":"stderr","time":193.964719939,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stderr","time":193.984170665,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stderr","time":193.984177005,"data":"\n"}
+,{"stream_name":"stderr","time":193.984178405,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stderr","time":194.061456377,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stderr","time":194.061461067,"data":"\n"}
+,{"stream_name":"stderr","time":194.061462297,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stderr","time":194.099614988,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stderr","time":194.099625478,"data":"\n"}
+,{"stream_name":"stderr","time":194.099627398,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stderr","time":194.103746717,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stderr","time":194.103752747,"data":"\n"}
+,{"stream_name":"stderr","time":194.103753887,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stderr","time":194.107711757,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stderr","time":194.107716907,"data":"\n"}
+,{"stream_name":"stderr","time":194.107717927,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stderr","time":194.110653586,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stderr","time":194.110664796,"data":"\n"}
+,{"stream_name":"stderr","time":194.110666476,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stderr","time":194.119455664,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stderr","time":194.119462784,"data":"\n"}
+,{"stream_name":"stderr","time":194.119464204,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stderr","time":194.131249301,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stderr","time":194.131253341,"data":"\n"}
+,{"stream_name":"stderr","time":194.131254331,"data":"Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).\n"}
+,{"stream_name":"stdout","time":194.141463319,"data":"🦥 Unsloth Zoo will now patch everything to make training faster!\n"}
+,{"stream_name":"stdout","time":196.058904609,"data":"Torch 2.10.0+cu128 CUDA 12.8 available True\n"}
+,{"stream_name":"stdout","time":196.058922609,"data":"Unsloth: WARNING `trust_remote_code` is True.\n"}
+,{"stream_name":"stdout","time":196.058924209,"data":"Are you certain you want to do remote code execution?\n"}
+,{"stream_name":"stdout","time":196.058925259,"data":"==((====))==  Unsloth 2026.3.17: Fast Nemotron_H patching. Transformers: 4.57.6.\n"}
+,{"stream_name":"stdout","time":196.058926329,"data":"   \\\\   /|    NVIDIA RTX PRO 6000 Blackwell Server Edition. Num GPUs = 1. Max memory: 94.971 GB. Platform: Linux.\n"}
+,{"stream_name":"stdout","time":196.058927419,"data":"O^O/ \\_/ \\    Torch: 2.10.0+cu128. CUDA: 12.0. CUDA Toolkit: 12.8. Triton: 3.6.0\n"}
+,{"stream_name":"stdout","time":196.058934359,"data":"\\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.35. FA2 = False]\n"}
+,{"stream_name":"stdout","time":196.058935439,"data":" \"-____-\"     Free license: http://github.com/unslothai/unsloth\n"}
+,{"stream_name":"stdout","time":196.058936449,"data":"Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!\n"}
+,{"stream_name":"stdout","time":199.570613985,"data":"Unsloth: QLoRA and full finetuning all not selected. Switching to 16bit LoRA.\n"}
+,{"stream_name":"stdout","time":738.266823919,"data":"/kaggle/input/models/metric/nemotron-3-nano-30b-a3b-bf16/transformers/default/1 does not have a padding token! Will use pad_token = \u003cSPECIAL_999\u003e.\n"}
+,{"stream_name":"stdout","time":739.714286817,"data":"start LoRA config: {'r': 32, 'alpha': 32, 'target_modules': ['down_proj', 'in_proj', 'k_proj', 'lm_head', 'o_proj', 'out_proj', 'q_proj', 'up_proj', 'v_proj']}\n"}
+,{"stream_name":"stdout","time":739.919854675,"data":"Unsloth: Detected MoE model with num_experts = 128 and target_modules = ['down_proj', 'in_proj', 'k_proj', 'lm_head', 'o_proj', 'out_proj', 'q_proj', 'up_proj', 'v_proj']. Enabling LoRA on MoE parameters: ['mlp.experts.gate_up_proj', 'mlp.experts.down_proj']\n"}
+,{"stream_name":"stdout","time":746.402307659,"data":"Unsloth: PEFT set target_parameters but found no matching parameters.\n"}
+,{"stream_name":"stdout","time":746.402337179,"data":"This is expected for MoE models - Unsloth handles MoE expert LoRA targeting separately.\n"}
+,{"stream_name":"stdout","time":747.060161553,"data":"Unsloth: Making `model.base_model.model.backbone` require gradients\n"}
+,{"stream_name":"stdout","time":751.631910634,"data":"trainable params: 888,154,112 || all params: 32,466,091,456 || trainable%: 2.7356\n"}
+,{"stream_name":"stdout","time":751.903842461,"data":"start tensors 12010 mapped 12010 coverage 1.0 unmapped first []\n"}
+,{"stream_name":"stdout","time":753.152799541,"data":"Loaded start adapter. missing: 6243 unexpected: 0\n"}
+,{"stream_name":"stdout","time":753.153867611,"data":"Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":753.153881161,"data":"/dev/loop1       20G  5.1M   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":753.153883261,"data":"overlay         7.9T  6.9T  1.1T  87% /\n"}
+,{"stream_name":"stdout","time":753.155317581,"data":"92K\t/kaggle/working/__notebook__.ipynb\n"}
+,{"stream_name":"stdout","time":753.155351131,"data":"1.7M\t/kaggle/working/v62_outputs\n"}
+,{"stream_name":"stdout","time":753.155353321,"data":"3.0M\t/kaggle/working/unsloth_compiled_cache\n"}
+,{"stream_name":"stdout","time":753.157666101,"data":"641M\t/tmp/nemotron_v62_work/pydeps\n"}
+,{"stream_name":"stdout","time":753.157677221,"data":"3.1G\t/tmp/nemotron_v62_work/FALLBACK_DO_NOT_SUBMIT_base.zip\n"}
+,{"stream_name":"stdout","time":753.15866394,"data":"\n"}
+,{"stream_name":"stdout","time":753.158669441,"data":"--- DISK after model + adapter load ---\n"}
+,{"stream_name":"stdout","time":753.158670811,"data":"Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":753.158671921,"data":"/dev/loop1       20G  5.1M   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":753.158673231,"data":"overlay         7.9T  6.9T  1.1T  87% /\n"}
+,{"stream_name":"stdout","time":753.158674411,"data":"92K\t/kaggle/working/__notebook__.ipynb\n"}
+,{"stream_name":"stdout","time":753.158675961,"data":"1.7M\t/kaggle/working/v62_outputs\n"}
+,{"stream_name":"stdout","time":753.158677131,"data":"3.0M\t/kaggle/working/unsloth_compiled_cache\n"}
+,{"stream_name":"stdout","time":753.158685981,"data":"641M\t/tmp/nemotron_v62_work/pydeps\n"}
+,{"stream_name":"stdout","time":753.158686961,"data":"3.1G\t/tmp/nemotron_v62_work/FALLBACK_DO_NOT_SUBMIT_base.zip\n"}
+,{"stream_name":"stdout","time":753.368928749,"data":"assistant_only_loss=True enabled\n"}
+,{"stream_name":"stdout","time":753.368935649,"data":"Unsloth: Your learning rate of `9e-08` is too small and less than 1e-7! Consider increasing it, otherwise gradient updates will be close to 0!\n"}
+,{"stream_name":"stdout","time":760.966006343,"data":"Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":760.966050763,"data":"/dev/loop1       20G  5.1M   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":760.966053033,"data":"overlay         7.9T  6.9T  1.1T  87% /\n"}
+,{"stream_name":"stdout","time":760.967425383,"data":"96K\t/kaggle/working/__notebook__.ipynb\n"}
+,{"stream_name":"stdout","time":760.967459283,"data":"1.7M\t/kaggle/working/v62_outputs\n"}
+,{"stream_name":"stdout","time":760.967461343,"data":"3.0M\t/kaggle/working/unsloth_compiled_cache\n"}
+,{"stream_name":"stdout","time":760.969949582,"data":"4.0K\t/tmp/nemotron_v62_work/sft_v62\n"}
+,{"stream_name":"stdout","time":760.969957332,"data":"641M\t/tmp/nemotron_v62_work/pydeps\n"}
+,{"stream_name":"stdout","time":760.969959102,"data":"3.1G\t/tmp/nemotron_v62_work/FALLBACK_DO_NOT_SUBMIT_base.zip\n"}
+,{"stream_name":"stdout","time":761.186704161,"data":"🦥 Unsloth: Padding-free auto-enabled, enabling faster training.\n"}
+,{"stream_name":"stdout","time":761.186735401,"data":"Train rows: 2340 Effective batch: 16 MAX_STEPS: 14 LR: 9e-08\n"}
+,{"stream_name":"stdout","time":761.186737491,"data":"Label counts: Counter({'cipher': 1420, 'bit_manipulation': 220, 'numeral': 180, 'gravity': 180, 'unit_conversion': 180, 'equation_numeric': 160})\n"}
+,{"stream_name":"stdout","time":761.186738981,"data":"\n"}
+,{"stream_name":"stdout","time":761.186740421,"data":"--- DISK before v62 finisher training ---\n"}
+,{"stream_name":"stdout","time":761.186741551,"data":"Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":761.186742601,"data":"/dev/loop1       20G  5.1M   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":761.186743751,"data":"overlay         7.9T  6.9T  1.1T  87% /\n"}
+,{"stream_name":"stdout","time":761.186744791,"data":"96K\t/kaggle/working/__notebook__.ipynb\n"}
+,{"stream_name":"stdout","time":761.186746231,"data":"1.7M\t/kaggle/working/v62_outputs\n"}
+,{"stream_name":"stdout","time":761.186747381,"data":"3.0M\t/kaggle/working/unsloth_compiled_cache\n"}
+,{"stream_name":"stdout","time":761.186748541,"data":"4.0K\t/tmp/nemotron_v62_work/sft_v62\n"}
+,{"stream_name":"stdout","time":761.186749641,"data":"641M\t/tmp/nemotron_v62_work/pydeps\n"}
+,{"stream_name":"stdout","time":761.186750701,"data":"3.1G\t/tmp/nemotron_v62_work/FALLBACK_DO_NOT_SUBMIT_base.zip\n"}
+,{"stream_name":"stdout","time":1024.051182124,"data":"{'loss': 56.5893, 'grad_norm': 57.99476623535156, 'learning_rate': 7.5e-08, 'epoch': 0.03418803418803419}\n"}
+,{"stream_name":"stdout","time":1232.590898638,"data":"{'loss': 56.8054, 'grad_norm': 60.42107009887695, 'learning_rate': 3.75e-08, 'epoch': 0.06837606837606838}\n"}
+,{"stream_name":"stdout","time":1400.46015332,"data":"{'train_runtime': 635.7393, 'train_samples_per_second': 0.352, 'train_steps_per_second': 0.022, 'train_loss': 56.77191271100725, 'epoch': 0.09572649572649573}\n"}
+,{"stream_name":"stdout","time":1402.108536679,"data":"Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":1402.108555679,"data":"/dev/loop1       20G  5.1M   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":1402.108563549,"data":"overlay         7.9T  6.9T  1.1T  87% /\n"}
+,{"stream_name":"stdout","time":1402.110061349,"data":"96K\t/kaggle/working/__notebook__.ipynb\n"}
+,{"stream_name":"stdout","time":1402.110092459,"data":"1.7M\t/kaggle/working/v62_outputs\n"}
+,{"stream_name":"stdout","time":1402.110094219,"data":"3.0M\t/kaggle/working/unsloth_compiled_cache\n"}
+,{"stream_name":"stdout","time":1402.112372409,"data":"641M\t/tmp/nemotron_v62_work/pydeps\n"}
+,{"stream_name":"stdout","time":1402.112382869,"data":"3.1G\t/tmp/nemotron_v62_work/FALLBACK_DO_NOT_SUBMIT_base.zip\n"}
+,{"stream_name":"stdout","time":1402.113842099,"data":"train_result: TrainOutput(global_step=14, training_loss=56.77191271100725, metrics={'train_runtime': 635.7393, 'train_samples_per_second': 0.352, 'train_steps_per_second': 0.022, 'train_loss': 56.77191271100725, 'epoch': 0.09572649572649573}) elapsed_min: 10.67\n"}
+,{"stream_name":"stdout","time":1402.113856399,"data":"\n"}
+,{"stream_name":"stdout","time":1402.113858009,"data":"--- DISK after v62 finisher training ---\n"}
+,{"stream_name":"stdout","time":1402.113858999,"data":"Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":1402.113859949,"data":"/dev/loop1       20G  5.1M   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":1402.113860929,"data":"overlay         7.9T  6.9T  1.1T  87% /\n"}
+,{"stream_name":"stdout","time":1402.113861919,"data":"96K\t/kaggle/working/__notebook__.ipynb\n"}
+,{"stream_name":"stdout","time":1402.113862929,"data":"1.7M\t/kaggle/working/v62_outputs\n"}
+,{"stream_name":"stdout","time":1402.113863849,"data":"3.0M\t/kaggle/working/unsloth_compiled_cache\n"}
+,{"stream_name":"stdout","time":1402.113864769,"data":"641M\t/tmp/nemotron_v62_work/pydeps\n"}
+,{"stream_name":"stdout","time":1402.113865779,"data":"3.1G\t/tmp/nemotron_v62_work/FALLBACK_DO_NOT_SUBMIT_base.zip\n"}
+,{"stream_name":"stderr","time":1402.557819323,"data":"/usr/local/lib/python3.12/dist-packages/peft/utils/save_and_load.py:279: UserWarning: Setting `save_embedding_layers` to `True` as embedding layers found in `target_modules`.\n"}
+,{"stream_name":"stderr","time":1402.557829913,"data":"  warnings.warn(\"Setting `save_embedding_layers` to `True` as embedding layers found in `target_modules`.\")\n"}
+,{"stream_name":"stderr","time":1402.557831683,"data":"\n"}
+,{"stream_name":"stderr","time":1402.557832673,"data":"/usr/local/lib/python3.12/dist-packages/peft/utils/save_and_load.py:279: UserWarning: Setting `save_embedding_layers` to `True` as embedding layers found in `target_modules`.\n"}
+,{"stream_name":"stderr","time":1402.557833823,"data":"  warnings.warn(\"Setting `save_embedding_layers` to `True` as embedding layers found in `target_modules`.\")\n"}
+,{"stream_name":"stdout","time":1405.445900236,"data":"trained tensors: 12011 start tensors: 12010\n"}
+,{"stream_name":"stdout","time":1406.088689128,"data":"Sparse scan stats: {'mapped': 12010, 'skip_lm_head': 2, 'candidate': 6595, 'skip_tiny': 213, 'skip_expert_rel': 41, 'skip_rel': 41, 'skip_expert_layer_cap': 1506, 'skip_late_expert': 3612}\n"}
+,{"stream_name":"stdout","time":1406.088704808,"data":"candidate_count: 6595 selected: 424 expert_selected: 330 expert_cap: 330\n"}
+,{"stream_name":"stdout","time":1406.088706408,"data":"{\n"}
+,{"stream_name":"stdout","time":1406.088707628,"data":"  \"mapped\": 12010,\n"}
+,{"stream_name":"stdout","time":1406.088708898,"data":"  \"coverage\": 1.0,\n"}
+,{"stream_name":"stdout","time":1406.088710098,"data":"  \"candidate_count\": 6595,\n"}
+,{"stream_name":"stdout","time":1406.088711268,"data":"  \"selected\": 424,\n"}
+,{"stream_name":"stdout","time":1406.088719208,"data":"  \"applied\": 424,\n"}
+,{"stream_name":"stdout","time":1406.088720428,"data":"  \"kept_start\": 11586,\n"}
+,{"stream_name":"stdout","time":1406.088721308,"data":"  \"expert_selected\": 330,\n"}
+,{"stream_name":"stdout","time":1406.088722138,"data":"  \"expert_cap\": 330,\n"}
+,{"stream_name":"stdout","time":1406.088722918,"data":"  \"scan_stats\": {\n"}
+,{"stream_name":"stdout","time":1406.088723698,"data":"    \"mapped\": 12010,\n"}
+,{"stream_name":"stdout","time":1406.088724648,"data":"    \"skip_lm_head\": 2,\n"}
+,{"stream_name":"stdout","time":1406.088725498,"data":"    \"candidate\": 6595,\n"}
+,{"stream_name":"stdout","time":1406.088726308,"data":"    \"skip_tiny\": 213,\n"}
+,{"stream_name":"stdout","time":1406.088727088,"data":"    \"skip_expert_rel\": 41,\n"}
+,{"stream_name":"stdout","time":1406.088727898,"data":"    \"skip_rel\": 41,\n"}
+,{"stream_name":"stdout","time":1406.088728738,"data":"    \"skip_expert_layer_cap\": 1506,\n"}
+,{"stream_name":"stdout","time":1406.088729618,"data":"    \"skip_late_expert\": 3612\n"}
+,{"stream_name":"stdout","time":1406.088730428,"data":"  },\n"}
+,{"stream_name":"stdout","time":1406.088731188,"data":"  \"max_rel_selected\": 0.0015940136509016156,\n"}
+,{"stream_name":"stdout","time":1406.088732088,"data":"  \"max_abs_selected\": 0.0009788749739527702,\n"}
+,{"stream_name":"stdout","time":1406.088732988,"data":"  \"blend_alpha\": 0.001,\n"}
+,{"stream_name":"stdout","time":1406.088733788,"data":"  \"max_selected_tensors\": 600,\n"}
+,{"stream_name":"stdout","time":1406.088734708,"data":"  \"expert_layer_hard_cap\": 30,\n"}
+,{"stream_name":"stdout","time":1406.088735558,"data":"  \"expert_max_rel_delta\": 0.0016\n"}
+,{"stream_name":"stdout","time":1406.088736378,"data":"}\n"}
+,{"stream_name":"stdout","time":1518.696270279,"data":"Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":1518.696301329,"data":"/dev/loop1       20G  3.1G   17G  16% /kaggle/working\n"}
+,{"stream_name":"stdout","time":1518.696303439,"data":"overlay         7.9T  6.9T  1.1T  87% /\n"}
+,{"stream_name":"stdout","time":1518.697634689,"data":"96K\t/kaggle/working/__notebook__.ipynb\n"}
+,{"stream_name":"stdout","time":1518.697661819,"data":"2.8M\t/kaggle/working/v62_outputs\n"}
+,{"stream_name":"stdout","time":1518.697663879,"data":"3.0M\t/kaggle/working/unsloth_compiled_cache\n"}
+,{"stream_name":"stdout","time":1518.697665319,"data":"3.1G\t/kaggle/working/submission.zip\n"}
+,{"stream_name":"stdout","time":1518.700347019,"data":"641M\t/tmp/nemotron_v62_work/pydeps\n"}
+,{"stream_name":"stdout","time":1518.700368099,"data":"3.1G\t/tmp/nemotron_v62_work/FALLBACK_DO_NOT_SUBMIT_base.zip\n"}
+,{"stream_name":"stdout","time":1518.700370279,"data":"3.4G\t/tmp/nemotron_v62_work/adapter_v62_blended\n"}
+,{"stream_name":"stdout","time":1518.700371649,"data":"4.0G\t/tmp/nemotron_v62_work/adapter_v62_trained\n"}
+,{"stream_name":"stdout","time":1518.705891629,"data":"{\n"}
+,{"stream_name":"stdout","time":1518.705901319,"data":"  \"version\": \"v62_d3_sparse_trust_finisher\",\n"}
+,{"stream_name":"stdout","time":1518.705904229,"data":"  \"selected_final\": \"v62_d3_sparse_trust_finisher_candidate\",\n"}
+,{"stream_name":"stdout","time":1518.705906739,"data":"  \"start_adapter\": \"/kaggle/input/models/kienngx/nemotron-nano-30b-trained/triton/tinker-adapter/1\",\n"}
+,{"stream_name":"stdout","time":1518.705908969,"data":"  \"submission_zip\": \"/kaggle/working/submission.zip\",\n"}
+,{"stream_name":"stdout","time":1518.705910899,"data":"  \"submission_size_gb\": 3.0509115858003497,\n"}
+,{"stream_name":"stdout","time":1518.705912759,"data":"  \"d3_verified_rows\": 260,\n"}
+,{"stream_name":"stdout","time":1518.705919339,"data":"  \"d4_verified_rows\": 0,\n"}
+,{"stream_name":"stdout","time":1518.705920829,"data":"  \"train_rows\": 2340,\n"}
+,{"stream_name":"stdout","time":1518.705922099,"data":"  \"family_counts\": {\n"}
+,{"stream_name":"stdout","time":1518.705923399,"data":"    \"cipher\": 1420,\n"}
+,{"stream_name":"stdout","time":1518.705924749,"data":"    \"bit_manipulation\": 220,\n"}
+,{"stream_name":"stdout","time":1518.705926339,"data":"    \"numeral\": 180,\n"}
+,{"stream_name":"stdout","time":1518.705927739,"data":"    \"gravity\": 180,\n"}
+,{"stream_name":"stdout","time":1518.705928959,"data":"    \"unit_conversion\": 180,\n"}
+,{"stream_name":"stdout","time":1518.705930149,"data":"    \"equation_numeric\": 160\n"}
+,{"stream_name":"stdout","time":1518.705931469,"data":"  },\n"}
+,{"stream_name":"stdout","time":1518.705932669,"data":"  \"source_counts\": {\n"}
+,{"stream_name":"stdout","time":1518.705933989,"data":"    \"d3_substitution_solver_verified\": 1300,\n"}
+,{"stream_name":"stdout","time":1518.705935369,"data":"    \"protective_original_answer_only\": 1040\n"}
+,{"stream_name":"stdout","time":1518.705936729,"data":"  },\n"}
+,{"stream_name":"stdout","time":1518.705937929,"data":"  \"train_elapsed_min\": 10.672002577781678,\n"}
+,{"stream_name":"stdout","time":1518.705939249,"data":"  \"blend_alpha\": 0.001,\n"}
+,{"stream_name":"stdout","time":1518.705940599,"data":"  \"blend_stats\": {\n"}
+,{"stream_name":"stdout","time":1518.705942059,"data":"    \"mapped\": 12010,\n"}
+,{"stream_name":"stdout","time":1518.705943349,"data":"    \"coverage\": 1.0,\n"}
+,{"stream_name":"stdout","time":1518.705944579,"data":"    \"candidate_count\": 6595,\n"}
+,{"stream_name":"stdout","time":1518.705945849,"data":"    \"selected\": 424,\n"}
+,{"stream_name":"stdout","time":1518.705947129,"data":"    \"applied\": 424,\n"}
+,{"stream_name":"stdout","time":1518.705948349,"data":"    \"kept_start\": 11586,\n"}
+,{"stream_name":"stdout","time":1518.705949689,"data":"    \"expert_selected\": 330,\n"}
+,{"stream_name":"stdout","time":1518.705950909,"data":"    \"expert_cap\": 330,\n"}
+,{"stream_name":"stdout","time":1518.705952279,"data":"    \"scan_stats\": {\n"}
+,{"stream_name":"stdout","time":1518.705953529,"data":"      \"mapped\": 12010,\n"}
+,{"stream_name":"stdout","time":1518.705954779,"data":"      \"skip_lm_head\": 2,\n"}
+,{"stream_name":"stdout","time":1518.705956229,"data":"      \"candidate\": 6595,\n"}
+,{"stream_name":"stdout","time":1518.705957639,"data":"      \"skip_tiny\": 213,\n"}
+,{"stream_name":"stdout","time":1518.705958869,"data":"      \"skip_expert_rel\": 41,\n"}
+,{"stream_name":"stdout","time":1518.705960229,"data":"      \"skip_rel\": 41,\n"}
+,{"stream_name":"stdout","time":1518.705961449,"data":"      \"skip_expert_layer_cap\": 1506,\n"}
+,{"stream_name":"stdout","time":1518.705962809,"data":"      \"skip_late_expert\": 3612\n"}
+,{"stream_name":"stdout","time":1518.705964039,"data":"    },\n"}
+,{"stream_name":"stdout","time":1518.705965209,"data":"    \"max_rel_selected\": 0.0015940136509016156,\n"}
+,{"stream_name":"stdout","time":1518.705966519,"data":"    \"max_abs_selected\": 0.0009788749739527702,\n"}
+,{"stream_name":"stdout","time":1518.705967859,"data":"    \"blend_alpha\": 0.001,\n"}
+,{"stream_name":"stdout","time":1518.705969109,"data":"    \"max_selected_tensors\": 600,\n"}
+,{"stream_name":"stdout","time":1518.705970439,"data":"    \"expert_layer_hard_cap\": 30,\n"}
+,{"stream_name":"stdout","time":1518.705971759,"data":"    \"expert_max_rel_delta\": 0.0016\n"}
+,{"stream_name":"stdout","time":1518.705973029,"data":"  }\n"}
+,{"stream_name":"stdout","time":1518.705976969,"data":"}\n"}
+,{"stream_name":"stdout","time":1518.705978409,"data":"READY TO SUBMIT: /kaggle/working/submission.zip sizeGB 3.0509115858003497 FINAL v62_d3_sparse_trust_finisher_candidate\n"}
+,{"stream_name":"stdout","time":1518.705980149,"data":"\n"}
+,{"stream_name":"stdout","time":1518.705981389,"data":"--- DISK final ---\n"}
+,{"stream_name":"stdout","time":1518.705982609,"data":"Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":1518.706005889,"data":"/dev/loop1       20G  3.1G   17G  16% /kaggle/working\n"}
+,{"stream_name":"stdout","time":1518.706015789,"data":"overlay         7.9T  6.9T  1.1T  87% /\n"}
+,{"stream_name":"stdout","time":1518.706017139,"data":"96K\t/kaggle/working/__notebook__.ipynb\n"}
+,{"stream_name":"stdout","time":1518.706018529,"data":"2.8M\t/kaggle/working/v62_outputs\n"}
+,{"stream_name":"stdout","time":1518.706019859,"data":"3.0M\t/kaggle/working/unsloth_compiled_cache\n"}
+,{"stream_name":"stdout","time":1518.706021089,"data":"3.1G\t/kaggle/working/submission.zip\n"}
+,{"stream_name":"stdout","time":1518.706022429,"data":"641M\t/tmp/nemotron_v62_work/pydeps\n"}
+,{"stream_name":"stdout","time":1518.706035749,"data":"3.1G\t/tmp/nemotron_v62_work/FALLBACK_DO_NOT_SUBMIT_base.zip\n"}
+,{"stream_name":"stdout","time":1518.706038889,"data":"3.4G\t/tmp/nemotron_v62_work/adapter_v62_blended\n"}
+,{"stream_name":"stdout","time":1518.706040189,"data":"4.0G\t/tmp/nemotron_v62_work/adapter_v62_trained\n"}
+,{"stream_name":"stdout","time":1518.760137328,"data":"Important outputs:\n"}
+,{"stream_name":"stdout","time":1518.760143218,"data":" - Final submission: /kaggle/working/submission.zip valid_size_gb 3.0509115858003497\n"}
+,{"stream_name":"stdout","time":1518.760144448,"data":" - Reports archive: /kaggle/working/v62_reports_and_logs.zip sizeMB 0.55\n"}
+,{"stream_name":"stdout","time":1518.760145358,"data":" - Summary: /kaggle/working/v62_outputs/v62_final_summary.json\n"}
+,{"stream_name":"stdout","time":1518.760146308,"data":"Submit manually only if final said FINAL v62_d3_sparse_trust_finisher_candidate\n"}
+,{"stream_name":"stderr","time":1523.750272602,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1523.750296012,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1523.832294781,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1523.832304131,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1524.7440521,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":1524.888203919,"data":"[NbConvertApp] Writing 100749 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":1526.57303902,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1527.061451155,"data":"[NbConvertApp] Writing 561661 bytes to __results__.html\n"}
+]

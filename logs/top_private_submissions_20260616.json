@@ -1,0 +1,122 @@
+﻿[
+    {
+        "ref":  "53426831",
+        "date":  "2026-06-06 14:48:50.027000",
+        "description":  "localcal_rohan_anchor_lmhead_loraB_x1.04_structure_preserved",
+        "status":  "SubmissionStatus.COMPLETE",
+        "publicScore":  "0.85",
+        "privateScore":  "0.85"
+    },
+    {
+        "ref":  "53667919",
+        "date":  "2026-06-14 09:28:28.353000",
+        "description":  "20260614_slot2_huikang_blocktopk_floor4_clean_probe",
+        "status":  "SubmissionStatus.COMPLETE",
+        "publicScore":  "0.85",
+        "privateScore":  "0.85"
+    },
+    {
+        "ref":  "53696351",
+        "date":  "2026-06-15 04:32:34.663000",
+        "description":  "20260615_wrap_biohack_v62_public_sparse_trust_probe",
+        "status":  "SubmissionStatus.COMPLETE",
+        "publicScore":  "0.86",
+        "privateScore":  "0.85"
+    },
+    {
+        "ref":  "53448593",
+        "date":  "2026-06-07 11:05:59.037000",
+        "description":  "20260607_slot4_nemotron-s7-muon-full-v5-audited_2d42d0ad",
+        "status":  "SubmissionStatus.COMPLETE",
+        "publicScore":  "0.84",
+        "privateScore":  "0.85"
+    },
+    {
+        "ref":  "53467675",
+        "date":  "2026-06-08 05:48:51.570000",
+        "description":  "20260608_slot4_nemotron-s7-seed-stability-replay_f5dde9e0",
+        "status":  "SubmissionStatus.COMPLETE",
+        "publicScore":  "0.85",
+        "privateScore":  "0.85"
+    },
+    {
+        "ref":  "53442957",
+        "date":  "2026-06-07 06:51:00.943000",
+        "description":  "Notebook NemotronCOMP best 0.86 solution NVIDIA(under 5min) | Version 8",
+        "status":  "SubmissionStatus.COMPLETE",
+        "publicScore":  "0.85",
+        "privateScore":  "0.84"
+    },
+    {
+        "ref":  "53442995",
+        "date":  "2026-06-07 06:52:05.323000",
+        "description":  "Direct submission from notebook",
+        "status":  "SubmissionStatus.COMPLETE",
+        "publicScore":  "0.85",
+        "privateScore":  "0.84"
+    },
+    {
+        "ref":  "53443025",
+        "date":  "2026-06-07 06:53:21.570000",
+        "description":  "Notebook NemotronCOMP best 0.86 solution NVIDIA(under 5min) | Version 9",
+        "status":  "SubmissionStatus.COMPLETE",
+        "publicScore":  "0.85",
+        "privateScore":  "0.84"
+    },
+    {
+        "ref":  "53467616",
+        "date":  "2026-06-08 05:44:55.010000",
+        "description":  "20260608_slot1_nemotron-s8-guarded-weak-replay-v1_6b54462e",
+        "status":  "SubmissionStatus.COMPLETE",
+        "publicScore":  "0.84",
+        "privateScore":  "0.84"
+    },
+    {
+        "ref":  "53467674",
+        "date":  "2026-06-08 05:48:48.117000",
+        "description":  "20260608_slot3_nemotron-s7-weak-protected-curriculum-v2_631a2bfb",
+        "status":  "SubmissionStatus.COMPLETE",
+        "publicScore":  "0.85",
+        "privateScore":  "0.84"
+    },
+    {
+        "ref":  "53446707",
+        "date":  "2026-06-07 09:39:49.340000",
+        "description":  "20260607_slot3_nemotron-s7-modulewise-delta-svd-r32_00d6bd3f",
+        "status":  "SubmissionStatus.COMPLETE",
+        "publicScore":  "0.85",
+        "privateScore":  "0.84"
+    },
+    {
+        "ref":  "53467676",
+        "date":  "2026-06-08 05:48:54.697000",
+        "description":  "20260608_slot5_nemotron-s7-ties-sign-merge_b03e975e",
+        "status":  "SubmissionStatus.COMPLETE",
+        "publicScore":  "0.84",
+        "privateScore":  "0.84"
+    },
+    {
+        "ref":  "53424977",
+        "date":  "2026-06-06 13:42:00.020000",
+        "description":  "localcal_rohan_anchor_lmhead_loraB_x1.05_structure_preserved",
+        "status":  "SubmissionStatus.COMPLETE",
+        "publicScore":  "0.85",
+        "privateScore":  "0.84"
+    },
+    {
+        "ref":  "53425544",
+        "date":  "2026-06-06 14:05:12.400000",
+        "description":  "Direct submission from notebook",
+        "status":  "SubmissionStatus.COMPLETE",
+        "publicScore":  "0.85",
+        "privateScore":  "0.84"
+    },
+    {
+        "ref":  "53424138",
+        "date":  "2026-06-06 13:10:08.210000",
+        "description":  "20260606_slot4_stage7_keithtyser_taskarith_3b1d2fc3",
+        "status":  "SubmissionStatus.COMPLETE",
+        "publicScore":  "0.85",
+        "privateScore":  "0.84"
+    }
+]
