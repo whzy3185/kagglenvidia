@@ -1,6 +1,6 @@
 # NVIDIA Nemotron 比赛最终复盘 2026-06-16
 
-本报告修正上一版复盘的主对象：上一版把 `Biohack v62` 当作重点最高包复盘，这是错的。用户明确指出需要复盘的是 Kaggle UI 截图中 public 和 private 两列都显示 `0.86` 的那次提交：
+本报告基于 GitHub 远端 `origin/main` 已提交内容复盘，不把本地未提交的 Stage10 草稿当作正式结论。核心结论：最终需要重点复盘的是 Kaggle UI 截图中 public 和 private 两列都显示 `0.86` 的那次提交。
 
 ```yaml
 target_submission:
@@ -21,14 +21,25 @@ target_submission:
 ## 数据来源
 
 - 赛后 Kaggle UI 截图：`Best 0.86 | NVIDIA Nemotron Notebook - Version 16`，message 为 `20260605_slot4_mirzayasir_best_086_v16_remote_output`，两个显示分数列均为 `0.86`
-- 6 月 5 日 remote output sweep: `reports/REMOTE_086_SUBMISSION_SWEEP_20260605.md`
-- 0.86 阶段复盘: `reports/POST_086_REVIEW_20260605.md`
-- Mirza v16 notebook source: `artifacts/stage6/mirzayasir_best_086_meta/best-nvidia-nemotron-notebook-0-86.ipynb`
+- `reports/STAGE1_DRY_RUN.md`
+- `reports/ASSET_AUDIT.md`
+- `reports/PUBLIC_BASELINE_REPRO_STATUS.md`
+- `reports/STAGE2_BASELINE_DECISION.md`
+- `reports/STAGE2_REPRO_REPORT.md`
+- `reports/STAGE3_COMPLETION_REPORT.md`
+- `reports/STAGE3_STAGE4_HANDOFF.md`
+- `reports/STAGE4_READINESS.md`
+- `reports/STAGE4_CANDIDATE_PLAN.md`
+- `reports/KAGGLE_SIDE_NOTEBOOK_WORKFLOW.md`
+- `reports/REMOTE_086_SUBMISSION_SWEEP_20260605.md`
+- `reports/POST_086_REVIEW_20260605.md`
+- `reports/STAGE7_OPEN_SOURCE_REPO_MINING.md`
+- `reports/STAGE7_REFERENCE_SUBMISSION_LIST.md`
+- `reports/STAGE8_SUBMISSION_RUN_20260608.md`
+- `reports/SCORECARD.md`
+- `reports/leaderboard_20260616/our_team_publicleaderboard.json`
+- Mirza v16 notebook: `artifacts/stage6/mirzayasir_best_086_meta/best-nvidia-nemotron-notebook-0-86.ipynb`
 - Mirza v16 metadata: `artifacts/stage6/mirzayasir_best_086_meta/kernel-metadata.json`
-- Kaggle CLI historical logs: `logs/submissions_raw_20260605.txt` 至 `logs/submissions_raw_20260609.txt`
-- Kaggle CLI top leaderboard snapshot: `logs/leaderboard_show_20260616.csv`
-- Downloaded public leaderboard: `reports/leaderboard_20260616/nvidia-nemotron-model-reasoning-challenge-publicleaderboard-2026-06-16T01_57_45.csv`
-- 我方公开榜行: `reports/leaderboard_20260616/our_team_publicleaderboard.json`
 
 ## Leader 信息
 
@@ -57,32 +68,46 @@ submission_count: 132
 members: "blacklions,llccqq624,llllllc666,muelsyse111,xiangjiangzhou"
 ```
 
-这里的 `0.86` 是平台显示分数，不代表所有 0.86 内部排序完全一致。用户后续复盘应继续以 Kaggle UI 的最终 public/private 显示和最终排名为准。
+## 我们是不是只交了一个开源内容
 
-## 正确复盘对象：Mirza v16 双 0.86 包
+不是“整个项目只交了一个开源内容”。GitHub 上记录显示，我们经历了多个阶段：
 
-### 提交身份
+- 复现和提交了多个公开 Kaggle output。
+- 生成了多个 Kaggle-side repack notebook。
+- 设计并上传了多条自研或半自研训练/融合 notebook。
+- 后续提交过 SVD、TIES、DARE、Muon、replay、module selection 等不同机制候选。
+
+但如果只看本报告目标包 `53384030`，它本质上是一次公开内容复现提交：
 
 ```yaml
-submission_id: 53384030
-date: 2026-06-05 06:58:51
-message: 20260605_slot4_mirzayasir_best_086_v16_remote_output
-status: COMPLETE
-source_kernel: mirzayasirabdullah07/best-nvidia-nemotron-notebook-0-86
-source_version: 16
-source_title: "Best NVIDIA Nemotron Notebook | 0.86"
-adapter_dataset: assiabenazzouz/adappter-v32-epoch-5
-local_notebook: artifacts/stage6/mirzayasir_best_086_meta/best-nvidia-nemotron-notebook-0-86.ipynb
-local_metadata: artifacts/stage6/mirzayasir_best_086_meta/kernel-metadata.json
-score_evidence:
-  local_cli_public: 0.86
-  final_ui_public_displayed: 0.86
-  final_ui_private_displayed: 0.86
+best_target_package_nature:
+  original_adapter_source: "public Kaggle dataset"
+  adapter_dataset: "assiabenazzouz/adappter-v32-epoch-5"
+  packaging_notebook_source: "public Kaggle notebook"
+  packaging_notebook: "mirzayasirabdullah07/best-nvidia-nemotron-notebook-0-86"
+  version: 16
+  our_work: "select source, verify route, submit exact remote notebook output, record provenance and score"
+  our_training: false
+  our_weight_modification: false
 ```
 
-### Notebook 实际做了什么
+也就是说：这次双 0.86 包的权重不是我们训练出来的；我们做的是识别、验证、选择并提交一个公开 Kaggle notebook 生成的 adapter submission output。它的开源/公开来源是：
 
-本地保存的 v16 notebook 很短，主要是一个 Kaggle 端打包 notebook，而不是训练 notebook。
+```text
+Kaggle Notebook:
+  mirzayasirabdullah07/best-nvidia-nemotron-notebook-0-86
+  Version 16
+
+Kaggle Dataset:
+  assiabenazzouz/adappter-v32-epoch-5
+  adapter/
+    adapter_config.json
+    adapter_model.safetensors
+```
+
+## 目标包实际做了什么
+
+本地保存的 v16 notebook 是一个极简 Kaggle 端打包 notebook，而不是训练 notebook。
 
 第一段代码：
 
@@ -111,36 +136,25 @@ with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
             print(f"Missing: {fname}")
 ```
 
-它的有效工作是：
+实际动作：
 
-1. 从公开 dataset `assiabenazzouz/adappter-v32-epoch-5` 取 adapter。
-2. 固定读取 `/kaggle/input/datasets/assiabenazzouz/adappter-v32-epoch-5/adapter`。
-3. 只把 `adapter_config.json` 和 `adapter_model.safetensors` 两个文件写入 `/kaggle/working/submission.zip`。
-4. zip 根目录是平铺结构，没有把父目录套进去。
-5. 不训练、不加载 base model、不推理、不改 adapter 权重。
+1. 从公开 Kaggle dataset 获取 adapter。
+2. 读取 `adapter_config.json` 和 `adapter_model.safetensors`。
+3. 生成 `/kaggle/working/submission.zip`。
+4. zip 根目录直接包含两个 adapter 文件。
+5. 不训练、不加载 base model、不推理、不改权重。
 
-Notebook markdown 里写了 rank 校验、自动发现 adapter、zip 内复核等更完整的流程说明；但本地保存的实际执行代码是上面这种最小打包实现。因此不能把它描述成复杂训练或复杂验证路线。
+## 为什么这次提交有效
 
-## 这次提交的策略和优化策略
+关键不是模型调参，而是工程策略正确：
 
-这次最高包的关键不是模型调参，而是工程选择和资产选择。
+1. 及时停止继续修复官方评测失败的早期 adapter 包。
+2. 选择已经有公开 0.86 证据的 Kaggle notebook output。
+3. 使用 remote kernel output submit，避免本地下载和上传 1GB+ 大包。
+4. 不二次修改 adapter 权重，避免把公开强包改坏。
+5. 保持 zip 结构最小化，只包含比赛 evaluator 需要的两个文件。
 
-### 1. 选对已有公开 adapter
-
-`adappter-v32-epoch-5` 是这次提交真正承载分数的资产。Mirza v16 notebook 本身没有训练，它只是把这个 adapter 重新包装成比赛要求的 `submission.zip`。
-
-这说明当时最有效的决策是：
-
-```text
-不要继续盲修 Huikang v27 ERROR 包
-不要本地上传 1GB+ zip
-不要本地训练或加载 30B
-直接复用已经能产出 0.86 的公开 adapter notebook output
-```
-
-### 2. 使用 remote kernel output submit，避免本地大包上传
-
-当时真正突破工程瓶颈的是这个提交方式：
+对应提交命令形态：
 
 ```powershell
 kaggle competitions submit nvidia-nemotron-model-reasoning-challenge `
@@ -150,154 +164,259 @@ kaggle competitions submit nvidia-nemotron-model-reasoning-challenge `
   -m "20260605_slot4_mirzayasir_best_086_v16_remote_output"
 ```
 
-它的价值：
+## 全 Stage 复盘
 
-- 不需要把 1GB 以上的 `submission.zip` 下载到本地再上传。
-- 避免本地网络/VPN 导致的上传超时。
-- 直接提交 Kaggle notebook version 16 的云端 output，减少本地重打包引入的格式漂移。
-- 保留公开 notebook 产出的原始包结构，降低官方 evaluator ERROR 风险。
+### Stage 1：资产审计与最小闭环
 
-### 3. 保持提交包极简
+状态：完成。
 
-该包只包含：
-
-```text
-submission.zip
-  adapter_config.json
-  adapter_model.safetensors
-```
-
-没有额外目录、训练日志、manifest、缓存文件或 notebook 输出杂物。这种极简结构符合比赛 adapter 提交习惯，也避免了 evaluator 读取路径时失败。
-
-### 4. 不改权重，避免把公开强包改坏
-
-后续我们做过很多 SVD、TIES、DARE、delta scaling、module filtering、训练变体，但大多数只到 0.84-0.85，甚至更低。Mirza v16 这包的优势在于它没有试图二次修改 adapter，而是完整保留公开强 adapter 的行为。
-
-复盘结论：
+证据：
 
 ```yaml
-main_strategy: "public strong adapter preservation"
-main_engineering_optimization: "Kaggle remote-output submit"
-main_packaging_optimization: "flat two-file adapter zip"
-main_model_optimization: "none in our workflow; score comes from selected public adapter"
-why_it_worked: "选中的公开 adapter 已经有效，远端 output 提交避免了本地重打包和上传风险。"
+kaggle_cli_status: success
+submission_history_query_status: success
+raw_submission_result: "No submissions found"
+today_submission_count: 0
+today_remaining_quota: 5
+candidate_adapters: 0
+submission_zip_generated: false
+can_enter_stage2: true
 ```
 
-## 为什么上一版复盘错到了 Biohack v62
+关键决策：
 
-上一版报告把 `Biohack v62` 当作最高重点，是因为它依赖赛后 CLI 中已经显示 `privateScore` 的较新提交记录：
-
-```yaml
-biohack_v62:
-  submission_id: 53696351
-  message: 20260615_wrap_biohack_v62_public_sparse_trust_probe
-  publicScore: 0.86
-  privateScore_from_cli: 0.85
-```
-
-这个判断对“Biohack v62 是后期一个 public 0.86 / private 0.85 的有效路线”是成立的，但它不是用户截图中要求复盘的双 0.86 包。用户截图的目标行是：
-
-```yaml
-target:
-  submission_id: 53384030
-  message: 20260605_slot4_mirzayasir_best_086_v16_remote_output
-  public_displayed_score: 0.86
-  private_displayed_score: 0.86
-```
-
-因此修正后的主复盘对象必须是 Mirza v16，而不是 Biohack v62。
-
-## 与其他路线的对比
-
-| 路线 | 提交/结果 | 复盘结论 |
-|---|---:|---|
-| Huikang v27 raw / normalized | ERROR | 结构验证通过不代表官方 evaluator 能接受 |
-| Kien public training output repack | public 0.63 | 公开训练输出不等于强 adapter |
-| Akihiko small adapter | public 0.50 | 小型公开 LoRA 虽合法但不具竞争力 |
-| Rauffauzan fusion/rank compression | public 0.86 | fusion/SVD 能到 0.86，但未证明优于 Mirza 双 0.86 包 |
-| Mirza v16 adapter packaging | public 0.86 / private 0.86 displayed | 本报告重点；公开强 adapter + 远端 output 提交 |
-| Debatreya direct Kien adapter route | public 0.85 | 快速但低于 Mirza |
-| Taha custom repo finetune | public 0.86 | 训练路线可到 0.86，但训练成本和不确定性更高 |
-| Mohamed replay-data finetune | public 0.86 | replay data 路线可到 0.86，但不是本次双 0.86 目标包 |
-| Biohack v62 public sparse-trust probe | public 0.86 / private 0.85 | 后期有效路线，但不是用户截图指定的双 0.86 包 |
-
-## 第一阶段到最终提交的关键决策
-
-### Stage 1：先建立最小闭环
-
-正确点：
-
-- 先修 Kaggle CLI 认证和提交历史查询。
-- 正确处理 `No submissions found`。
-- 先做 adapter validator 和 submission packer。
+- 先修 Kaggle CLI 和 submission history 查询。
+- 正确把 `No submissions found` 当成认证成功但无历史提交，而不是失败。
+- 建立 adapter validator、submission packer、dry-run report。
 - 不训练、不提交、不下载 base model。
 
-这使后续每个 adapter 至少能检查基本结构，而不是盲目提交。
+评价：这是正确的。它避免一开始就把工程变成不可控的大训练平台。
 
-### Stage 2：从“本地大包上传”切到“Kaggle 云端 output”
+### Stage 2：公开 adapter 获取与结构验证
 
-本地上传 1GB+ `submission.zip` 太慢且易失败。Kaggle-side notebook 和 remote output submit 让我们可以直接提交 notebook output。
+状态：结构闭环完成，官方格式未在此阶段确认。
 
-这是整个项目最重要的工程转折点。
+GitHub 记录中选择过：
 
-### Stage 3：proxy eval 被降级
+```yaml
+selected_route: tong_full_repro
+classification: candidate_adapter
+source_url: https://www.kaggle.com/models/huikang/nemotron-adapter
+model_version_ref: huikang/nemotron-adapter/Transformers/default/27
+```
 
-Kaggle Notebook 上跑 Nemotron 30B + Mamba/CUDA proxy inference 容易失败。后续判断分数主要依赖官方 evaluator，而不是继续卡在本地或 notebook proxy。
+Stage 2 结果：
 
-### Stage 5/6：一天内验证多个公开 output
+```yaml
+fetch_status: success
+adapter_config_exists: true
+adapter_model_exists: true
+structural_valid: true
+rank_lte_32: true
+safetensors_opened: true
+submission_zip_generated: true
+official_format_confirmed: false
+```
 
-6 月 5 日的 remote sweep 一次验证了多条公开路线：
+关键教训：结构有效不等于官方评测有效。后面早期包多次失败，说明 evaluator 兼容性必须通过真实官方评测确认。
 
-| submission_id | route | public |
-|---|---|---:|
-| 53383735 | Rauffauzan fusion/rank compression | 0.86 |
-| 53384030 | Mirza v16 adapter packaging | 0.86 |
-| 53384059 | Debatreya direct Kien adapter | 0.85 |
-| 53384096 | Taha custom repo finetune | 0.86 |
-| 53384098 | Mohamed replay data finetune | 0.86 |
+### Stage 3：proxy eval
 
-其中用户截图指定的最终双 0.86 复盘对象是 `53384030`。
+状态：框架存在，但未完成。
 
-## 这次双 0.86 包给出的经验
+GitHub 报告结论：
 
-1. 对只提交 adapter 的比赛，资产选择比本地复杂 workflow 更重要。
-2. 公开强 adapter 不应轻易二次修改；很多“看起来高级”的 merge/compression 会把分数打低。
-3. remote-output submit 是比本地上传大 zip 更稳定的提交方式。
-4. `submission.zip` 应保持最小结构：根目录直接放 `adapter_config.json` 和 `adapter_model.safetensors`。
-5. 复盘时必须把“notebook 做了什么”和“adapter 本身来自哪里”分开。Mirza notebook 做的是打包，分数来自 `adappter-v32-epoch-5`。
-6. 最终报告不能只看后期 CLI privateScore 列，还要对齐用户在 Kaggle UI 中指定的具体提交行。
+```yaml
+stage: 3
+status: blocked
+complete: false
+reason: "proxy predictions are missing or incomplete"
+proxy_samples: 25
+can_enter_stage4: false
+```
+
+关键教训：
+
+- 本地和 Kaggle Notebook 上跑完整 Nemotron 30B 推理链不稳定。
+- proxy eval 只能作为辅助门控，不能替代官方 evaluator。
+- 对这个比赛，官方提交分数才是最终判断。
+
+### Stage 4：fusion / specialist / daily plan
+
+状态：只完成 readiness 和候选计划，未正式展开执行。
+
+GitHub 报告结论：
+
+```yaml
+can_start_stage4: false
+validated_adapters: 1
+proxy_eval_complete: false
+score_gate_allowed: true
+blocked_reason: proxy_eval_not_complete
+```
+
+候选方向包括 compressed trace、numeric/unit conversion、cipher、bit operation、rank32 fusion。但由于 proxy eval 未完成，正式 Stage 4 应被视为 blocked。
+
+评价：这个阶段的边界控制是正确的。没有在缺少 proxy eval 的情况下直接把 fusion/daily runner 做成自动盲提系统。
+
+### Stage 5：Kaggle-side notebook workflow
+
+状态：完成，并成为关键工程突破。
+
+目的：
+
+- 本地不再上传大型 `submission.zip`。
+- 本地只上传小 notebook。
+- Kaggle 云端挂载公开 adapter 或 notebook output。
+- 最终通过 Kaggle output 生成或直接提交 `submission.zip`。
+
+核心价值：
+
+```yaml
+local_large_zip_upload: false
+base_model_downloaded_locally: false
+remote_kernel_output_submit: true
+```
+
+评价：这是整个项目最重要的工程转折。没有这个切换，很难高频验证多个公开 output。
+
+### Stage 6：公开 output 扫描与 0.86 平台确认
+
+状态：完成。
+
+2026-06-05 remote sweep：
+
+| submission_id | route | kernel | version | public |
+|---|---|---|---:|---:|
+| 53383735 | Rauffauzan fusion/rank compression | `muelsyse111/nemotron-repack-rauffauzan-fusion` | 1 | 0.86 |
+| 53384030 | Mirza adapter packaging | `mirzayasirabdullah07/best-nvidia-nemotron-notebook-0-86` | 16 | 0.86 |
+| 53384059 | Debatreya direct adapter route | `debatreyabiswas/nemotroncomp-best-0-86-solution-nvidia-under-5min` | 1 | 0.85 |
+| 53384096 | Taha custom repo finetune | `tahaalam2009/end-to-end-finetuning-for-lb-0-86-custom-repo` | 6 | 0.86 |
+| 53384098 | Mohamed replay data finetune | `mohamedamr992/nemotron-replay-data-0-86` | 4 | 0.86 |
+
+关键结论：
+
+- 我们不是只发现一个 0.86，而是验证了多个公开 0.86 路线。
+- 但截图中 public/private 双 0.86 的目标包是 `53384030`。
+- 当时最有价值的不是盲目训练，而是确认 remote-output submit 是有效路线。
+
+### Stage 7：激进 rank-push 探索
+
+状态：执行过大量探索，但没有超过 0.86。
+
+GitHub 记录的主要来源：
+
+- `tonghuikang/nemotron`
+- Mohamed replay-data notebook
+- Taha custom repo notebook
+- Rauffauzan LoRA fusion/rank compression notebook
+- Hugging Face PEFT model merging
+- MergeKit
+- LoRAHub
+- NVIDIA OpenMathReasoning
+- OpenR1-Math-220k
+- NuminaMath-CoT
+- Muon optimizer
+- TIES / DARE / Task Arithmetic / Model Soups / LoRA / QLoRA 相关论文
+
+Stage 7 输出了多条结构有效候选，包括：
+
+- protected rehearsal
+- delta-space SVD rank32
+- modulewise delta SVD
+- full-epoch Muon
+- Mamba in-projection specialist
+- weak-protected curriculum
+- norm-balanced delta SVD
+- seed-stability replay
+- TIES sign merge
+- DARE merge
+- layerwise adapter soup
+
+评价：
+
+- 方法覆盖面足够广。
+- 很多候选是我们基于公开论文/代码思路改造的，不是简单复投。
+- 但官方结果显示，大多数自研/融合/训练候选没有超过已知公开 0.86 包。
+- 对这个比赛，改动越大越容易破坏已有 adapter 的稳定性。
+
+### Stage 8：后续提交验证
+
+状态：执行过，未改善。
+
+2026-06-08 五次提交：
+
+| slot | candidate | mechanism | public | decision |
+|---:|---|---|---:|---|
+| 1 | guarded weak replay | guarded weak-category replay | 0.84 | reject |
+| 2 | answer-tail 512 | answer-tail loss focus | 0.27 | hard reject |
+| 3 | weak-protected curriculum | weak/protected interleaving | 0.85 | reject |
+| 4 | seed-stability replay | deterministic replay | 0.85 | reject |
+| 5 | TIES sign merge | TIES sign merge | 0.84 | reject |
+
+关键结论：
+
+- answer-tail objective 是明显破坏性方向。
+- replay 排序和 weak/protected reweighting 没有突破 0.86。
+- TIES 类合并没有带来提升。
+- GPU quota 成为后续运行瓶颈。
+
+## 最重要的决策复盘
+
+### 正确决策
+
+1. 先完成 CLI、审计、验证、打包闭环。
+2. 不在本地加载或训练 30B。
+3. 从本地大包上传切换到 Kaggle remote-output submit。
+4. 迅速验证多个公开 output，而不是只盯一个失败包。
+5. 对每次提交保留 message、kernel、version、source chain。
+6. 对低分路线及时 reject，不重复提交。
+
+### 错误或低效决策
+
+1. 早期对结构有效包的官方兼容性过于乐观。
+2. proxy eval 投入较多，但没有形成可靠分数预测。
+3. 后期 fusion/SVD/merge 方向投入较多，但官方分数没有突破。
+4. 训练目标改动过激时容易崩盘，例如 answer-tail loss focus。
+5. 一些标题声称高分的公开 notebook 实测不高，说明 title claim 不能作为决策依据。
+
+## 最终技术结论
+
+1. 目标双 0.86 包不是我们训练出来的模型，而是公开 Kaggle adapter 包装路线。
+2. 权重来源是 `assiabenazzouz/adappter-v32-epoch-5`。
+3. 打包 notebook 来源是 `mirzayasirabdullah07/best-nvidia-nemotron-notebook-0-86` Version 16。
+4. 我们的关键贡献是工程化选择、提交路径设计、失败路线筛除、分数记录和复盘。
+5. 项目后续自研探索有价值，但没有超过这个公开强包。
+6. 对这类只提交 LoRA adapter 的比赛，最稳策略是先锁定强公开 adapter/output，再谨慎做极小变量改动；大规模 merge 或 objective 改动风险很高。
 
 ## 给队长的交接信息
 
-优先审查这个目录：
+优先审查：
 
 ```text
 artifacts/stage6/mirzayasir_best_086_meta/
+reports/REMOTE_086_SUBMISSION_SWEEP_20260605.md
+reports/POST_086_REVIEW_20260605.md
+reports/SCORECARD.md
+reports/FINAL_COMPETITION_REVIEW_20260616.md
 ```
 
-本地打开 notebook：
+本地打开目标 notebook：
 
 ```powershell
 code artifacts/stage6/mirzayasir_best_086_meta/best-nvidia-nemotron-notebook-0-86.ipynb
 ```
 
-关键远端信息：
+目标提交来源链：
 
 ```yaml
-kernel: mirzayasirabdullah07/best-nvidia-nemotron-notebook-0-86
-version: 16
-dataset: assiabenazzouz/adappter-v32-epoch-5
-submission_message: 20260605_slot4_mirzayasir_best_086_v16_remote_output
-```
-
-可复查提交命令形态：
-
-```powershell
-kaggle competitions submit nvidia-nemotron-model-reasoning-challenge `
-  -k mirzayasirabdullah07/best-nvidia-nemotron-notebook-0-86 `
-  -f submission.zip `
-  -v 16 `
-  -m "20260605_slot4_mirzayasir_best_086_v16_remote_output"
+competition: nvidia-nemotron-model-reasoning-challenge
+submission_id: 53384030
+message: 20260605_slot4_mirzayasir_best_086_v16_remote_output
+source_kernel: mirzayasirabdullah07/best-nvidia-nemotron-notebook-0-86
+source_version: 16
+adapter_dataset: assiabenazzouz/adappter-v32-epoch-5
+local_notebook_copy: artifacts/stage6/mirzayasir_best_086_meta/best-nvidia-nemotron-notebook-0-86.ipynb
 ```
 
 不要提交到 GitHub：
@@ -321,19 +440,17 @@ leaderboard 摘要
 
 ## 最终结论
 
-本次应该复盘的 public/private 双 0.86 包是 `Mirza v16`：
-
 ```yaml
 final_review_target:
   submission_id: 53384030
   message: 20260605_slot4_mirzayasir_best_086_v16_remote_output
   public_displayed_score: 0.86
   private_displayed_score: 0.86
-  strategy: "use a proven public adapter dataset and submit the exact Kaggle notebook remote output"
-  optimization: "preserve adapter weights, keep zip flat and minimal, avoid local upload/repack drift"
-  not_training: true
-  not_fusion: true
-  not_local_30b: true
+  route_type: public_adapter_repack
+  adapter_source: assiabenazzouz/adappter-v32-epoch-5
+  notebook_source: mirzayasirabdullah07/best-nvidia-nemotron-notebook-0-86
+  source_version: 16
+  our_training: false
+  our_weight_modification: false
+  our_real_contribution: "source selection, remote-output submission workflow, validation records, and failure-route elimination"
 ```
-
-上一版 Biohack v62 复盘应降级为“后期对照路线”，不能再作为本报告主对象。
